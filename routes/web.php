@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +37,7 @@ Route::get('/timekeeping', function () {
     return view('timekeeping.list');
 })->name('timekeeping');
 
-Route::get('/admin', function () {
-    return view('admin.list');
-})->name('admin');
+Route::resource('/admin', AdminController::class);
 
 Route::get('/legal_off', function () {
     return view('legal_off.list');

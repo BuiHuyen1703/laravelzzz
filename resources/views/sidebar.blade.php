@@ -189,13 +189,13 @@
                     <div class="collapse" id="adminExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{ route('admin') }}">
+                                <a href="{{ route('admin.index') }}">
                                     <span class="sidebar-mini"> LL </span>
                                     <span class="sidebar-normal"> List Admin </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.create') }}">
                                     <span class="sidebar-mini"> LL </span>
                                     <span class="sidebar-normal"> Thêm admin </span>
                                 </a>

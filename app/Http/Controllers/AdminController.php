@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +15,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $listAdmin = Admin::get();
+        return view('admin.list', [
+            "listAdmin" => $listAdmin
+        ]);
     }
 
     /**
@@ -23,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -34,7 +39,17 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nameAdmin = $request->get('name_admin');
+        $phoneAdmin = $request->get('phone_admin');
+        $emailAdmin = $request->get('email_admin');
+        $passAdmin = $request->get('pass_admin');
+        $admin = new Admin();
+        $admin->name_admin = $nameAdmin;
+        $admin->phone_admin = $phoneAdmin;
+        $admin->email_admin = $emailAdmin;
+        $admin->pass_admin = $passAdmin;
+        $admin->save();
+        return redirect(route('admin.index'));
     }
 
     /**
