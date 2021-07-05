@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $listAdmin = Admin::get();
+        $listAdmin = Admin::all();
         return view('admin.list', [
             "listAdmin" => $listAdmin
         ]);
@@ -71,7 +71,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = Admin::find($id);
+        return view('admin.update', [
+            "admin" => $admin
+        ]);
     }
 
     /**

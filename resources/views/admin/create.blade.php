@@ -1,4 +1,5 @@
 @extends('dashboard')
+@section('title', 'Thêm admin')
 @section('huyen')
     <h1>Thêm Admin</h1>
     <form action="{{ route('admin.store') }}" method="post">
