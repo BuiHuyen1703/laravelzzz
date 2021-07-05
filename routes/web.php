@@ -37,3 +37,6 @@ Route::get('/legal_off', function () {
 Route::get('/login', [AuthenticateController::class, 'login'])->name('login');
 Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
     ->name('login-process');
+
+    // testRoute::post('/login-process', [AuthenticateController::class, 'loginProcess'])
+    // ->name('login-process');
