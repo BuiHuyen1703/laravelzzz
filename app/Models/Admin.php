@@ -4,9 +4,11 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin extends Model
 {
     protected $table = 'admin';
     public $timestamps = false;
+    public $primarykey = "idAdmin";
 }
