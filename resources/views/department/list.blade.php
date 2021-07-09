@@ -8,11 +8,12 @@
                 <td>Tên</td>
                 <td></td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Ban giảng dạy</td>
-                <td>Xoá &nbsp; &nbsp; Sửa</td>
-            </tr>
+            @foreach ($listPart as $depart)
+                <tr>
+                    <td>{{ $depart->id_department }}</td>
+                    <td>{{ $depart->name_department }}</td>
+                </tr>
+            @endforeach
 
         </table>
     </form>

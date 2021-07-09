@@ -10,5 +10,5 @@ class Admin extends Model
 {
     protected $table = 'admin';
     public $timestamps = false;
-    public $primarykey = "idAdmin";
+    protected $primaryKey = 'id_admin';
 }

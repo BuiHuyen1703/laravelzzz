@@ -41,12 +41,7 @@
                                     <span class="sidebar-normal"> Edit Profile </span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-mini"> S </span>
-                                    <span class="sidebar-normal"> Settings </span>
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -68,13 +63,13 @@
                     <div class="collapse in" id="pagesExamples">
                         <ul class="nav">
                             <li>
-                                <a href="../pages/lock.html">
+                                <a href="{{ route('jobTitle.create') }}">
                                     <span class="sidebar-mini"> LSP </span>
                                     <span class="sidebar-normal"> Thêm job title </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('job_title') }}">
+                                <a href="{{ route('jobTitle.index') }}">
                                     <span class="sidebar-mini"> UP </span>
                                     <span class="sidebar-normal"> Danh sách job title </span>
                                 </a>
@@ -152,9 +147,15 @@
                     <div class="collapse" id="deptExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{ route('department') }}">
+                                <a href="{{ route('department.index') }}">
                                     <span class="sidebar-mini"> RT </span>
                                     <span class="sidebar-normal"> Danh sách department </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('department.create') }}">
+                                    <span class="sidebar-mini"> RT </span>
+                                    <span class="sidebar-normal"> Thêm department </span>
                                 </a>
                             </li>
                         </ul>
@@ -162,22 +163,13 @@
 
                 </li>
                 <li>
-                    <a data-toggle="collapse" href="#levelExamples">
+                    <a href="{{ route('level.index') }}">
                         <i class="material-icons">sort</i>
                         <p> Level
                             <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="levelExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="{{ route('level') }}">
-                                    <span class="sidebar-mini"> LL </span>
-                                    <span class="sidebar-normal"> List Level </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#adminExamples">

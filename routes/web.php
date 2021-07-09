@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\JobtitleController;
+use App\Http\Controllers\LevelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,27 +14,20 @@ Route::get('/employee', function () {
     return view('employee.list');
 })->name('employee');
 
-Route::get('/job_title', function () {
-    return view('job_title.list');
-})->name('job_title');
-
-Route::get('/level', function () {
-    return view('level.list');
-})->name('level');
-
-Route::get('/department', function () {
-    return view('department.list');
-})->name('department');
 
 Route::get('/timekeeping', function () {
     return view('timekeeping.list');
 })->name('timekeeping');
 
-Route::resource('/admin', AdminController::class);
-
 Route::get('/legal_off', function () {
     return view('legal_off.list');
 })->name('legal_off');
+
+
+Route::resource('/admin', AdminController::class);
+Route::resource('/jobTitle', JobtitleController::class);
+Route::resource('/department', DepartmentController::class);
+Route::resource('/level', LevelController::class);
 
 ///login
 Route::get('/login', [AuthenticateController::class, 'login'])->name('login');

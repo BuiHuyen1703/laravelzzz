@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobTitle;
 use Illuminate\Http\Request;
+use Whoops\Run;
 
 class JobtitleController extends Controller
 {
@@ -13,7 +15,10 @@ class JobtitleController extends Controller
      */
     public function index()
     {
-        //
+        $listJob = JobTitle::all();
+        return view('job_title.list', [
+            "listJob" => $listJob
+        ]);
     }
 
     /**
@@ -23,7 +28,7 @@ class JobtitleController extends Controller
      */
     public function create()
     {
-        //
+        return view('job_title.create');
     }
 
     /**
@@ -34,7 +39,11 @@ class JobtitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $namejobTitle = $request->get('nameJob');
+        $jobtitle = new jobTitle();
+        $jobtitle->name_jobTitle = $namejobTitle;
+        $jobtitle->save();
+        return redirect(route('jobTitle.index'));
     }
 
     /**
