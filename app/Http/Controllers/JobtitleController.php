@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobTitle;
+use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
 use Whoops\Run;
 
@@ -65,7 +66,10 @@ class JobtitleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = JobTitle::find($id);
+        return view('job_title.edit', [
+            "job" => $job
+        ]);
     }
 
     /**
@@ -77,7 +81,11 @@ class JobtitleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->get('nameJob');
+        $job = JobTitle::find($id);
+        $job->name_jobTitle = $name;
+        $job->save();
+        return redirect()->route('jobTitle.index');
     }
 
     /**
@@ -88,6 +96,7 @@ class JobtitleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        JobTitle::where('id_jobTitle', $id)->delete();
+        return redirect(route('jobTitle.index'));
     }
 }

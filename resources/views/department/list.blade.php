@@ -12,6 +12,15 @@
                 <tr>
                     <td>{{ $depart->id_department }}</td>
                     <td>{{ $depart->name_department }}</td>
+                    <td><a href="{{ route('department.edit', $depart->id_department) }}"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <form action="{{ route('department.destroy', $depart->id_department) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
 

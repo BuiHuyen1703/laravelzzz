@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class DepartmentController extends Controller
 {
@@ -64,7 +65,10 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dep = Department::find($id);
+        return view('department.edit', [
+            "dep" => $dep
+        ]);
     }
 
     /**
@@ -76,7 +80,11 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->get('name_dep');
+        $dep = Department::find($id);
+        $dep->name_department = $name;
+        $dep->save();
+        return redirect()->route('department.index');
     }
 
     /**
@@ -87,6 +95,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Department::where('id_department', $id)->delete();
+        return redirect(route('department.index'));
     }
 }
