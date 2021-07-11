@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Timekeeping extends Model
 {
-    use HasFactory;
+    protected $table = 'timekeeping';
+    public $timestamps = false;
+    protected $primaryKey = 'id_timekeeping';
 }

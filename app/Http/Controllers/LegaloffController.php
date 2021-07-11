@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LegalOff;
 use Illuminate\Http\Request;
 
 class LegaloffController extends Controller
@@ -13,7 +14,10 @@ class LegaloffController extends Controller
      */
     public function index()
     {
-        //
+        $listLegal = LegalOff::all();
+        return view('legal_off.list', [
+            'listLegal' => $listLegal
+        ]);
     }
 
     /**

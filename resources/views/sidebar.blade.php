@@ -87,7 +87,7 @@
                     <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{ route('employee') }}">
+                                <a href="{{ route('employee.index') }}">
                                     <span class="sidebar-mini"> GS </span>
                                     <span class="sidebar-normal"> Xem tất cả nhân viên </span>
                                 </a>
@@ -112,7 +112,7 @@
                     <div class="collapse" id="formsExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{ route('legal_off') }}">
+                                <a href="{{ route('legalOff.index') }}">
                                     <span class="sidebar-mini"> RF </span>
                                     <span class="sidebar-normal"> Danh sách đơn xin nghỉ </span>
                                 </a>
@@ -129,7 +129,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="{{ route('timekeeping') }}">
+                    <a href="{{ route('timekeeping.index') }}">
                         <i class="material-icons">timer</i>
                         <p> Timekeeping
                             <b class="caret"></b>

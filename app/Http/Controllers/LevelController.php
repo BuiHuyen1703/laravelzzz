@@ -60,7 +60,10 @@ class LevelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $level = Level::find($id);
+        return view('level.edit', [
+            "level" => $level
+        ]);
     }
 
     /**
@@ -72,7 +75,11 @@ class LevelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bsSalary = $request->get('basic_salary');
+        $level = Level::find($id);
+        $level->basic_salary = $bsSalary;
+        $level->save();
+        return redirect()->route('level.index');
     }
 
     /**
@@ -83,6 +90,7 @@ class LevelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Level::where('id_level', $id)->delete();
+        return redirect(route('level.index'));
     }
 }

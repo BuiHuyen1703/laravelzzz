@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LegalOff extends Model
 {
-    use HasFactory;
+    protected $table = 'legal_off';
+    public $timestamps = false;
+    protected $primaryKey = 'id_legal';
 }

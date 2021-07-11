@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Timekeeping;
 use Illuminate\Http\Request;
 
 class TimekeeppingController extends Controller
@@ -13,7 +14,10 @@ class TimekeeppingController extends Controller
      */
     public function index()
     {
-        //
+        $listTime = Timekeeping::all();
+        return view('timekeeping.list', [
+            "listTime" => $listTime
+        ]);
     }
 
     /**
