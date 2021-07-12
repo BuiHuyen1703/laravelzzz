@@ -90,7 +90,7 @@ class LevelController extends Controller
      */
     public function destroy($id)
     {
-        Level::where('id_level', $id)->delete();
-        return redirect(route('level.index'));
+        // Level::where('id_level', $id)->delete();
+        // return redirect(route('level.index'));
     }
 }

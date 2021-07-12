@@ -21,13 +21,7 @@
                 {{-- <td><a class="btn btn-sm btn-primary" href="{{ route('admin.show', $grade->idAdmin) }}">Xem</a></td> --}}
                 <td><a class="btn btn-sm btn-warning" href="{{ route('admin.edit', $admin->id_admin) }}"><i
                             class="fa fa-edit"></i></a></td>
-                <td>
-                    <form action="{{ route('admin.destroy', $admin->id_admin) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                    </form>
-                </td>
+                <td><a class="btn btn-warning" href="">Ẩn</a></td>
             </tr>
         @endforeach
 

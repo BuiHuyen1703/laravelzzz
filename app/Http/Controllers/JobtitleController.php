@@ -96,7 +96,7 @@ class JobtitleController extends Controller
      */
     public function destroy($id)
     {
-        JobTitle::where('id_jobTitle', $id)->delete();
-        return redirect(route('jobTitle.index'));
+        // JobTitle::where('id_jobTitle', $id)->delete();
+        // return redirect(route('jobTitle.index'));
     }
 }

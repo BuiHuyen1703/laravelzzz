@@ -95,7 +95,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        Department::where('id_department', $id)->delete();
-        return redirect(route('department.index'));
+        // Department::where('id_department', $id)->delete();
+        // return redirect(route('department.index'));
     }
 }
