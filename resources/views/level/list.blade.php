@@ -15,11 +15,9 @@
                 <td><a class="btn btn-sm btn-warning" href="{{ route('level.edit', $level->id_level) }}"><i
                             class="fa fa-edit"></i></a></td>
                 <td>
-                    <form action="{{ route('level.destroy', $level->id_level) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                    </form>
+                    <a href="{{ route('level.hide', $level->id_level) }}">
+                        Hide
+                    </a>
                 </td>
             </tr>
         @endforeach

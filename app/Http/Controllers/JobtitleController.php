@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JobTitle;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Whoops\Run;
 
 class JobtitleController extends Controller
@@ -16,7 +17,9 @@ class JobtitleController extends Controller
      */
     public function index()
     {
-        $listJob = JobTitle::all();
+        $listJob = DB::table("jobtitle")
+            ->where("available", "=", 1)
+            ->get();
         return view('job_title.list', [
             "listJob" => $listJob
         ]);
@@ -98,5 +101,15 @@ class JobtitleController extends Controller
     {
         // JobTitle::where('id_jobTitle', $id)->delete();
         // return redirect(route('jobTitle.index'));
+    }
+    public function hide($id)
+    {
+        $Emp = DB::table("employees")
+            ->where("id_jobTitle", "=", $id)
+            ->update(["available" => 0]);
+        $Dep = DB::table("jobtitle")
+            ->where("id_jobTitle", "=", $id)
+            ->update(["available" => 0]);
+        return redirect("jobTitle");
     }
 }

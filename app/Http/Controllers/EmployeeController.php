@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +15,13 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $listEmp = Employee::all();
+        $listEmp = DB::table("employees")
+            ->join("level", "employees.level", "=", "level.id_level")
+            ->join("departments", "employees.id_department", "=", "departments.id_department")
+            ->join("jobtitle", "employees.id_jobTitle", "=", "jobtitle.id_jobTitle")
+            ->select("employees.*", "departments.name_department", "jobtitle.name_jobTitle")
+            ->where("employees.available", "=", 1)
+            ->get();
         return view('employee.list', [
             'listEmp' => $listEmp
         ]);
@@ -84,5 +91,19 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hide($id)
+    {
+        $legalOff = DB::table("legal_off")
+            ->where("id_employee", "=", $id)
+            ->update(["available" => 0]);
+        $Timekeep = DB::table("timekeeping")
+            ->where("id_employee", "=", $id)
+            ->update(["available" => 0]);
+        $Emp = DB::table("employees")
+            ->where("id_employee", "=", $id)
+            ->update(["available" => 0]);
+        return redirect("employee");
     }
 }

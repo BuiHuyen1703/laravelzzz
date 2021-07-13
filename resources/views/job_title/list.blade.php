@@ -15,11 +15,9 @@
                 <td><a class="btn btn-sm btn-warning" href="{{ route('jobTitle.edit', $jobTitle->id_jobTitle) }}"><i
                             class="fa fa-edit"></i></a></td>
                 <td>
-                    <form action="{{ route('jobTitle.destroy', $jobTitle->id_jobTitle) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                    </form>
+                    <a href="{{ route('jobTitle.hide', $jobTitle->id_jobTitle) }}">
+                        Hide
+                    </a>
                 </td>
             </tr>
         @endforeach

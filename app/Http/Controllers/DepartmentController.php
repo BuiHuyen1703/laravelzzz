@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -15,7 +16,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $listPart = Department::all();
+        $listPart = DB::table("departments")
+            ->where("available", "=", 1)
+            ->get();
         return view('department.list', [
             "listPart" => $listPart
         ]);
@@ -97,5 +100,15 @@ class DepartmentController extends Controller
     {
         // Department::where('id_department', $id)->delete();
         // return redirect(route('department.index'));
+    }
+    public function hide($id)
+    {
+        $Emp = DB::table("employees")
+            ->where("id_department", "=", $id)
+            ->update(["available" => 0]);
+        $Dep = DB::table("departments")
+            ->where("id_department", "=", $id)
+            ->update(["available" => 0]);
+        return redirect("department");
     }
 }

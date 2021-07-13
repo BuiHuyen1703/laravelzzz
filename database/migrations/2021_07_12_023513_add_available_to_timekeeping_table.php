@@ -14,7 +14,7 @@ class AddAvailableToTimekeepingTable extends Migration
     public function up()
     {
         Schema::table('timekeeping', function (Blueprint $table) {
-            //
+            $table->boolean("available");
         });
     }
 
@@ -26,7 +26,7 @@ class AddAvailableToTimekeepingTable extends Migration
     public function down()
     {
         Schema::table('timekeeping', function (Blueprint $table) {
-            //
+            $table->dropColumn("available");
         });
     }
 }

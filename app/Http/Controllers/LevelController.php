@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Level;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LevelController extends Controller
 {
@@ -14,7 +15,10 @@ class LevelController extends Controller
      */
     public function index()
     {
-        $listLevel = Level::all();
+        $listLevel = DB::table("level")
+            ->where("available", "=", 1)
+            ->get();
+
         return view('level.list', [
             "listLevel" => $listLevel
         ]);
@@ -92,5 +96,15 @@ class LevelController extends Controller
     {
         // Level::where('id_level', $id)->delete();
         // return redirect(route('level.index'));
+    }
+    public function hide($id)
+    {
+        $Emp = DB::table("employees")
+            ->where("level", "=", $id)
+            ->update(["available" => 0]);
+        $Level = DB::table("level")
+            ->where("id_level", "=", $id)
+            ->update(["available" => 0]);
+        return redirect("level");
     }
 }

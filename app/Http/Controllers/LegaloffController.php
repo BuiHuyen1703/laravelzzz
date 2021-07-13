@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LegalOff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LegaloffController extends Controller
 {
@@ -14,7 +15,9 @@ class LegaloffController extends Controller
      */
     public function index()
     {
-        $listLegal = LegalOff::all();
+        $listLegal = DB::table("legal_off")
+            ->where("available", "=", 1)
+            ->get();
         return view('legal_off.list', [
             'listLegal' => $listLegal
         ]);
@@ -83,6 +86,13 @@ class LegaloffController extends Controller
      */
     public function destroy($id)
     {
-        //
+    }
+    public function hide($id)
+    {
+
+        $Dep = DB::table("legal_off")
+            ->where("id_legal", "=", $id)
+            ->update(["available" => 0]);
+        return redirect("legalOff");
     }
 }
