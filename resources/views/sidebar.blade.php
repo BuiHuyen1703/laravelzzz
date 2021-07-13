@@ -65,7 +65,7 @@
                             <li>
                                 <a href="{{ route('jobTitle.create') }}">
                                     <span class="sidebar-mini"> LSP </span>
-                                    <span class="sidebar-normal"> Thêm job title </span>
+                                    <span class="sidebar-normal"> Thêm chức vụ </span>
                                 </a>
                             </li>
                             <li>

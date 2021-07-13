@@ -67,5 +67,5 @@ Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
 
 //USER
 Route::get('/user', function () {
-    return view('user.index');
-})->name('dashboard-user');
+    return view('user.dashboard');
+});
