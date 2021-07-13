@@ -15,21 +15,27 @@
             <td>Level</td>
             <td>Dep</td>
             <td>Job</td>
+            <td>Ẩn</td>
         </tr>
         @foreach ($listEmp as $emp)
             <tr>
                 <td>{{ $emp->id_employee }}</td>
                 <td>{{ $emp->dateOfBirth }}</td>
                 <td>{{ $emp->gender }}</td>
-                <td>{{ $emp->phone_number }}</td>
+                <td>{{ $emp->phoneNumber }}</td>
                 <td>{{ $emp->address }}</td>
                 <td>{{ $emp->status }}</td>
                 <td>{{ $emp->email }}</td>
                 <td>{{ $emp->password }}</td>
                 <td>{{ $emp->salaryPerHour }}</td>
-                <td>{{ $emp->id_level }}</td>
-                <td>{{ $emp->id_department }}</td>
-                <td>{{ $emp->id_jobTitle }}</td>
+                <td>{{ $emp->level }}</td>
+                <td>{{ $emp->name_department }}</td>
+                <td>{{ $emp->name_jobTitle }}</td>
+                <td>
+                    <a href="{{ route('employee.hide', $emp->id_employee) }}">
+                        Hide
+                    </a>
+                </td>
             </tr>
         @endforeach
     </table>

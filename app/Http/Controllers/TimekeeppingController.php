@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Timekeeping;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TimekeeppingController extends Controller
 {
@@ -14,7 +15,9 @@ class TimekeeppingController extends Controller
      */
     public function index()
     {
-        $listTime = Timekeeping::all();
+        $listTime = DB::table("timekeeping")
+            ->where("available", "=", 1)
+            ->get();
         return view('timekeeping.list', [
             "listTime" => $listTime
         ]);
@@ -84,5 +87,13 @@ class TimekeeppingController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function hide($id)
+    {
+
+        $Dep = DB::table("timekeeping")
+            ->where("id_timekeeping", "=", $id)
+            ->update(["available" => 0]);
+        return redirect("timekeeping");
     }
 }

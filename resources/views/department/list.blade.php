@@ -15,11 +15,7 @@
                     <td><a href="{{ route('department.edit', $depart->id_department) }}"><i class="fa fa-edit"></i></a>
                     </td>
                     <td>
-                        <form action="{{ route('department.destroy', $depart->id_department) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                        </form>
+                        <a class="btn btn-warning" href="{{ route('department.hide', $depart->id_department) }}">Ẩn</a>
                     </td>
                 </tr>
             @endforeach

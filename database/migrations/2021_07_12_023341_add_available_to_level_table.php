@@ -14,7 +14,7 @@ class AddAvailableToLevelTable extends Migration
     public function up()
     {
         Schema::table('level', function (Blueprint $table) {
-            //
+            $table->boolean("available");
         });
     }
 
@@ -26,7 +26,7 @@ class AddAvailableToLevelTable extends Migration
     public function down()
     {
         Schema::table('level', function (Blueprint $table) {
-            //
+            $table->dropColumn("available");
         });
     }
 }
