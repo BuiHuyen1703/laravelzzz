@@ -1,7 +1,7 @@
 @extends('dashboard')
 @section('huyen')
     <h1>Thông tin admin </h1>
-    <table border="1px" width="100%">
+    <table class="table">
         <tr>
             <th>Ten</th>
             <th>Phone</th>
@@ -21,7 +21,8 @@
                 {{-- <td><a class="btn btn-sm btn-primary" href="{{ route('admin.show', $grade->idAdmin) }}">Xem</a></td> --}}
                 <td><a class="btn btn-sm btn-warning" href="{{ route('admin.edit', $admin->id_admin) }}"><i
                             class="fa fa-edit"></i></a></td>
-                <td><a class="btn btn-warning" href="">Ẩn</a></td>
+                <td><a class="btn btn-sm btn-warning" href="">
+                        <i class="fa fa-times"></i></a></td>
             </tr>
         @endforeach
 

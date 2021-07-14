@@ -43,8 +43,10 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $namePart = $request->get('namePart');
+        $available = $request->get('available');
         $part = new department();
         $part->name_department = $namePart;
+        $part->available = $available;
         $part->save();
         return redirect(route('department.index'));
     }

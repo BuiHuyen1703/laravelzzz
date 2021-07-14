@@ -56,7 +56,7 @@
                 <li class="active">
                     <a data-toggle="collapse" href="#pagesExamples" aria-expanded="true">
                         <i class="material-icons">event_seat</i>
-                        <p> Job Title
+                        <p> Chức vụ
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -65,13 +65,13 @@
                             <li>
                                 <a href="{{ route('jobTitle.create') }}">
                                     <span class="sidebar-mini"> LSP </span>
-                                    <span class="sidebar-normal"> Thêm job title </span>
+                                    <span class="sidebar-normal"> Thêm chức vụ </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('jobTitle.index') }}">
                                     <span class="sidebar-mini"> UP </span>
-                                    <span class="sidebar-normal"> Danh sách job title </span>
+                                    <span class="sidebar-normal"> Danh sách chức vụ </span>
                                 </a>
                             </li>
                         </ul>
@@ -80,7 +80,7 @@
                 <li>
                     <a data-toggle="collapse" href="#componentsExamples">
                         <i class="material-icons">portrait</i>
-                        <p> Employee
+                        <p> Nhân viên
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -105,7 +105,7 @@
                 <li>
                     <a data-toggle="collapse" href="#formsExamples">
                         <i class="material-icons">content_paste</i>
-                        <p> Legal off
+                        <p> Nghỉ
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -131,7 +131,7 @@
                 <li>
                     <a href="{{ route('timekeeping.index') }}">
                         <i class="material-icons">timer</i>
-                        <p> Timekeeping
+                        <p> Bảng chấm công
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -140,7 +140,7 @@
                 <li>
                     <a data-toggle="collapse" href="#deptExamples">
                         <i class="material-icons">sort</i>
-                        <p> Department
+                        <p> Phòng ban
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -149,13 +149,13 @@
                             <li>
                                 <a href="{{ route('department.index') }}">
                                     <span class="sidebar-mini"> RT </span>
-                                    <span class="sidebar-normal"> Danh sách department </span>
+                                    <span class="sidebar-normal"> Danh sách phòng ban </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('department.create') }}">
                                     <span class="sidebar-mini"> RT </span>
-                                    <span class="sidebar-normal"> Thêm department </span>
+                                    <span class="sidebar-normal"> Thêm phòng ban </span>
                                 </a>
                             </li>
                         </ul>
@@ -182,13 +182,13 @@
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('admin.index') }}">
-                                    <span class="sidebar-mini"> LL </span>
+                                    <span class="sidebar-mini">&nbsp; </span>
                                     <span class="sidebar-normal"> List Admin </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.create') }}">
-                                    <span class="sidebar-mini"> LL </span>
+                                    <span class="sidebar-mini"> &nbsp;</span>
                                     <span class="sidebar-normal"> Thêm admin </span>
                                 </a>
                             </li>

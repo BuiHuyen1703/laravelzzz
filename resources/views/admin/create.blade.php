@@ -10,6 +10,7 @@
         Email : <input type="text" name="email_admin"><br>
         Password : <input type="text" name="pass_admin"><br>
         Role : <input type="text" name="role_admin"><br>
+        <input value="1" readonly name="available">
         <button>Thêm</button>
     </form>
 @endsection

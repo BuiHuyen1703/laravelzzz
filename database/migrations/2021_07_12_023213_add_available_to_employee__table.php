@@ -14,7 +14,7 @@ class AddAvailableToEmployeeTable extends Migration
     public function up()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->boolean("available");
+            $table->boolean("available")->default(1);
         });
     }
 

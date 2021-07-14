@@ -14,7 +14,7 @@ class AddAvailableToJobtitleTable extends Migration
     public function up()
     {
         Schema::table('jobtitle', function (Blueprint $table) {
-            $table->boolean("available");
+            $table->boolean("available")->default(1);
         });
     }
 

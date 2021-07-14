@@ -34,9 +34,9 @@
             </ul>
         </li>
         <li>
-            <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="{{ route('logout') }}">
                 <i class="material-icons">person</i>
-                <p class="hidden-lg hidden-md">Profile</p>
+                <p>Đăng xuất</p>
             </a>
         </li>
         <li class="separator hidden-lg hidden-md"></li>

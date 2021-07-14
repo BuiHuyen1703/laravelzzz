@@ -8,11 +8,23 @@ use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
+use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-})->name('dashboard');
+
+///login 
+Route::get('/login', [AuthenticateController::class, 'login'])->name('login');
+Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
+    ->name('login-process');
+
+Route::get('/logout', [AuthenticateController::class, 'logout'])->name('logout');
+
+Route::middleware([CheckLogin::class])->group(function () {
+    Route::get('/', function () {
+        return view('index ');
+    })->name('dashboard');
+});
+
 //admin
 Route::resource('/admin', AdminController::class);
 Route::prefix('admin')->group(function () {
@@ -53,16 +65,6 @@ Route::resource('/employee', EmployeeController::class);
 Route::prefix('employee')->name("employee.")->group(function () {
     Route::get('/hide/{id}', [EmployeeController::class, 'hide'])->name('hide');
 });
-
-
-///login
-Route::get('/login', [AuthenticateController::class, 'login'])->name('login');
-Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
-    ->name('login-process');
-
-// testRoute::post('/login-process', [AuthenticateController::class, 'loginProcess'])
-// ->name('login-process');
-
 
 
 //USER

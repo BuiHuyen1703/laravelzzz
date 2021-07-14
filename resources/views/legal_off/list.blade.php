@@ -1,15 +1,15 @@
 @extends('dashboard')
 @section('huyen')
     <h1>Thông tin các đơn nghỉ</h1>
-    <table border="1px">
+    <table class="table">
         <tr>
-            <td>tên nhân viên</td>
-            <td>Lý do</td>
-            <td>Ngày bắt đầu</td>
-            <td>Ngày kết thúc</td>
-            <td>Note</td>
-            <td>approve</td>
-            <td></td>
+            <th>tên nhân viên</th>
+            <th>Lý do</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Note</th>
+            <th>approve</th>
+            <th></th>
         </tr>
         @foreach ($listLegal as $legal)
             <tr>
@@ -20,8 +20,8 @@
                 <td>{{ $legal->note }}</td>
                 <td>{{ $legal->approve }}</td>
                 <td>
-                    <a href="{{ route('legalOff.hide', $legal->id_legal) }}">
-                        Hide
+                    <a class="btn btn-sm btn-warning" href="{{ route('legalOff.hide', $legal->id_legal) }}">
+                        <i class="fa fa-times"></i>
                     </a>
                 </td>
             </tr>

@@ -14,7 +14,7 @@ class AddAvailableToLevelTable extends Migration
     public function up()
     {
         Schema::table('level', function (Blueprint $table) {
-            $table->boolean("available");
+            $table->boolean("available")->default(1);
         });
     }
 

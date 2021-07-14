@@ -1,7 +1,7 @@
 @extends('dashboard')
 @section('huyen')
     <h1>Thông tin nhân viên</h1>
-    <table border="1px">
+    <table class="table">
         <tr>
             <td>Tên </td>
             <td>Ngày sinh</td>
@@ -15,7 +15,7 @@
             <td>Level</td>
             <td>Dep</td>
             <td>Job</td>
-            <td>Ẩn</td>
+            <td></td>
         </tr>
         @foreach ($listEmp as $emp)
             <tr>
@@ -32,8 +32,8 @@
                 <td>{{ $emp->name_department }}</td>
                 <td>{{ $emp->name_jobTitle }}</td>
                 <td>
-                    <a href="{{ route('employee.hide', $emp->id_employee) }}">
-                        Hide
+                    <a class="btn btn-sm btn-warning" href="{{ route('employee.hide', $emp->id_employee) }}">
+                        <i class="fa fa-times"></i>
                     </a>
                 </td>
             </tr>

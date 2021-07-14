@@ -44,8 +44,10 @@ class JobtitleController extends Controller
     public function store(Request $request)
     {
         $namejobTitle = $request->get('nameJob');
+        $available = $request->get('available');
         $jobtitle = new jobTitle();
         $jobtitle->name_jobTitle = $namejobTitle;
+        $jobtitle->available = $available;
         $jobtitle->save();
         return redirect(route('jobTitle.index'));
     }

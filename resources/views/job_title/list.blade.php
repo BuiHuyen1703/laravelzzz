@@ -1,12 +1,12 @@
 @extends('dashboard')
 @section('huyen')
     <h1>Thông tin job title</h1>
-    <table border="1px">
+    <table class="table">
         <tr>
-            <td>mã</td>
-            <td>tên</td>
-            <td></td>
-            <td></td>
+            <th>mã</th>
+            <th>tên</th>
+            <th></th>
+            <th></th>
         </tr>
         @foreach ($listJob as $jobTitle)
             <tr>

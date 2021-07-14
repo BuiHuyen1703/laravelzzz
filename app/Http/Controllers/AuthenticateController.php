@@ -28,4 +28,10 @@ class AuthenticateController extends Controller
             return Redirect::route('login')->with('error', 'Sai gòiiiii');
         }
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return Redirect::route('login');
+    }
 }
