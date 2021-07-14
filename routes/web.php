@@ -69,5 +69,5 @@ Route::prefix('employee')->name("employee.")->group(function () {
 
 //USER
 Route::get('/user', function () {
-    return view('user.index');
-})->name('dashboard-user');
+    return view('user.dashboard');
+});

@@ -16,6 +16,7 @@ class JobTitle extends Migration
         Schema::create('jobTitle', function (Blueprint $table) {
             $table->increments('id_jobTitle');
             $table->string('name_jobTitle');
+            // $table->boolean("available")->default(1);
         });
     }
 
