@@ -50,21 +50,27 @@ Route::prefix('level')->name("level.")->group(function () {
 
 //timekeeping
 Route::resource('/timekeeping', TimekeeppingController::class);
+
 Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
     Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
 });
 
 //legal-off
 Route::resource('/legalOff', LegaloffController::class);
+Route::get('/haha/{id}', [LegaloffController::class, 'approve'])->name('haha');
+Route::get('/hihi/{id}', [LegaloffController::class, 'approve1'])->name('hihi');
 Route::prefix('legalOff')->name("legalOff.")->group(function () {
     Route::get('/hide/{id}', [LegaloffController::class, 'hide'])->name('hide');
 });
 
 //employee
-Route::resource('/employee', EmployeeController::class);
+
 Route::prefix('employee')->name("employee.")->group(function () {
     Route::get('/hide/{id}', [EmployeeController::class, 'hide'])->name('hide');
+    Route::get('/insert-excel', [EmployeeController::class, 'insertExcel'])->name('insert-excel');
 });
+Route::resource('/employee', EmployeeController::class);
+
 
 
 //USER

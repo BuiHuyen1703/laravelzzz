@@ -13,17 +13,19 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listEmp = DB::table("employees")
-            ->join("level", "employees.level", "=", "level.id_level")
+        $search = $request->get('search');
+        $listEmp = Employee::join("level", "employees.level", "=", "level.id_level")
             ->join("departments", "employees.id_department", "=", "departments.id_department")
             ->join("jobtitle", "employees.id_jobTitle", "=", "jobtitle.id_jobTitle")
-            ->select("employees.*", "departments.name_department", "jobtitle.name_jobTitle")
+            // ->select("employees.*", "departments.name_department", "jobtitle.name_jobTitle")
             ->where("employees.available", "=", 1)
-            ->get();
+            ->where('name_empployee', 'like', "%$search%")
+            ->paginate(5);
         return view('employee.list', [
-            'listEmp' => $listEmp
+            'listEmp' => $listEmp,
+            'search' => $search,
         ]);
     }
 
@@ -105,5 +107,9 @@ class EmployeeController extends Controller
             ->where("id_employee", "=", $id)
             ->update(["available" => 0]);
         return redirect("employee");
+    }
+    public function insertExcel()
+    {
+        // return view('employee.insert-excel');
     }
 }

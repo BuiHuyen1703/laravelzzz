@@ -1,6 +1,11 @@
 @extends('dashboard')
 @section('huyen')
     <h1>Thông tin nhân viên</h1>
+    <a href="{{ route('employee.insert-excel') }}">Thêm bằng excel</a>
+    <form action="">
+        <input type="search" value="{{ $search }}" name="search">
+        <button>Tìm</button>
+    </form>
     <table class="table">
         <tr>
             <td>Tên </td>
@@ -17,14 +22,15 @@
             <td>Job</td>
             <td></td>
         </tr>
+
         @foreach ($listEmp as $emp)
             <tr>
-                <td>{{ $emp->id_employee }}</td>
+                <td>{{ $emp->name_empployee }}</td>
                 <td>{{ $emp->dateOfBirth }}</td>
-                <td>{{ $emp->gender }}</td>
+                <td>{{ $emp->NameGender }}</td>
                 <td>{{ $emp->phoneNumber }}</td>
                 <td>{{ $emp->address }}</td>
-                <td>{{ $emp->status }}</td>
+                <td>{{ $emp->NameStatus }}</td>
                 <td>{{ $emp->email }}</td>
                 <td>{{ $emp->password }}</td>
                 <td>{{ $emp->salaryPerHour }}</td>
@@ -39,4 +45,7 @@
             </tr>
         @endforeach
     </table>
+    {{ $listEmp->appends([
+        'search' => $search,
+    ])->links('') }}
 @endsection

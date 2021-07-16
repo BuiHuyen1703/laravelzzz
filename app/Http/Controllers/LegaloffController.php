@@ -15,9 +15,9 @@ class LegaloffController extends Controller
      */
     public function index()
     {
-        $listLegal = DB::table("legal_off")
-            ->where("available", "=", 1)
-            ->get();
+        $listLegal = LegalOff::join("employees", "employees.id_employee", "=", "legal_off.id_employee")
+            // ->where("available", "=", 1)
+            ->paginate(5);
         return view('legal_off.list', [
             'listLegal' => $listLegal
         ]);
@@ -95,4 +95,33 @@ class LegaloffController extends Controller
             ->update(["available" => 0]);
         return redirect("legalOff");
     }
+    // từ gửi kèm theo cái id cảu đơn chứ thì mới biết thằng naofnmaf cập nhật lại trạng thái cho thằng đấy chứnc
+    // duyệt
+    public function approve($id)
+    {
+        // đây lấy ra ở đây trc đã xong xem trạng thái đax nếu mà khác null thì k cho lmj hiểu chưa
+        $kaka = DB::table('legal_off')
+            ->where('id_legal', $id)->value('approve');
+        // ơ lấy ra dữ liệu ểu g
+        if ($kaka === null) {
+            $affected = DB::table('legal_off')
+                ->where('id_legal', $id)
+                ->update(['approve' => 0]);
+        }
+        return redirect("legalOff");
+    }
+
+    // k duyệt
+    public function approve1($id)
+    {
+        $kaka = DB::table('legal_off')
+            ->where('id_legal', $id)->value('approve');
+        if ($kaka === null) {
+            $affected = DB::table('legal_off')
+                ->where('id_legal', $id)
+                ->update(['approve' => 1]);
+        }
+        return redirect("legalOff");
+    }
+    // kiểu thế 
 }

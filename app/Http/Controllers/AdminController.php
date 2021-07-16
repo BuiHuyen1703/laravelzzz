@@ -14,11 +14,14 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listAdmin = Admin::all();
+        $search = $request->get('search');
+        $listAdmin = Admin::where('name_admin', 'like', "%$search%")->paginate(4);
+        // $listAdmin = Admin::paginate(5);
         return view('admin.list', [
-            "listAdmin" => $listAdmin
+            "listAdmin" => $listAdmin,
+            "search" => $search,
         ]);
     }
 

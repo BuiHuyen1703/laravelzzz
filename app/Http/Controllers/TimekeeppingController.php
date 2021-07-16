@@ -17,7 +17,7 @@ class TimekeeppingController extends Controller
     {
         $listTime = DB::table("timekeeping")
             ->where("available", "=", 1)
-            ->get();
+            ->paginate(5);
         return view('timekeeping.list', [
             "listTime" => $listTime
         ]);
