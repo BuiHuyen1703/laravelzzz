@@ -1,4 +1,4 @@
-<div class="sidebar" data-active-color="rose" data-background-color="black">
+<div class="sidebar" data-active-color="blue" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"  data-background-color="black"     >
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
             FS

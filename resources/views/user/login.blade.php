@@ -34,11 +34,11 @@
                             <form method="post" action="">
                                 @csrf
                                 <div class="card card-login card-hidden">
-                                    <div class="card-header text-center" data-background-color="rose">
+                                    <div class="card-header text-center" data-background-color="purple">
                                         <h4 class="card-title">Login</h4>
                                     </div>
                                     <p class="category text-center">
-                                        Có tài khoản chưa
+                                        #############
                                     </p>
                                     <div class="card-content">
 
@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
                                     <div class="footer text-center">
-                                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Đăng nhập</button>
+                                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
                                     </div>
                                 </div>
                             </form>
