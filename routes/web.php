@@ -12,7 +12,7 @@ use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
 
-///login 
+///login
 Route::get('/login', [AuthenticateController::class, 'login'])->name('login');
 Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
     ->name('login-process');
@@ -75,5 +75,9 @@ Route::resource('/employee', EmployeeController::class);
 
 //USER
 Route::get('/user', function () {
-    return view('user.dashboard');
+    return view('user.index');
+});
+
+Route::get('/user/login', function () {
+    return view('user.login');
 });
