@@ -20,12 +20,20 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+        ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+        ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+            color: transparent;
+        }
+    </style>
 </head>
 
 <body>
     <div class="wrapper">
         @include('user.layout.sidebar')
         <div class="main-panel">
+            <?php use Carbon\Carbon; ?>
             @include('user.layout.navbar')
             {{-- Content --}}
             <div class="content">

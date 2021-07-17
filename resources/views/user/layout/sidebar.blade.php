@@ -1,4 +1,4 @@
-<div class="sidebar" data-active-color="blue" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"  data-background-color="black"     >
+<div class="sidebar" data-active-color="purple" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"  data-background-color="black"     >
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
             FS
@@ -9,13 +9,13 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="">
-                <a href="">
+            <li class="{{ Request::is('/') ? 'active' : '' }}">
+                <a href="{{ route('user_index') }}">
                     <i class="material-icons">dashboard</i>
                     <p> Trang chủ </p>
                 </a>
             </li>
-            <li class="">
+            <li class="{{ Request::is('/quanly') ? 'active' : '' }}">
                 <a href=" ">
                     <i class="material-icons">widgets</i>
                     <p> Quản lý công việc </p>
