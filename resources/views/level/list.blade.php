@@ -1,13 +1,21 @@
 @extends('dashboard')
 @section('huyen')
-    <h1>Thông tin level</h1>
+<div class="card">
+    <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="material-icons">assignment</i>
+    </div>
+    <div class="card-content">
+        <h3 class="card-title">Thông tin level</h3>
+        <div class="table-responsive">
     <table class="table">
-        <tr>
-            <th>mã</th>
-            <th>level</th>
-            <th></th>
-            <th></th>
-        </tr>
+        <thead class="text-primary">
+            <th>Mã level</th>
+            <th>Level</th>
+            <th>Sửa</th>
+            <th>Ẩn</th>
+
+        </thead>
+        <tbody>
         @foreach ($listLevel as $level)
             <tr>
                 <td>{{ $level->id_level }}</td>
@@ -21,5 +29,10 @@
                 </td>
             </tr>
         @endforeach
+        </tbody>
     </table>
+        </div>
+    </div>
+</div>
+
 @endsection
