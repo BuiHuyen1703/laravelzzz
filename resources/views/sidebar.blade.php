@@ -76,11 +76,11 @@
                     </div> --}}
                 </li>
                 <li class="{{ Request::is('/employee') ? 'active' : '' }}">
-                    <a data-toggle="collapse" href="{{ route('employee.index') }}">
+                    <a href="{{ route('employee.index') }}">
                         <i class="material-icons">portrait</i>
                         <p> Nhân viên</p>
                     </a>
-                    <div class="collapse" id="componentsExamples">
+                    {{-- <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('employee.index') }}">
@@ -88,14 +88,14 @@
                                     <span class="sidebar-normal"> Xem tất cả nhân viên </span>
                                 </a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a href="../components/panels.html">
                                     <span class="sidebar-mini"> P </span>
                                     <span class="sidebar-normal"> Thêm nhân viên </span>
                                 </a>
-                            </li> --}}
+                            </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
                 <li class="{{ Request::is('/legalOff') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="{{ route('legalOff.index') }}">
