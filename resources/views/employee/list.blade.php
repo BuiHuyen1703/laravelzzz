@@ -16,12 +16,12 @@
         </form>
         <table class="table">
             <thead class="text-primary">
-                <th>Mã nhân viên</th>
+                <th>Mã</th>
                 <th>Họ tên</th>
                 <th>Ngày Sinh</th>
                 <th>Sđt</th>
                 <th>Địa chỉ</th>
-                <th>Trạng thái</th>
+                <th>Tình trạng</th>
                 <th>Email</th>
                 <th>Password</th>
                 <th>Level</th>
@@ -33,22 +33,24 @@
 
             <tbody>
             @foreach ($listEmp as $emp)
-                <tr>
+                <tr align="center">
+                    <td>{{ $emp->id_empployee }}</td>
                     <td>{{ $emp->name_empployee }}</td>
                     <td>{{ $emp->dateOfBirth }}</td>
-                    <td>{{ $emp->NameGender }}</td>
                     <td>{{ $emp->phoneNumber }}</td>
                     <td>{{ $emp->address }}</td>
                     <td>{{ $emp->NameStatus }}</td>
+                    {{-- <td>{{ $emp->NameGender }}</td> --}}
                     <td>{{ $emp->email }}</td>
                     <td>{{ $emp->password }}</td>
-                    <td>{{ $emp->salaryPerHour }}</td>
                     <td>{{ $emp->level }}</td>
+                    <td>{{ $emp->salaryPerHour }}</td>
                     <td>{{ $emp->name_department }}</td>
                     <td>{{ $emp->name_jobTitle }}</td>
                     <td>
-                        <a class="btn btn-sm btn-warning" href="{{ route('employee.hide', $emp->id_employee) }}">
+                        <a class="btn btn-sm btn-danger" href="{{ route('employee.hide', $emp->id_employee) }}">
                             <i class="fa fa-times"></i>
+                            Ẩn
                         </a>
                     </td>
                 </tr>

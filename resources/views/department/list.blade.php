@@ -19,7 +19,7 @@
                         </thead>
                         <tbody>
                         @foreach ($listPart as $depart)
-                            <tr>
+                            <tr align="center">
                                 <td>{{ $depart->id_department }}</td>
                                 <td>{{ $depart->name_department }}</td>
                                 <td>

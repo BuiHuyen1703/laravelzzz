@@ -98,11 +98,11 @@
                     </div> --}}
                 </li>
                 <li class="{{ Request::is('/legalOff') ? 'active' : '' }}">
-                    <a data-toggle="collapse" href="{{ route('legalOff.index') }}">
+                    <a href="{{ route('legalOff.index') }}">
                         <i class="material-icons">content_paste</i>
                         <p> Nghỉ </p>
                     </a>
-                    <div class="collapse" id="formsExamples">
+                    {{-- <div class="collapse" id="formsExamples">
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('legalOff.index') }}">
@@ -111,7 +111,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
                 <li>
                     <a href="{{ route('timekeeping.index') }}">
