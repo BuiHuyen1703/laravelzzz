@@ -38,7 +38,9 @@
                 <td>{{ $emp->name_department }}</td>
                 <td>{{ $emp->name_jobTitle }}</td>
                 <td>
-                    <a class="btn btn-sm btn-warning" href="{{ route('employee.hide', $emp->id_employee) }}">
+                <td><a class="btn btn-sm btn-warning" href="{{ route('employee.edit', $emp->id_employee) }}"><i
+                            class="fa fa-edit"></i></a></td>
+                <td><a class="btn btn-sm btn-warning" href="{{ route('employee.hide', $emp->id_employee) }}">
                         <i class="fa fa-times"></i>
                     </a>
                 </td>

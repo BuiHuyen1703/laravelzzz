@@ -67,7 +67,8 @@ Route::prefix('legalOff')->name("legalOff.")->group(function () {
 
 Route::prefix('employee')->name("employee.")->group(function () {
     Route::get('/hide/{id}', [EmployeeController::class, 'hide'])->name('hide');
-    Route::get('/insert-excel', [EmployeeController::class, 'insertExcel'])->name('insert-excel');
+    Route::get('/insert/excel', [EmployeeController::class, 'insertExcel'])->name('insert-excel');
+    Route::post('/insert/excel/process', [EmployeeController::class, 'insertExcelProcess'])->name('insert-excel-process');
 });
 Route::resource('/employee', EmployeeController::class);
 

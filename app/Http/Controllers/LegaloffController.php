@@ -102,7 +102,7 @@ class LegaloffController extends Controller
         // đây lấy ra ở đây trc đã xong xem trạng thái đax nếu mà khác null thì k cho lmj hiểu chưa
         $kaka = DB::table('legal_off')
             ->where('id_legal', $id)->value('approve');
-        // ơ lấy ra dữ liệu ểu g
+
         if ($kaka === null) {
             $affected = DB::table('legal_off')
                 ->where('id_legal', $id)
@@ -123,5 +123,4 @@ class LegaloffController extends Controller
         }
         return redirect("legalOff");
     }
-    // kiểu thế 
 }

@@ -20,13 +20,4 @@ class LegalOff extends Model
             return 'chờ';
         }
     }
-    public function process()
-    {
-        if ($this->approve == Null) {
-        } else if ($this->approve === 1) {
-            //ẩn cột active
-        } else if ($this->approve == 0) {
-            //ẩn cột active
-        }
-    }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\EmployeeImport;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
@@ -36,7 +38,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -47,7 +49,13 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->get('name');
+        $salaryperhour = $request->get('salaryperhouse');
+        $employee = new employee();
+        $employee->name_empployee = $name;
+        $employee->salaryPerHour = $salaryperhour;
+        $employee->save();
+        return redirect(route('employee.index'));
     }
 
     /**
@@ -69,7 +77,10 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::find($id);
+        return view('employee.edit', [
+            "employee" => $employee
+        ]);
     }
 
     /**
@@ -110,6 +121,10 @@ class EmployeeController extends Controller
     }
     public function insertExcel()
     {
-        // return view('employee.insert-excel');
+        return view('employee.insert-excel');
+    }
+    public function insertExcelProcess(Request $request)
+    {
+        Excel::import(new EmployeeImport, $request->file('excel'));
     }
 }
