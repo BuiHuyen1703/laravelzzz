@@ -21,9 +21,9 @@
                             <td>{{ $jobTitle->id_jobTitle }}</td>
                             <td>{{ $jobTitle->name_jobTitle }}</td>
                             <td><a class="btn btn-sm btn-warning" href="{{ route('jobTitle.edit', $jobTitle->id_jobTitle) }}"><i
-                                        class="fa fa-edit"></i></a></td>
+                                        class="fa fa-edit"></i> Sửa</a></td>
                             <td>
-                                <a href="{{ route('jobTitle.hide', $jobTitle->id_jobTitle) }}">
+                                <a class="btn btn-danger"href="{{ route('jobTitle.hide', $jobTitle->id_jobTitle) }}">
                                     Hide
                                 </a>
                             </td>

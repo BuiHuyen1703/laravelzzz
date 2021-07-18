@@ -76,36 +76,31 @@
                     </div> --}}
                 </li>
                 <li class="{{ Request::is('/employee') ? 'active' : '' }}">
-                    <a data-toggle="collapse" href="#componentsExamples">
+                    <a data-toggle="collapse" href="{{ route('employee.index') }}">
                         <i class="material-icons">portrait</i>
-                        <p> Nhân viên
-                            <b class="caret"></b>
-                        </p>
+                        <p> Nhân viên</p>
                     </a>
                     <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('employee.index') }}">
-                                    <span class="sidebar-mini"> GS </span>
+                                    <span class="sideb  ar-mini"> GS </span>
                                     <span class="sidebar-normal"> Xem tất cả nhân viên </span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="../components/panels.html">
                                     <span class="sidebar-mini"> P </span>
                                     <span class="sidebar-normal"> Thêm nhân viên </span>
                                 </a>
-                            </li>
-
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
                 <li class="{{ Request::is('/legalOff') ? 'active' : '' }}">
-                    <a data-toggle="collapse" href="#formsExamples">
+                    <a data-toggle="collapse" href="{{ route('legalOff.index') }}">
                         <i class="material-icons">content_paste</i>
-                        <p> Nghỉ
-                            <b class="caret"></b>
-                        </p>
+                        <p> Nghỉ </p>
                     </a>
                     <div class="collapse" id="formsExamples">
                         <ul class="nav">
@@ -113,14 +108,6 @@
                                 <a href="{{ route('legalOff.index') }}">
                                     <span class="sidebar-mini"> RF </span>
                                     <span class="sidebar-normal"> Danh sách đơn xin nghỉ </span>
-                                </a>
-                            </li>
-
-
-                            <li>
-                                <a href="../forms/wizard.html">
-                                    <span class="sidebar-mini"> W </span>
-                                    <span class="sidebar-normal"> Wizard </span>
                                 </a>
                             </li>
                         </ul>
@@ -161,7 +148,6 @@
                         <i class="material-icons">sort</i>
                         <p> Level</p>
                     </a>
-
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#adminExamples">

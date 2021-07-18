@@ -14,8 +14,8 @@
                         <thead class="text-primary">
                             <th>Mã phòng ban</th>
                             <th>Tên phòng ban</th>
-                            <th></th>
-                            <th></th>
+                            <th>Sửa</th>
+                            <th>Ẩn</th>
                         </thead>
                         <tbody>
                         @foreach ($listPart as $depart)
@@ -27,7 +27,7 @@
                                             class="fa fa-edit"></i></a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-warning" href="{{ route('department.hide', $depart->id_department) }}"><i
+                                    <a class="btn btn-danger" href="{{ route('department.hide', $depart->id_department) }}"><i
                                             class="fa fa-times"></i></a>
                                 </td>
                             </tr>
