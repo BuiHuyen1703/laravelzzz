@@ -1,12 +1,12 @@
 <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
-        <li>
+        {{-- <li>
             <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="material-icons">dashboard</i>
                 <p class="hidden-lg hidden-md">Department</p>
             </a>
-        </li>
-        <li class="dropdown">
+        </li> --}}
+        {{-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="material-icons">notifications</i>
                 <span class="notification">5</span>
@@ -32,7 +32,7 @@
                     <a href="#">Another One</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
         <li>
             <a href="{{ route('logout') }}">
                 <i class="material-icons">person</i>

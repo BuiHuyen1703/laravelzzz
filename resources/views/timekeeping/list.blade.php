@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                         @foreach ($listTime as $time)
-                        <tr>
+                        <tr align="center">
                             <td>{{ $time->timekeeping }}</td>
                             <td>{{ $time->id_employee }}</td>
                             <td>{{ $time->checkin }}</td>

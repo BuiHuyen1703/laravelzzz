@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     @foreach ($listJob as $jobTitle)
-                        <tr>
+                    <tr align="center">
                             <td>{{ $jobTitle->id_jobTitle }}</td>
                             <td>{{ $jobTitle->name_jobTitle }}</td>
                             <td><a class="btn btn-sm btn-warning" href="{{ route('jobTitle.edit', $jobTitle->id_jobTitle) }}"><i

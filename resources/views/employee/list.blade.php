@@ -1,6 +1,6 @@
 @extends('dashboard')
 @section('huyen')
-    <div class="card">
+    <<<<<<< HEAD <div class="card">
         <div class="card-header card-header-icon" data-background-color="rose">
             <i class="material-icons">assignment</i>
         </div>
@@ -53,15 +53,10 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
-                        </tr>
-                    @endforeach
-                </table>
-
             </div>
-        </div>
-    </div>
 
-    {{ $listEmp->appends([
+        </div>
+        {{ $listEmp->appends([
         'search' => $search,
     ])->links('') }}
-@endsection
+    @endsection
