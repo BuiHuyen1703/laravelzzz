@@ -53,14 +53,12 @@
                         <p> Dashboard </p>
                     </a>
                 </li>
-                <li class="active">
-                    <a data-toggle="collapse" href="#pagesExamples" aria-expanded="true">
+                <li class="{{ Request::is('/jobTitle') ? 'active' : '' }}">
+                    <a  href="{{ route('jobTitle.index') }}" >
                         <i class="material-icons">event_seat</i>
-                        <p> Chức vụ
-                            <b class="caret"></b>
-                        </p>
+                        <p> Chức vụ</p>
                     </a>
-                    <div class="collapse in" id="pagesExamples">
+                    {{-- <div class="collapse in" id="pagesExamples">
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('jobTitle.create') }}">
@@ -75,9 +73,9 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
-                <li>
+                <li class="{{ Request::is('/employee') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#componentsExamples">
                         <i class="material-icons">portrait</i>
                         <p> Nhân viên
@@ -102,7 +100,7 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                <li class="{{ Request::is('/legalOff') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#formsExamples">
                         <i class="material-icons">content_paste</i>
                         <p> Nghỉ
@@ -131,20 +129,16 @@
                 <li>
                     <a href="{{ route('timekeeping.index') }}">
                         <i class="material-icons">timer</i>
-                        <p> Bảng chấm công
-                            <b class="caret"></b>
-                        </p>
+                        <p> Bảng chấm công</p>
                     </a>
 
                 </li>
                 <li>
-                    <a data-toggle="collapse" href="#deptExamples">
+                    <a  href="{{ route('department.index') }}">
                         <i class="material-icons">sort</i>
-                        <p> Phòng ban
-                            <b class="caret"></b>
-                        </p>
+                        <p> Phòng ban</p>
                     </a>
-                    <div class="collapse" id="deptExamples">
+                    {{-- <div class="collapse" id="deptExamples">
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('department.index') }}">
@@ -159,15 +153,13 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                 </li>
                 <li>
                     <a href="{{ route('level.index') }}">
                         <i class="material-icons">sort</i>
-                        <p> Level
-                            <b class="caret"></b>
-                        </p>
+                        <p> Level</p>
                     </a>
 
                 </li>
@@ -194,12 +186,6 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li>
-                    <a data-toggle="collapse" href="../calendar.html">
-                        <i class="material-icons">date_range</i>
-                        <p> Calendar </p>
-                    </a>
                 </li>
             </ul>
         </div>

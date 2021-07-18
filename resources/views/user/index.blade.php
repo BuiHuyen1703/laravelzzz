@@ -5,6 +5,7 @@
 @section('user')
 <?php use Carbon\Carbon; ?>
 <div class="row">
+     {{-- checkin --}}
     <div class="col-md-4">
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="purple">
@@ -41,6 +42,7 @@
             </form>
         </div>
     </div>
+
 </div>
 
 <div class="row">
