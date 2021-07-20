@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Timekeeping;
 
 class UserController extends Controller
 {
@@ -14,10 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $currentTime = Carbon::now('Asia/Ho_Chi_Minh');
-        return view('user.index', [
-            "currentTime" => $currentTime,
-        ]);
+        return view('user.index');
     }
 
     /**

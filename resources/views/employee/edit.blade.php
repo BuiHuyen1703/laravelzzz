@@ -1,5 +1,5 @@
 @extends('dashboard')
-@section('title', 'Cập nhật employee')
+@section('title', 'Cập nhật thông tin nhân viên')
 @section('huyen')
     <h1>Sửa thông tin nhân viên </h1>
     <form action="{{ route('employee.update', $employee->id_employee) }}" method="post">

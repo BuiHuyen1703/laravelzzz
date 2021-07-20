@@ -1,6 +1,6 @@
 @extends('dashboard')
 @section('huyen')
-    <<<<<<< HEAD <div class="card">
+    <div class="card">
         <div class="card-header card-header-icon" data-background-color="rose">
             <i class="material-icons">assignment</i>
         </div>
@@ -28,6 +28,7 @@
                         <th>Lương 1h</th>
                         <th>Phòng ban</th>
                         <th>Chức vụ</th>
+                        <th>Chi tiết</th>
                         <th></th>
                     </thead>
 
@@ -45,7 +46,7 @@
                             <td>{{ $emp->level }}</td>
                             <td>{{ $emp->name_department }}</td>
                             <td>{{ $emp->name_jobTitle }}</td>
-                            <td>
+                            <td><a href="">Chi tiết</a></td>
                             <td><a class="btn btn-sm btn-warning"
                                     href="{{ route('employee.edit', $emp->id_employee) }}"><i class="fa fa-edit"></i></a>
                             </td>
@@ -53,9 +54,14 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
+                            </tr>
+                            @endforeach
+                </table>
+                {{ $listEmp->appends([
+                    'search' => $search,
+                ])->links('') }}
             </div>
         </div>
-        {{ $listEmp->appends([
-        'search' => $search,
-    ])->links('') }}
+    </div>
+
     @endsection

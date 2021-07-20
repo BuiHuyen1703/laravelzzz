@@ -127,4 +127,9 @@ class EmployeeController extends Controller
     {
         Excel::import(new EmployeeImport, $request->file('excel'));
     }
+
+    public function showDetail($id)
+    {
+        return view('employee.detail');
+    }
 }

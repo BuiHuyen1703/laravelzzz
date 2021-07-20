@@ -1,4 +1,5 @@
 @extends('dashboard')
+@section('title', 'Danh sách Admin')
 @section('huyen')
 
     <div class="card">
@@ -47,7 +48,6 @@
                             </td>
                         </tr>
                     @endforeach
-
                 </table>
                 {{ $listAdmin->appends([
         'search' => $search,

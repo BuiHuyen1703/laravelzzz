@@ -1,6 +1,6 @@
 @extends('user.layout.app')
 
-@section('title', 'trang chủ')
+@section('title', 'Trang chủ')
 
 @section('user')
 <?php use Carbon\Carbon; ?>
@@ -11,7 +11,8 @@
             <div class="card-header card-header-icon" data-background-color="purple">
                 <i class="material-icons">today</i>
             </div>
-            <form action="">
+            <form action="action={{ route('timekeeping.store') }}" method="post">
+                @csrf
                 <div class="card-content">
                     <h3 class="card-title">Check in</h3>
                     <div class="form-group">
