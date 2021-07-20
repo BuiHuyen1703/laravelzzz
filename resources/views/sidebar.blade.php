@@ -102,16 +102,6 @@
                         <i class="material-icons">content_paste</i>
                         <p> Nghỉ </p>
                     </a>
-                    {{-- <div class="collapse" id="formsExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="{{ route('legalOff.index') }}">
-                                    <span class="sidebar-mini"> RF </span>
-                                    <span class="sidebar-normal"> Danh sách đơn xin nghỉ </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </li>
                 <li>
                     <a href="{{ route('timekeeping.index') }}">
@@ -150,13 +140,11 @@
                     </a>
                 </li>
                 <li>
-                    <a data-toggle="collapse" href="#adminExamples">
+                    <a href="{{ route('admin.index') }}">
                         <i class="material-icons">assignment_ind</i>
-                        <p> Admin
-                            <b class="caret"></b>
-                        </p>
+                        <p> Admin </p>
                     </a>
-                    <div class="collapse" id="adminExamples">
+                    {{-- <div class="collapse" id="adminExamples">
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('admin.index') }}">
@@ -171,7 +159,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
             </ul>
         </div>

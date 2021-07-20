@@ -29,6 +29,7 @@
                         <th>Lương 1h</th>
                         <th>Phòng ban</th>
                         <th>Chức vụ</th>
+                        <th>Chi tiết</th>
                         <th></th>
                     </thead>
 
@@ -46,6 +47,7 @@
                             <td>{{ $emp->level }}</td>
                             <td>{{ $emp->name_department }}</td>
                             <td>{{ $emp->name_jobTitle }}</td>
+
                             <td>
                             <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
                                         class="fa fa-edit"></i></a>
@@ -64,4 +66,5 @@
             </div>
         </div>
     </div>
+
 @endsection

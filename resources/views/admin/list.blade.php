@@ -1,4 +1,5 @@
 @extends('dashboard')
+@section('title', 'Danh sách Admin')
 @section('huyen')
 
     <div class="card">
@@ -6,7 +7,10 @@
             <i class="material-icons">assignment</i>
         </div>
         <div class="card-content">
-            <h1>Thông tin admin </h1>
+            <h3 class="card-title">Thông tin Admin </h3>
+            <h3>
+                <a href="{{ route('admin.create') }}">Thêm Admin</a>
+            </h3>
             <form action="">
                 <input type="search" value="{{ $search }}" name="search">
                 <button>Tìm</button>
@@ -14,10 +18,10 @@
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>Ten</th>
-                        <th>Phone</th>
+                        <th>Họ tên</th>
+                        <th>Số điện thoại</th>
                         <th>Email</th>
-                        <th>Pass</th>
+                        <th>Password</th>
                         <th>role</th>
                         <th></th>
                         <th></th>
@@ -30,13 +34,20 @@
                             <td>{{ $admin->pass_admin }}</td>
                             <td>{{ $admin->role }}</td>
                             {{-- <td><a class="btn btn-sm btn-primary" href="{{ route('admin.show', $grade->idAdmin) }}">Xem</a></td> --}}
-                            <td><a class="btn btn-sm btn-warning" href="{{ route('admin.edit', $admin->id_admin) }}"><i
-                                        class="fa fa-edit"></i></a></td>
-                            <td><a class="btn btn-sm btn-warning" href="">
-                                    <i class="fa fa-times"></i></a></td>
+                            <td>
+                                <a class="btn btn-sm btn-warning" href="{{ route('admin.edit', $admin->id_admin) }}">
+                                    <i class="fa fa-edit"></i>
+                                    Sửa
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" href="">
+                                    <i class="fa fa-times"></i>
+                                    Ẩn
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
-
                 </table>
                 {{ $listAdmin->appends([
         'search' => $search,

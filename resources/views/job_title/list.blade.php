@@ -17,14 +17,15 @@
                 </thead>
                 <tbody>
                     @foreach ($listJob as $jobTitle)
-                    <tr align="center">
+                    <tr>
                             <td>{{ $jobTitle->id_jobTitle }}</td>
                             <td>{{ $jobTitle->name_jobTitle }}</td>
                             <td><a class="btn btn-sm btn-warning" href="{{ route('jobTitle.edit', $jobTitle->id_jobTitle) }}"><i
                                         class="fa fa-edit"></i> Sửa</a></td>
                             <td>
-                                <a class="btn btn-danger"href="{{ route('jobTitle.hide', $jobTitle->id_jobTitle) }}">
-                                    Hide
+                                <a class="btn btn-sm btn-danger"href="{{ route('jobTitle.hide', $jobTitle->id_jobTitle) }}">
+                                    <i class="fa fa-times"></i>
+                                    Ẩn
                                 </a>
                             </td>
                         </tr>

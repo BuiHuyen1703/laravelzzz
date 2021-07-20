@@ -1,5 +1,5 @@
 @extends('dashboard')
-@section('title', 'Cập nhật lớp')
+@section('title', 'Cập nhật Admin')
 @section('huyen')
     <h1>Sửa thông tin adminnnn </h1>
     <form action="{{ route('admin.update', $admin->id_admin) }}" method="post">

@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         @foreach ($listLevel as $level)
-            <tr align="center">
+            <tr>
                 <td>{{ $level->id_level }}</td>
                 <td>{{ $level->basic_salary }}</td>
                 <td><a class="btn btn-sm btn-warning" href="{{ route('level.edit', $level->id_level) }}"><i

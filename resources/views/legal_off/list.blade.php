@@ -15,14 +15,14 @@
                         <th>Lý do nghỉ</th>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
-                        <th>Ghỉ chú</th>
+                        <th>Ghi chú</th>
                         <th>Tình trạng</th>
                         <th></th>
                         <th></th>
                     </thead>
                     <tbody>
                         @foreach ($listLegal as $legal)
-                            <tr align="center">
+                            <tr >
                                 <td>{{ $legal->id_legal }}</td>
                                 <td>{{ $legal->name_empployee }}</td>
                                 <td>{{ $legal->reason }}</td>

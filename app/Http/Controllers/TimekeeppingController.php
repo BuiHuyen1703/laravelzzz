@@ -42,7 +42,7 @@ class TimekeeppingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $timeChecking = $request->get('checkin');
     }
 
     /**

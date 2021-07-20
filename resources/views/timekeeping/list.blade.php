@@ -9,6 +9,7 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class="text-primary">
+                        <tr></tr>
                         <th>Mã chấm công</th>
                         <th>Mã nhân viên</th>
                         <th>Tên nhân viên</th>

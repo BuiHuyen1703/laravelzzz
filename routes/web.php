@@ -11,8 +11,6 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
 use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
-use Carbon\Carbon;
-
 
 ///login
 Route::get('/login', [AuthenticateController::class, 'login'])->name('login');
@@ -75,13 +73,11 @@ Route::prefix('employee')->name("employee.")->group(function () {
 });
 Route::resource('/employee', EmployeeController::class);
 
-
-
 //USER
-// Route::resource('/user', UserController::class);
-Route::get('/user', function () {
-    return view('user.index');
-})->name('user_index');
+Route::resource('/user', UserController::class);
+// Route::get('/user', function () {
+//     return view('user.index');
+// })->name('user_index');
 
 Route::get('/user/login', function () {
     return view('user.login');
