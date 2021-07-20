@@ -66,7 +66,13 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::join("departments", "employees.id_department", "=", "departments.id_department")
+            ->join("jobtitle", "employees.id_jobTitle", "=", "jobtitle.id_jobTitle")
+            ->find($id);
+        return view('employee.show', [
+            "employee" => $employee
+        ]);
+        //join cho t cái phòng ban với chức vụ
     }
 
     /**
@@ -92,7 +98,13 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $name = $request->get('name');
+        // $salaryperhouse = $request->get('salaryperhouse');
+        // $employee = Employee::find();
+        // $employee->name_empployee = $name;
+        // $employee->salaryPerHour = $salaryperhouse;
+        // $employee->save();
+        // return redirect()->route('employee.index');
     }
 
     /**

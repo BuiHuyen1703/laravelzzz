@@ -62,12 +62,6 @@ class DepartmentController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $dep = Department::find($id);
@@ -76,13 +70,6 @@ class DepartmentController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $name = $request->get('name_dep');
@@ -92,12 +79,7 @@ class DepartmentController extends Controller
         return redirect()->route('department.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         // Department::where('id_department', $id)->delete();

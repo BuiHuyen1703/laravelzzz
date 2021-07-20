@@ -59,10 +59,11 @@ Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
 
 //legal-off
 Route::resource('/legalOff', LegaloffController::class);
-Route::get('/haha/{id}', [LegaloffController::class, 'approve'])->name('haha');
-Route::get('/hihi/{id}', [LegaloffController::class, 'approve1'])->name('hihi');
+
 Route::prefix('legalOff')->name("legalOff.")->group(function () {
     Route::get('/hide/{id}', [LegaloffController::class, 'hide'])->name('hide');
+    Route::get('/haha/{id}', [LegaloffController::class, 'approve'])->name('haha');
+    Route::get('/hihi/{id}', [LegaloffController::class, 'approve1'])->name('hihi');
 });
 
 //employee

@@ -16,7 +16,7 @@ class LegaloffController extends Controller
     public function index()
     {
         $listLegal = LegalOff::join("employees", "employees.id_employee", "=", "legal_off.id_employee")
-            // ->where("available", "=", 1)
+            ->where("legal_off.available", "=", 1)
             ->paginate(5);
         return view('legal_off.list', [
             'listLegal' => $listLegal

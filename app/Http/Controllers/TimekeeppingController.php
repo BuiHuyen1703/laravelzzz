@@ -15,8 +15,9 @@ class TimekeeppingController extends Controller
      */
     public function index()
     {
-        $listTime = DB::table("timekeeping")
-            ->where("available", "=", 1)
+        $listTime = Timekeeping::join("employees", "employees.id_employee", "=", "timekeeping.id_employee")
+            ->where("timekeeping.available", "=", 1)
+            ->orderBy('employees.id_employee', 'asc')
             ->paginate(5);
         return view('timekeeping.list', [
             "listTime" => $listTime
@@ -95,5 +96,8 @@ class TimekeeppingController extends Controller
             ->where("id_timekeeping", "=", $id)
             ->update(["available" => 0]);
         return redirect("timekeeping");
+    }
+    public function salary($id)
+    {
     }
 }

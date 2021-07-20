@@ -11,23 +11,26 @@
                     <thead class="text-primary">
                         <th>Mã chấm công</th>
                         <th>Mã nhân viên</th>
+                        <th>Tên nhân viên</th>
                         <th>Checkin</th>
                         <th>Checkout</th>
                         <th></th>
                     </thead>
                     <tbody>
                         @foreach ($listTime as $time)
-                        <tr align="center">
-                            <td>{{ $time->timekeeping }}</td>
-                            <td>{{ $time->id_employee }}</td>
-                            <td>{{ $time->checkin }}</td>
-                            <td>{{ $time->checkout }}</td>
-                            <td>
-                                <a class="btn btn-sm btn-warning" href="{{ route('timekeeping.hide', $time->id_timekeeping) }}">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $time->id_timekeeping }}</td>
+                                <td>{{ $time->id_employee }}</td>
+                                <td>{{ $time->name_empployee }}</td>
+                                <td>{{ $time->checkin }}</td>
+                                <td>{{ $time->checkout }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning"
+                                        href="{{ route('timekeeping.hide', $time->id_timekeeping) }}">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

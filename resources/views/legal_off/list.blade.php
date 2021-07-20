@@ -32,10 +32,10 @@
                                 <td>{{ $legal->NameApprove }}</td>
 
                                 <td>
-                                    <a class="btn btn-xs btn-success" href="{{ route('haha', $legal->id_legal) }}">
+                                    <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">
                                         <i class="material-icons">check</i> duyệt
                                     </a>
-                                    <a class="btn btn-xs btn-danger" href="{{ route('hihi', $legal->id_legal) }}">
+                                    <a class="btn btn-xs btn-danger" href="{{ route('legalOff.hihi', $legal->id_legal) }}">
                                         <i class="material-icons">close</i> từ chối
                                     <a>
                                 </td>

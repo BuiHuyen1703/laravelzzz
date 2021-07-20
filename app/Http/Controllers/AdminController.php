@@ -102,7 +102,7 @@ class AdminController extends Controller
         $admin->phone_admin = $phone;
         $admin->email_admin = $email;
         $admin->pass_admin = $pass;
-        $admin->role = $role;
+        $admin->role  = $role;
         $admin->save();
         return redirect()->route('admin.index');
     }

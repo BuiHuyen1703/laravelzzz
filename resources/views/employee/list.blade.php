@@ -1,19 +1,20 @@
 @extends('dashboard')
 @section('huyen')
-    <<<<<<< HEAD <div class="card">
+    <div class="card">
         <div class="card-header card-header-icon" data-background-color="rose">
             <i class="material-icons">assignment</i>
         </div>
         <div class="card-content">
             <h3 class="card-title">Thông tin nhân viên</h3>
+            <form action="">
+                <input type="search" value="{{ $search }}" name="search">
+                <button>Tìm</button>
+            </form>
             <div class="table-responsive">
                 {{-- <h1>Thông tin nhân viên</h1> --}}
                 <a href="{{ route('employee.insert-excel') }}">Thêm bằng excel</a> <br>
                 <a href="">Thêm nhân viên</a>
-                <form action="">
-                    <input type="search" value="{{ $search }}" name="search">
-                    <button>Tìm</button>
-                </form>
+
                 <table class="table">
                     <thead class="text-primary">
                         <th>Mã nhân viên</th>
@@ -46,6 +47,9 @@
                             <td>{{ $emp->name_department }}</td>
                             <td>{{ $emp->name_jobTitle }}</td>
                             <td>
+                            <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
+                                        class="fa fa-edit"></i></a>
+                            </td>
                             <td><a class="btn btn-sm btn-warning"
                                     href="{{ route('employee.edit', $emp->id_employee) }}"><i class="fa fa-edit"></i></a>
                             </td>
@@ -53,10 +57,11 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
+                        </tr>
+                    @endforeach
+                </table>
+                {{ $listEmp->appends(['search' => $search])->links('') }}
             </div>
-
         </div>
-        {{ $listEmp->appends([
-        'search' => $search,
-    ])->links('') }}
-    @endsection
+    </div>
+@endsection
