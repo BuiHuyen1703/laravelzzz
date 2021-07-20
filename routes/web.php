@@ -25,45 +25,49 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/', function () {
         return view('index ');
     })->name('dashboard');
+    //admin
+    Route::resource('/admin', AdminController::class);
+    Route::prefix('admin')->group(function () {
+        // Route::get('/hide/{id}', 'AdminController@hide')->name('hide');
+    });
+
+    //Job
+    Route::resource('/jobTitle', JobtitleController::class);
+    Route::prefix('jobTitile')->name("jobTitle.")->group(function () {
+        Route::get('/hide/{id}', [JobtitleController::class, 'hide'])->name('hide');
+    });
+    //department
+    Route::resource('/department', DepartmentController::class);
+    Route::prefix('department')->name("department.")->group(function () {
+        Route::get('/hide/{id}', [DepartmentController::class, 'hide'])->name('hide');
+    });
+
+    //level
+    Route::resource('/level', LevelController::class);
+    Route::prefix('level')->name("level.")->group(function () {
+        Route::get('/hide/{id}', [LevelController::class, 'hide'])->name('hide');
+    });
+
+    //timekeeping
+    Route::resource('/timekeeping', TimekeeppingController::class);
+
+    Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
+        Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
+    });
+
+    //legal-off
+    Route::resource('/legalOff', LegaloffController::class);
+    Route::get('/haha/{id}', [LegaloffController::class, 'approve'])->name('haha');
+    Route::get('/hihi/{id}', [LegaloffController::class, 'approve1'])->name('hihi');
+    Route::prefix('legalOff')->name("legalOff.")->group(function () {
+        Route::get('/hide/{id}', [LegaloffController::class, 'hide'])->name('hide');
+    });
 });
 
-//admin
-Route::resource('/admin', AdminController::class);
-Route::prefix('admin')->group(function () {
-    // Route::get('/hide/{id}', 'AdminController@hide')->name('hide');
-});
-//Job
-Route::resource('/jobTitle', JobtitleController::class);
-Route::prefix('jobTitile')->name("jobTitle.")->group(function () {
-    Route::get('/hide/{id}', [JobtitleController::class, 'hide'])->name('hide');
-});
 
-//department
-Route::resource('/department', DepartmentController::class);
-Route::prefix('department')->name("department.")->group(function () {
-    Route::get('/hide/{id}', [DepartmentController::class, 'hide'])->name('hide');
-});
 
-//level
-Route::resource('/level', LevelController::class);
-Route::prefix('level')->name("level.")->group(function () {
-    Route::get('/hide/{id}', [LevelController::class, 'hide'])->name('hide');
-});
 
-//timekeeping
-Route::resource('/timekeeping', TimekeeppingController::class);
 
-Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
-    Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
-});
-
-//legal-off
-Route::resource('/legalOff', LegaloffController::class);
-Route::get('/haha/{id}', [LegaloffController::class, 'approve'])->name('haha');
-Route::get('/hihi/{id}', [LegaloffController::class, 'approve1'])->name('hihi');
-Route::prefix('legalOff')->name("legalOff.")->group(function () {
-    Route::get('/hide/{id}', [LegaloffController::class, 'hide'])->name('hide');
-});
 
 //employee
 

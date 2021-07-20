@@ -19,6 +19,7 @@ class LegalOff extends Migration
             $table->date('strat_time_off');
             $table->date('end_time_off');
             $table->string('note');
+            $table->string('approve')->default(null);
             $table->unsignedInteger('id_employee');
             $table->foreign('id_employee')->references('id_employee')->on('employees');
         });

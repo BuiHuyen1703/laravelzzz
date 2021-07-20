@@ -9,6 +9,7 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class="text-primary">
+                        <tr></tr>
                         <th>Mã chấm công</th>
                         <th>Mã nhân viên</th>
                         <th>Checkin</th>
@@ -17,8 +18,8 @@
                     </thead>
                     <tbody>
                         @foreach ($listTime as $time)
-                        <tr align="center">
-                            <td>{{ $time->timekeeping }}</td>
+                        <tr >
+                            <td>{{ $time->id_timekeeping }}</td>
                             <td>{{ $time->id_employee }}</td>
                             <td>{{ $time->checkin }}</td>
                             <td>{{ $time->checkout }}</td>

@@ -54,7 +54,6 @@
                                 </a>
                             </td>
             </div>
-
         </div>
         {{ $listEmp->appends([
         'search' => $search,
