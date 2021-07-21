@@ -15,9 +15,9 @@ class LegalOff extends Model
         if ($this->approve === 0) {
             return 'Duyệt';
         } else if ($this->approve === 1) {
-            return 'Không duyệt';
+            return 'Từ chối';
         } else if ($this->approve == null) {
-            return 'chờ';
+            return 'Chờ';
         }
     }
 }

@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Thêm chức vụ')
+
 @section('huyen')
     {{-- <h1>Thêm job title</h1>
     <form action="{{ route('jobTitle.store') }}" method="post">

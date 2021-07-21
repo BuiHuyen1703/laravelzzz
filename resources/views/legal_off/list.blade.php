@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Đơn xin nghỉ')
+
 @section('huyen')
     {{-- <h1>Thông tin các đơn nghỉ</h1> --}}
     <div class="card">
@@ -9,7 +11,6 @@
             <h3 class="card-title">Thông tin các đơn nghỉ</h3>
             <div class="table-responsive">
                 <table class="table">
-                    <thead class="text-primary">
                         <th>Mã đơn</th>
                         <th>Tên nhân viên</th>
                         <th>Lý do nghỉ</th>
@@ -19,7 +20,6 @@
                         <th>Tình trạng</th>
                         <th></th>
                         <th></th>
-                    </thead>
                     <tbody>
                         @foreach ($listLegal as $legal)
                             <tr >
@@ -29,7 +29,7 @@
                                 <td>{{ $legal->strat_time_off }}</td>
                                 <td>{{ $legal->end_time_off }}</td>
                                 <td>{{ $legal->note }}</td>
-                                <td>{{ $legal->NameApprove }}</td>
+                                <td><b>{{ $legal->NameApprove }}</b></td>
 
                                 <td>
                                     <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">

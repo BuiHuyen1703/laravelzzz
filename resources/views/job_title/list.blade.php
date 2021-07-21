@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Chức vụ')
+
 @section('huyen')
 <div class="card">
     <div class="card-header card-header-icon" data-background-color="rose">
@@ -9,12 +11,10 @@
         <div class="table-responsive">
             <h4><a href="{{ route('jobTitle.create') }}">Thêm chức vụ</a></h4>
             <table class="table">
-                <thead class="text-primary">
                     <th>Mã chức vụ</th>
                     <th>Tên chức vụ</th>
                     <th></th>
                     <th></th>
-                </thead>
                 <tbody>
                     @foreach ($listJob as $jobTitle)
                     <tr>

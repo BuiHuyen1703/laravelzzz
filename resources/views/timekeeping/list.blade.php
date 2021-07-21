@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Bảng chấm công')
+
 @section('huyen')
     <div class="card">
         <div class="card-header card-header-icon" data-background-color="rose">
@@ -28,7 +30,7 @@
                                 <td>
                                     <a class="btn btn-sm btn-warning"
                                         href="{{ route('timekeeping.hide', $time->id_timekeeping) }}">
-                                        <i class="fa fa-times"></i>
+                                        <i class="fa fa-times"></i>Ẩn
                                     </a>
                                 </td>
                             </tr>

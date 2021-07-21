@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Nhân viên')
+
 @section('huyen')
     <div class="card">
         <div class="card-header card-header-icon" data-background-color="rose">
@@ -15,52 +17,48 @@
                 <a href="{{ route('employee.insert-excel') }}">Thêm bằng excel</a> <br>
                 <a href="">Thêm nhân viên</a>
 
-                <table class="table">
-                    <thead class="text-primary">
+                <table class="table table-hover">
                         <th>Mã nhân viên</th>
                         <th>Họ tên</th>
+                        <th>Giới tính</th>
                         <th>Ngày Sinh</th>
-                        <th>Sđt</th>
-                        <th>Địa chỉ</th>
-                        <th>Trạng thái</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Level</th>
-                        <th>Lương 1h</th>
                         <th>Phòng ban</th>
                         <th>Chức vụ</th>
-                        <th>Chi tiết</th>
+                        <th>level</th>
                         <th></th>
-                    </thead>
-
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    <tbody>
                     @foreach ($listEmp as $emp)
                         <tr>
+                            <td align="center">{{ $emp->id_employee }}</td>
                             <td>{{ $emp->name_empployee }}</td>
-                            <td>{{ $emp->dateOfBirth }}</td>
                             <td>{{ $emp->NameGender }}</td>
-                            <td>{{ $emp->phoneNumber }}</td>
-                            <td>{{ $emp->address }}</td>
-                            <td>{{ $emp->NameStatus }}</td>
-                            <td>{{ $emp->email }}</td>
-                            <td>{{ $emp->password }}</td>
-                            <td>{{ $emp->salaryPerHour }}</td>
-                            <td>{{ $emp->level }}</td>
+                            <td>{{ $emp->dateOfBirth }}</td>
                             <td>{{ $emp->name_department }}</td>
                             <td>{{ $emp->name_jobTitle }}</td>
-
+                            <td>{{ $emp->level }}</td>
                             <td>
-                            <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
-                                        class="fa fa-edit"></i></a>
-                            </td>
-                            <td><a class="btn btn-sm btn-warning"
-                                    href="{{ route('employee.edit', $emp->id_employee) }}"><i class="fa fa-edit"></i></a>
-                            </td>
-                            <td><a class="btn btn-sm btn-warning" href="{{ route('employee.hide', $emp->id_employee) }}">
-                                    <i class="fa fa-times"></i>
+                            <td>
+                                <a class="btn btn-info btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}">
+                                    <i class="fa fa-edit"></i> Chi tiết
                                 </a>
                             </td>
+                            {{-- <td>
+                                <a class="btn btn-sm btn-warning"
+                                    href="{{ route('employee.edit', $emp->id_employee) }}">
+                                    <i class="fa fa-edit"></i> Sửa
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" href="{{ route('employee.hide', $emp->id_employee) }}">
+                                    <i class="fa fa-times"></i>Ẩn
+                                </a>
+                            </td> --}}
                         </tr>
                     @endforeach
+                    </tbody>
                 </table>
                 {{ $listEmp->appends(['search' => $search])->links('') }}
             </div>
