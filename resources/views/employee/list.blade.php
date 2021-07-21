@@ -17,18 +17,18 @@
 
                 <table class="table">
                     <thead class="text-primary">
-                        <th>Mã nhân viên</th>
-                        <th>Họ tên</th>
-                        <th>Ngày Sinh</th>
-                        <th>Sđt</th>
-                        <th>Địa chỉ</th>
+                        <th>Tên nhân viên</th>
+                        {{-- <th>Họ tên</th> --}}
+                        {{-- <th>Ngày Sinh</th> --}}
+                        {{-- <th>Sđt</th> --}}
+                        {{-- <th>Địa chỉ</th> --}}
                         <th>Trạng thái</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Level</th>
-                        <th>Lương 1h</th>
-                        <th>Phòng ban</th>
-                        <th>Chức vụ</th>
+                        {{-- <th>Email</th> --}}
+                        {{-- <th>Password</th> --}}
+                        {{-- <th>Level</th> --}}
+                        {{-- <th>Lương 1h</th> --}}
+                        {{-- <th>Phòng ban</th> --}}
+                        {{-- <th>Chức vụ</th> --}}
                         <th>Chi tiết</th>
                         <th></th>
                     </thead>
@@ -36,29 +36,29 @@
                     @foreach ($listEmp as $emp)
                         <tr>
                             <td>{{ $emp->name_empployee }}</td>
-                            <td>{{ $emp->dateOfBirth }}</td>
-                            <td>{{ $emp->NameGender }}</td>
-                            <td>{{ $emp->phoneNumber }}</td>
-                            <td>{{ $emp->address }}</td>
+                            {{-- <td>{{ $emp->dateOfBirth }}</td> --}}
+                            {{-- <td>{{ $emp->NameGender }}</td> --}}
+                            {{-- <td>{{ $emp->phoneNumber }}</td> --}}
+                            {{-- <td>{{ $emp->address }}</td> --}}
                             <td>{{ $emp->NameStatus }}</td>
-                            <td>{{ $emp->email }}</td>
-                            <td>{{ $emp->password }}</td>
-                            <td>{{ $emp->salaryPerHour }}</td>
-                            <td>{{ $emp->level }}</td>
-                            <td>{{ $emp->name_department }}</td>
-                            <td>{{ $emp->name_jobTitle }}</td>
+                            {{-- <td>{{ $emp->email }}</td> --}}
+                            {{-- <td>{{ $emp->password }}</td> --}}
+                            {{-- <td>{{ $emp->salaryPerHour }}</td> --}}
+                            {{-- <td>{{ $emp->level }}</td> --}}
+                            {{-- <td>{{ $emp->name_department }}</td> --}}
+                            {{-- <td>{{ $emp->name_jobTitle }}</td> --}}
 
                             <td>
                             <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
                                         class="fa fa-edit"></i></a>
                             </td>
-                            <td><a class="btn btn-sm btn-warning"
+                            {{-- <td><a class="btn btn-sm btn-warning"
                                     href="{{ route('employee.edit', $emp->id_employee) }}"><i class="fa fa-edit"></i></a>
                             </td>
                             <td><a class="btn btn-sm btn-warning" href="{{ route('employee.hide', $emp->id_employee) }}">
                                     <i class="fa fa-times"></i>
                                 </a>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </table>

@@ -52,7 +52,11 @@ class LegaloffController extends Controller
      */
     public function show($id)
     {
-        //
+        $legal = LegalOff::join("employees", "employees.id_employee", "=", "legal_off.id_employee")
+            ->find($id);
+        return view('legal_off.show', [
+            "legal" => $legal
+        ]);
     }
 
     /**
