@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Level')
+
 @section('huyen')
 <div class="card">
     <div class="card-header card-header-icon" data-background-color="rose">
@@ -8,12 +10,10 @@
         <h3 class="card-title">Thông tin level</h3>
         <div class="table-responsive">
     <table class="table">
-        <thead class="text-primary">
             <th>Mã level</th>
             <th>Level</th>
             <th></th>
             <th></th>
-        </thead>
         <tbody>
         @foreach ($listLevel as $level)
             <tr>

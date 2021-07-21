@@ -29,7 +29,7 @@
                     <div class="clearfix"></div>
                     <div class="collapse" id="collapseExample">
                         <ul class="nav">
-                            <li>
+                            <li class="">
                                 <a href="#">
                                     <span class="sidebar-mini"> MP </span>
                                     <span class="sidebar-normal"> My Profile </span>
@@ -47,119 +47,54 @@
                 </div>
             </div>
             <ul class="nav">
-                <li>
+                <li class="{{ Request::is('/') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}">
                         <i class="material-icons">device_hub</i>
                         <p> Dashboard </p>
                     </a>
                 </li>
-                <li class="{{ Request::is('/jobTitle') ? 'active' : '' }}">
+                <li class="{{ Request::is('jobTitle') ? 'active' : '' }}">
                     <a  href="{{ route('jobTitle.index') }}" >
                         <i class="material-icons">event_seat</i>
                         <p> Chức vụ</p>
                     </a>
-                    {{-- <div class="collapse in" id="pagesExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="{{ route('jobTitle.create') }}">
-                                    <span class="sidebar-mini"> LSP </span>
-                                    <span class="sidebar-normal"> Thêm chức vụ </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('jobTitle.index') }}">
-                                    <span class="sidebar-mini"> UP </span>
-                                    <span class="sidebar-normal"> Danh sách chức vụ </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </li>
-                <li class="{{ Request::is('/employee') ? 'active' : '' }}">
+                <li class="{{ Request::is('employee') ? 'active' : '' }}">
                     <a href="{{ route('employee.index') }}">
                         <i class="material-icons">portrait</i>
                         <p> Nhân viên</p>
                     </a>
-                    {{-- <div class="collapse" id="componentsExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="{{ route('employee.index') }}">
-                                    <span class="sideb  ar-mini"> GS </span>
-                                    <span class="sidebar-normal"> Xem tất cả nhân viên </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/panels.html">
-                                    <span class="sidebar-mini"> P </span>
-                                    <span class="sidebar-normal"> Thêm nhân viên </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </li>
-                <li class="{{ Request::is('/legalOff') ? 'active' : '' }}">
+                <li class="{{ Request::is('legalOff') ? 'active' : '' }}">
                     <a href="{{ route('legalOff.index') }}">
                         <i class="material-icons">content_paste</i>
-                        <p> Nghỉ </p>
+                        <p> Đơn xin nghỉ </p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ Request::is('timekeeping') ? 'active' : ''  }}">
                     <a href="{{ route('timekeeping.index') }}">
                         <i class="material-icons">timer</i>
                         <p> Bảng chấm công</p>
                     </a>
 
                 </li>
-                <li>
+                <li class="{{ Request::is('department') ? 'active' : ''  }}">
                     <a  href="{{ route('department.index') }}">
                         <i class="material-icons">sort</i>
                         <p> Phòng ban</p>
                     </a>
-                    {{-- <div class="collapse" id="deptExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="{{ route('department.index') }}">
-                                    <span class="sidebar-mini"> RT </span>
-                                    <span class="sidebar-normal"> Danh sách phòng ban </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('department.create') }}">
-                                    <span class="sidebar-mini"> RT </span>
-                                    <span class="sidebar-normal"> Thêm phòng ban </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
-
                 </li>
-                <li>
+                <li class="{{ Request::is('level') ? 'active' : ''  }}">
                     <a href="{{ route('level.index') }}">
                         <i class="material-icons">sort</i>
                         <p> Level</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ Request::is('admin') ? 'active' : ''  }}">
                     <a href="{{ route('admin.index') }}">
                         <i class="material-icons">assignment_ind</i>
                         <p> Admin </p>
                     </a>
-                    {{-- <div class="collapse" id="adminExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="{{ route('admin.index') }}">
-                                    <span class="sidebar-mini">&nbsp; </span>
-                                    <span class="sidebar-normal"> List Admin </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.create') }}">
-                                    <span class="sidebar-mini"> &nbsp;</span>
-                                    <span class="sidebar-normal"> Thêm admin </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </li>
             </ul>
         </div>

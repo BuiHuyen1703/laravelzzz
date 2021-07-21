@@ -1,7 +1,6 @@
  @extends('dashboard')
- @section('title', 'Cập nhật employee')
+ @section('title', 'Thông tin nhân viên')
  @section('huyen')
-     <h1>Thông tin nhân viên </h1>
 
      <table class="table">
          {{-- <thead class="text-primary">

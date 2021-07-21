@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title','Phòng ban')
+
 @section('huyen')
     {{-- <h1>Thông tin phòng ban</h1> --}}
     <div class="card">
@@ -11,12 +13,10 @@
                 <h4><a href="{{ route('department.create') }}">Thêm phòng ban</a></h4>
                 <form action="">
                     <table class="table">
-                        <thead class="text-primary">
                             <th>Mã phòng ban</th>
                             <th>Tên phòng ban</th>
                             <th></th>
                             <th></th>
-                        </thead>
                         <tbody>
                         @foreach ($listPart as $depart)
                             <tr >

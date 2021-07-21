@@ -1,4 +1,6 @@
 @extends('dashboard')
+@section('title', 'Đơn xin nghỉ')
+
 @section('huyen')
     {{-- <h1>Thông tin các đơn nghỉ</h1> --}}
     <div class="card">
@@ -9,17 +11,15 @@
             <h3 class="card-title">Thông tin các đơn nghỉ</h3>
             <div class="table-responsive">
                 <table class="table">
-                    <thead class="text-primary">
-                        <th>Mã đơn</th>
-                        <th>Tên nhân viên</th>
-                        {{-- <th>Lý do nghỉ</th>
+                    <th>Mã đơn</th>
+                    <th>Tên nhân viên</th>
+                    {{-- <th>Lý do nghỉ</th>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
                         <th>Ghi chú</th> --}}
-                        <th>Tình trạng</th>
-                        <th></th>
-                        <th></th>
-                    </thead>
+                    <th>Tình trạng</th>
+                    <th></th>
+                    <th></th>
                     <tbody>
                         @foreach ($listLegal as $legal)
                             <tr>
