@@ -21,7 +21,7 @@
                         <th>Họ tên</th>
                         <th>Số điện thoại</th>
                         <th>Email</th>
-                        <th>Password</th>
+                        {{-- <th>Password</th> --}}
                         <th>role</th>
                         <th></th>
                         <th></th>
@@ -31,8 +31,8 @@
                             <td>{{ $admin->name_admin }}</td>
                             <td>{{ $admin->phone_admin }}</td>
                             <td>{{ $admin->email_admin }}</td>
-                            <td>{{ $admin->pass_admin }}</td>
-                            <td>{{ $admin->role }}</td>
+                            {{-- <td>{{ $admin->pass_admin }}</td> --}}
+                            <td>{{ $admin->Adminname }}</td>
                             {{-- <td><a class="btn btn-sm btn-primary" href="{{ route('admin.show', $grade->idAdmin) }}">Xem</a></td> --}}
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('admin.edit', $admin->id_admin) }}">

@@ -67,20 +67,20 @@
          </tr>
          <tr>
              <th>Địa chỉ</th>
-             <td>{{ $employee->name_empployee }}</td>
+             <td>{{ $employee->address }}</td>
          </tr>
          <tr>
              <th>Trạng thái</th>
-             <td>{{ $employee->name_empployee }}</td>
+             <td>{{ $employee->NameStatus }}</td>
          </tr>
          <tr>
              <th>Email</th>
              <td>{{ $employee->email }}</td>
          </tr>
-         <tr>
+         {{-- <tr>
              <th>Password</th>
              <td>{{ $employee->password }}</td>
-         </tr>
+         </tr> --}}
          <tr>
              <th>Lương 1h</th>
              <td>{{ $employee->salaryPerHour }}</td>

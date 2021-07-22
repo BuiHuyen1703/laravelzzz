@@ -12,4 +12,13 @@ class Admin extends Model
     protected $table = 'admin';
     public $timestamps = false;
     protected $primaryKey = 'id_admin';
+
+    public function getAdminNameAttribute()
+    {
+        if ($this->role == 0) {
+            return "SuperAdmin";
+        } else {
+            return "Admin";
+        }
+    }
 }

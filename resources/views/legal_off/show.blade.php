@@ -11,40 +11,67 @@
                 <table class="table">
                     <thead class="text-primary">
                         <th>Mã đơn</th>
-                        <th>Tên nhân viên</th>
-                        <th>Lý do nghỉ</th>
-                        <th>Ngày bắt đầu</th>
-                        <th>Ngày kết thúc</th>
-                        <th>Ghi chú</th>
-                        <th>Tình trạng</th>
-                        <th></th>
-                        <th></th>
+                        <td>{{ $legal->id_legal }}</td>
                     </thead>
 
                     <tr>
-                        <td>{{ $legal->id_legal }}</td>
+                        <th>Tên nhân viên</th>
                         <td>{{ $legal->name_empployee }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lý do nghỉ</th>
                         <td>{{ $legal->reason }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ngày bắt đầu</th>
                         <td>{{ $legal->strat_time_off }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ngày kết thúc</th>
                         <td>{{ $legal->end_time_off }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ghi chú</th>
                         <td>{{ $legal->note }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tình trạng</th>
                         <td>{{ $legal->NameApprove }}</td>
+                    </tr>
+                    {{-- @if ($legal->NameApprove == 1)
+                        <tr>
+                            <td>
+                                <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">
+                                    <i class="material-icons">check</i> duyệt
+                                </a>
+                                <a class="btn btn-xs btn-danger" href="{{ route('legalOff.hihi', $legal->id_legal) }}">
+                                    <i class="material-icons">close</i> từ chối
+                                    <a>
+                            </td>
+                    @endif --}}
+                    @if ($legal->NameApprove == 'Duyệt' || $legal->NameApprove == 'Từ chối')
+                        <tr></tr>
+                    @else
+                        <tr>
+                            <td>
+                                <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">
+                                    <i class="material-icons">check</i> duyệt
+                                </a>
+                                <a class="btn btn-xs btn-danger" href="{{ route('legalOff.hihi', $legal->id_legal) }}">
+                                    <i class="material-icons">close</i> từ chối
+                                    <a>
+                            </td>
+                        </tr>
 
-                        <td>
-                            <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">
-                                <i class="material-icons">check</i> duyệt
-                            </a>
-                            <a class="btn btn-xs btn-danger" href="{{ route('legalOff.hihi', $legal->id_legal) }}">
-                                <i class="material-icons">close</i> từ chối
-                                <a>
-                        </td>
+                    @endif
+                    {{-- <tr>
                         <td>
                             <a class="btn btn-sm btn-danger" href="{{ route('legalOff.hide', $legal->id_legal) }}">
                                 <i class="fa fa-times"></i>
                                 Ẩn
                             </a>
                         </td>
-                    </tr>
+                    </tr> --}}
 
                 </table>
             </div>
