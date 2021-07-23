@@ -35,7 +35,7 @@
                                 @csrf
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="purple">
-                                        <h4 class="card-title">Login</h4>
+                                        <h4 class="card-title">Đăng nhập</h4>
                                     </div>
                                     <p class="category text-center">
                                         #############

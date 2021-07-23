@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserAuthenticateController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
 // use App\Http\Middleware\CheckLogin;
@@ -76,11 +77,10 @@ Route::prefix('employee')->name("employee.")->group(function () {
 Route::resource('/employee', EmployeeController::class);
 
 //USER
-Route::resource('/user', UserController::class);
-// Route::get('/user', function () {
-//     return view('user.index');
-// })->name('user_index');
+// Route::resource('/user', UserController::class);
+Route::get('/user', function () {
+    return view('user.index');
+})->name('userindex');
 
-Route::get('/user/login', function () {
-    return view('user.login');
-});
+Route::get('/user/login', [UserAuthenticateController::class, 'login'])->name('login');
+Route::post('/user/login-process', [UserAuthenticateController::class, 'loginProcess'])->name('login-process');

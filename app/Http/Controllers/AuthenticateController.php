@@ -34,7 +34,7 @@ class AuthenticateController extends Controller
 
             return Redirect::route('dashboard');
         } catch (Exception $e) {
-            return Redirect::route('login')->with('error', 'Sai gòiiiii');
+            return Redirect::route('login')->with('error', 'Tài khoản hoặc mật khẩu sai');
         }
     }
 
