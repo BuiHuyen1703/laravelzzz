@@ -25,13 +25,13 @@
 <body class="off-canvas-sidebar">
 
     <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" filter-color="black" data-image="{{ asset('assets') }}/img/login-user.jpg" >
+        <div class="full-page login-page" filter-color="black" data-image="{{ asset('assets') }}/img/login-user.jpg">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
             <div class="content">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('login-process') }}">
                                 @csrf
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="purple">

@@ -23,38 +23,39 @@
             <form action="{{ route('admin.store') }}" method="post">
                 @csrf
                 <div class="form-group label-floating is-empty">
-                    <label class="control-label">Tên Admin</label>
+                    <label>Tên Admin</label>
                     <input type="text" class="form-control" name="name_admin">
                     <span class="material-input"></span>
                 </div>
                 <div class="form-group label-floating is-empty">
-                    <label class="control-label">Số điện thoại</label>
+                    <label>Số điện thoại</label>
                     <input type="text" class="form-control" name="phone_admin">
                     <span class="material-input"></span>
                 </div>
                 <div class="form-group label-floating is-empty">
-                    <label class="control-label">Email</label>
+                    <label>Email</label>
                     <input type="email" class="form-control" name="email_admin">
                     <span class="material-input"></span>
                 </div>
                 <div class="form-group label-floating is-empty">
-                    <label class="control-label">Password</label>
+                    <label>Password</label>
                     <input type="password" class="form-control" name="pass_admin">
                     <span class="material-input"></span>
                 </div>
                 <div class="form-group label-floating is-empty">
-                    <label class="control-label">Role</label>
+                    <label>Role</label>
                     <input type="text" class="form-control" name="role_admin">
                     <span class="material-input"></span>
                 </div>
                 <input value="1" readonly name="available" hidden>
-                <div class="col-lg-5 col-md-6 col-sm-3">
-                    <select class="selectpicker" data-style="select-with-transition" multiple title="Phân quyền" data-size="4">
+                {{-- <div class="col-lg-5 col-md-6 col-sm-3">
+                    <select class="selectpicker" data-style="select-with-transition" multiple title="Phân quyền"
+                        data-size="4">
                         <option disabled> chọn quyền</option>
                         <option value="">Paris </option>
                         <option value="">Bucharest</option>
                     </select>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-fill btn-rose">Thêm</button>
             </form>
         </div>

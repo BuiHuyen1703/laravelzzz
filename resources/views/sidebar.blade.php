@@ -22,7 +22,13 @@
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                         <span>
-                            Bùi Ngọc Huyền
+                            {{-- <td>Bùi Ngọc Huyền</td> --}}
+                            @if (session('user'))
+                                <span class="text-center">
+                                    {{ session('user')->name_admin ?? session('user')->name_empployee }}
+
+                                </span>
+                            @endif
                             <b class="caret"></b>
                         </span>
                     </a>
@@ -54,7 +60,7 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('jobTitle') ? 'active' : '' }}">
-                    <a  href="{{ route('jobTitle.index') }}" >
+                    <a href="{{ route('jobTitle.index') }}">
                         <i class="material-icons">event_seat</i>
                         <p> Chức vụ</p>
                     </a>
@@ -71,26 +77,26 @@
                         <p> Đơn xin nghỉ </p>
                     </a>
                 </li>
-                <li class="{{ Request::is('timekeeping') ? 'active' : ''  }}">
+                <li class="{{ Request::is('timekeeping') ? 'active' : '' }}">
                     <a href="{{ route('timekeeping.index') }}">
                         <i class="material-icons">timer</i>
                         <p> Bảng chấm công</p>
                     </a>
 
                 </li>
-                <li class="{{ Request::is('department') ? 'active' : ''  }}">
-                    <a  href="{{ route('department.index') }}">
+                <li class="{{ Request::is('department') ? 'active' : '' }}">
+                    <a href="{{ route('department.index') }}">
                         <i class="material-icons">sort</i>
                         <p> Phòng ban</p>
                     </a>
                 </li>
-                <li class="{{ Request::is('level') ? 'active' : ''  }}">
+                <li class="{{ Request::is('level') ? 'active' : '' }}">
                     <a href="{{ route('level.index') }}">
                         <i class="material-icons">sort</i>
                         <p> Level</p>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin') ? 'active' : ''  }}">
+                <li class="{{ Request::is('admin') ? 'active' : '' }}">
                     <a href="{{ route('admin.index') }}">
                         <i class="material-icons">assignment_ind</i>
                         <p> Admin </p>

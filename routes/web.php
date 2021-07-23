@@ -9,17 +9,19 @@ use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
-use App\Http\Middleware\CheckLogin;
+// use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
 ///login
-Route::get('/login', [AuthenticateController::class, 'login'])->name('login');
+Route::get('/login', [AuthenticateController::class, 'login'])->middleware('isGuest')->name('login');
 Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
     ->name('login-process');
 
+Route::post('/login-employee-process', [AuthenticateController::class, 'loginEmployeeProcess'])
+    ->name('login-employee-process');
 Route::get('/logout', [AuthenticateController::class, 'logout'])->name('logout');
 
-Route::middleware([CheckLogin::class])->group(function () {
+Route::middleware(['isAuth'])->group(function () {
     Route::get('/', function () {
         return view('index ');
     })->name('dashboard');

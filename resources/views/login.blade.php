@@ -25,7 +25,7 @@
 <body class="off-canvas-sidebar">
 
     <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" filter-color="black" data-image="{{ asset('assets') }}/img/login.jpeg" >
+        <div class="full-page login-page" filter-color="black" data-image="{{ asset('assets') }}/img/login.jpeg">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
             <div class="content">
                 <div class="container">
@@ -48,7 +48,7 @@
                                                 <i class="material-icons">email</i>
                                             </span>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Email</label>
+                                                <label>Email</label>
                                                 <input type="email" name="email" class="form-control">
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                                 <i class="material-icons">lock_outline</i>
                                             </span>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Password</label>
+                                                <label>Password</label>
                                                 <input type="password" name="password" class="form-control">
                                             </div>
                                             @if (Session::exists('error'))
@@ -66,7 +66,8 @@
                                         </div>
                                     </div>
                                     <div class="footer text-center">
-                                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Đăng nhập</button>
+                                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Đăng
+                                            nhập</button>
                                     </div>
                                 </div>
                             </form>
