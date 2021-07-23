@@ -10,7 +10,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="{{ Request::is('/user') ? 'active' : '' }}">
-                <a href="{{ route('user.index') }}">
+                <a href="{{ route('userindex') }}">
                     <i class="material-icons">dashboard</i>
                     <p> Trang chủ </p>
                 </a>
