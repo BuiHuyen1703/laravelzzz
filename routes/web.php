@@ -75,10 +75,6 @@ Route::resource('/employee', EmployeeController::class);
 
 //USER
 Route::resource('/user', UserController::class);
-// Route::get('/user', function () {
-//     return view('user.index');
-// })->name('user_index');
 
-Route::get('/user/login', function () {
-    return view('user.login');
-});
+Route::get('/user/login', [UserAuthenticateController::class, 'login'])->name('login');
+Route::post('/user/login-process', [UserAuthenticateController::class, 'loginProcess'])->name('login-process');

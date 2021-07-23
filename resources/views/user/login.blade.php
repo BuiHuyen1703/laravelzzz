@@ -31,11 +31,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('login-process') }}">
                                 @csrf
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="purple">
-                                        <h4 class="card-title">Login</h4>
+                                        <h4 class="card-title">Đăng nhập</h4>
                                     </div>
                                     <p class="category text-center">
                                         #############
