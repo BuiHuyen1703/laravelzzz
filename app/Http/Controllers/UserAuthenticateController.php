@@ -31,6 +31,6 @@ class UserAuthenticateController extends Controller
     public function logout(Request $request)
     {
         $request->session()->flush();
-        return Redirect::route('login');
+        return Redirect::route('user-login');
     }
 }
