@@ -26,7 +26,6 @@
                             @if (session('user'))
                                 <span class="text-center">
                                     {{ session('user')->name_admin ?? session('user')->name_empployee }}
-
                                 </span>
                             @endif
                             <b class="caret"></b>

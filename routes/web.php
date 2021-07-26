@@ -6,10 +6,10 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserAuthenticateController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
+use App\Http\Middleware\UserCheckLogin;
 // use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
@@ -78,9 +78,16 @@ Route::resource('/employee', EmployeeController::class);
 
 //USER
 // Route::resource('/user', UserController::class);
-Route::get('/user', function () {
-    return view('user.index');
-})->name('userindex');
+
 
 Route::get('/user/login', [UserAuthenticateController::class, 'login'])->name('user-login');
 Route::post('/user/login-process', [UserAuthenticateController::class, 'loginProcess'])->name('user-login-process');
+
+
+Route::middleware([UserCheckLogin::class])->group(function () {
+    Route::get('/user', function () {
+        return view('user.index');
+    })->name('userindex');
+
+    Route::get('/user/logout', [UserAuthenticateController::class, 'logout'])->name('user-logout');
+});

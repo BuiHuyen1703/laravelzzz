@@ -21,10 +21,10 @@ class UserAuthenticateController extends Controller
         $password = $request->get('password');
         try {
             $user = Employee::where('email', $email)->where('password', $password)->firstOrFail();
-            $request->session()->put('id_employee', $user->id_employee);
+            $request->session()->put('id', $user->id_employee);
             return Redirect::route('userindex');
         } catch (Exception $e) {
-            return Redirect::route('login')->with('error', 'Sai tài khoản hoặc mật khẩu ');
+            return Redirect::route('user-login')->with('error', 'Sai tài khoản hoặc mật khẩu ');
         }
     }
 

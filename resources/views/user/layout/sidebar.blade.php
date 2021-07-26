@@ -1,13 +1,30 @@
 <div class="sidebar" data-active-color="purple" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"  data-background-color="black"     >
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-            FS
+            NC
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            FPT Software
+            Name Company
         </a>
     </div>
     <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="photo">
+                <img src="../../assets/img/faces/avatar.jpg" />
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                        {{-- @if (session('id'))
+                            <span class="text-center">
+                                {{ session('id')->name_empployee ?? session('id')->name_empployee }}
+                            </span>
+                        @endif --}}
+                    </span>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
         <ul class="nav">
             <li class="{{ Request::is('/user') ? 'active' : '' }}">
                 <a href="{{ route('userindex') }}">
