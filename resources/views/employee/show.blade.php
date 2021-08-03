@@ -30,7 +30,7 @@
              <td>{{ $employee->password }}</td>
              <td>{{ $employee->salaryPerHour }}</td>
              <td>{{ $employee->level }}</td>
-             <td>{{ $employee->name_department }}</td>
+             <td>{{ $employee->name_department }}</td>s
              <td>{{ $employee->name_jobTitle }}</td>
              <td><a class="btn btn-sm btn-warning" href="{{ route('employee.edit', $employee->id_employee) }}"><i
                          class="fa fa-edit"></i></a>

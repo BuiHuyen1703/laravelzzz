@@ -18,18 +18,16 @@
                 <a href="">Thêm nhân viên</a>
 
                 <table class="table">
-                    <thead class="text-primary">
                         <th>Tên nhân viên</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết</th>
                         <th></th>
-                    </thead>
                     @foreach ($listEmp as $emp)
                         <tr>
 
                             <td>{{ $emp->name_empployee }}</td>
                             <td>{{ $emp->NameStatus }}</td>
-                            <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
+                            <td><a class="btn btn-sm btn-warning" href="{{ route('employee.show', $emp->id_employee) }}"><i
                                         class="fa fa-edit"></i></a>
                             </td>
                         </tr>
