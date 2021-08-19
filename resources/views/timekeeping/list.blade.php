@@ -10,7 +10,7 @@
             <h3 class="card-title">Thông tin chấm công</h3>
             <div class="table-responsive">
                 <table class="table">
-                    <thead class="text-primary">
+
                         <tr></tr>
                         <th>Mã chấm công</th>
                         <th>Mã nhân viên</th>
@@ -18,7 +18,7 @@
                         <th>Checkin</th>
                         <th>Checkout</th>
                         <th></th>
-                    </thead>
+
                     <tbody>
                         @foreach ($listTime as $time)
                             <tr>
@@ -28,7 +28,7 @@
                                 <td>{{ $time->checkin }}</td>
                                 <td>{{ $time->checkout }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-warning"
+                                    <a class="btn btn-sm btn-danger"
                                         href="{{ route('timekeeping.hide', $time->id_timekeeping) }}">
                                         <i class="fa fa-times"></i>Ẩn
                                     </a>

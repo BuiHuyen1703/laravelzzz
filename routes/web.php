@@ -8,6 +8,7 @@ use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
+use App\Http\Middleware\UserCheckLogin;
 // use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 

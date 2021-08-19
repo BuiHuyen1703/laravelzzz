@@ -26,30 +26,10 @@
                             @if (session('user'))
                                 <span class="text-center">
                                     {{ session('user')->name_admin ?? session('user')->name_empployee }}
-
                                 </span>
                             @endif
-                            <b class="caret"></b>
                         </span>
                     </a>
-                    <div class="clearfix"></div>
-                    <div class="collapse" id="collapseExample">
-                        <ul class="nav">
-                            <li class="">
-                                <a href="#">
-                                    <span class="sidebar-mini"> MP </span>
-                                    <span class="sidebar-normal"> My Profile </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-mini"> EP </span>
-                                    <span class="sidebar-normal"> Edit Profile </span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </div>
             </div>
             <ul class="nav">

@@ -42,7 +42,7 @@
                                         <a>
                                 </td> --}}
                                 <td>
-                                <td><a class="btn btn-sm btn-watch"
+                                <td><a class="btn btn-sm btn-warning"
                                         href="{{ route('legalOff.show', $legal->id_legal) }}"><i
                                             class="fa fa-edit"></i></a>
                                 </td>

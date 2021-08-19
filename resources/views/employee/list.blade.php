@@ -25,12 +25,10 @@
                 <a href="">Thêm nhân viên</a>
 
                 <table class="table">
-                    <thead class="text-primary">
-                        <th>Tên nhân viên</th>
-                        {{-- <th>Trạng thái</th> --}}
-                        <th>Chi tiết</th>
-                        <th></th>
-                    </thead>
+                    <th>Tên nhân viên</th>
+                    {{-- <th>Trạng thái</th> --}}
+                    <th>Chi tiết</th>
+                    <th></th>
                     @foreach ($listEmp as $emp)
                         <tr>
 

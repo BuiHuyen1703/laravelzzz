@@ -37,9 +37,9 @@
                                     <div class="card-header text-center" data-background-color="purple">
                                         <h4 class="card-title">Đăng nhập</h4>
                                     </div>
-                                    <p class="category text-center">
+                                    {{-- <p class="category text-center">
                                         #############
-                                    </p>
+                                    </p> --}}
                                     <div class="card-content">
 
                                         <div class="input-group">
