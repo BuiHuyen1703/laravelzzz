@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CheckUserIsLogin
 {
@@ -16,6 +17,10 @@ class CheckUserIsLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if ($request->session()->exists('id_employee')) {
+            return $next($request);
+        } else {
+            return Redirect::route('login-user')->with('error', 'Bạn chưa đăng nhập');
+        }
     }
 }

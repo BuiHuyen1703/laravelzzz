@@ -30,18 +30,24 @@ class LegaloffController extends Controller
      */
     public function create()
     {
-        //
+        return view('user . index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $reason = $request->get('reason');
+        $note = $request->get('note');
+        $start_time_off = $request->get('start_time_off');
+        $end_time_off = $request->get('end_time_off');
+        $available = $request->get('available');
+        $legal = new LegalOff();
+        $legal->reason = $reason;
+        $legal->note = $note;
+        $legal->start_time_off = $start_time_off;
+        $legal->end_time_off = $end_time_off;
+        $legal->available = $available;
+        $legal->save();
+        return redirect(route('lagal.index'));
     }
 
     /**
@@ -59,38 +65,17 @@ class LegaloffController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-    }
+
     public function hide($id)
     {
 

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Imports\EmployeeImport;
+use App\Models\Department;
 use App\Models\Employee;
+use App\Models\JobTitle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -18,16 +21,24 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
+        $idDep = $request->get('id-dep');
+        $listDepa = Department::all();
+
         $listEmp = Employee::join("level", "employees.level", "=", "level.id_level")
             ->join("departments", "employees.id_department", "=", "departments.id_department")
             ->join("jobtitle", "employees.id_jobTitle", "=", "jobtitle.id_jobTitle")
             // ->select("employees.*", "departments.name_department", "jobtitle.name_jobTitle")
+            ->where("employees.id_department", $idDep)
             ->where("employees.available", "=", 1)
             ->where('name_empployee', 'like', "%$search%")
             ->paginate(5);
+        // 
+
         return view('employee.list', [
             'listEmp' => $listEmp,
             'search' => $search,
+            'listDepa' => $listDepa,
+            'idDep' => $idDep,
         ]);
     }
 
@@ -41,12 +52,6 @@ class EmployeeController extends Controller
         return view('employee.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $name = $request->get('name');
@@ -83,9 +88,13 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
+        $listJob = JobTitle::all();
+        $listDep = Department::all();
         $employee = Employee::find($id);
         return view('employee.edit', [
-            "employee" => $employee
+            "employee" => $employee,
+            'listDep' => $listDep,
+            'listJob' => $listJob,
         ]);
     }
 
@@ -98,13 +107,29 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $name = $request->get('name');
-        // $salaryperhouse = $request->get('salaryperhouse');
-        // $employee = Employee::find();
-        // $employee->name_empployee = $name;
-        // $employee->salaryPerHour = $salaryperhouse;
-        // $employee->save();
-        // return redirect()->route('employee.index');
+        $name = $request->get('name_emp');
+        $salaryperhouse = $request->get('salaryperhouse');
+        $date = $request->get('dateOfBirth');
+        $gender = $request->get('gender');
+        $phone = $request->get('phone');
+        $address = $request->get('address');
+        $email = $request->get('email');
+        $level = $request->get('level');
+        $dep = $request->get('id_department');
+        $job = $request->get('id_jobTitle');
+        $employee = Employee::find($id);
+        $employee->name_empployee = $name;
+        $employee->dateOfBirth = $date;
+        $employee->gender = $gender;
+        $employee->phoneNumber = $phone;
+        $employee->address = $address;
+        $employee->email = $email;
+        $employee->level = $level;
+        $employee->salaryPerHour = $salaryperhouse;
+        $employee->id_department = $dep;
+        $employee->id_jobTitle = $job;
+        $employee->save();
+        return redirect()->route('employee.index');
     }
 
     /**

@@ -21,7 +21,7 @@ class CheckLogin
         if ($request->session()->exists('user')) {
             return $next($request);
         } else {
-            return Redirect::route('login')->with('error', 'Bạn chưa đăng nhập');
+            return Redirect::route('login-admin')->with('error', 'Bạn chưa đăng nhập');
         }
     }
 }

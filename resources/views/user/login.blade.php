@@ -31,7 +31,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" action="{{ route('login-process') }}">
+                            <form method="post" action="{{ route('login-process-user') }}">
                                 @csrf
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="purple">

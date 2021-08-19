@@ -34,7 +34,7 @@
             </ul>
         </li> --}}
         <li>
-            <a href="{{ route('logout') }}">
+            <a href="{{ route('logout-admin') }}">
                 <i class="material-icons">person</i>
                 <p>Đăng xuất</p>
             </a>

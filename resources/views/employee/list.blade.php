@@ -9,7 +9,14 @@
         <div class="card-content">
             <h3 class="card-title">Thông tin nhân viên</h3>
             <form action="">
-                <input type="search" value="{{ $search }}" name="search">
+                {{-- <input type="search" value="{{ $search }}" name="search"> --}}
+                <select name="id-dep">
+                    <option value="">=====</option>
+                    @foreach ($listDepa as $dep)
+                        <option value="{{ $dep->id_department }}" @if ($dep->id_department == $idDep) selected @endif>
+                            {{ $dep->name_department }}</option>
+                    @endforeach
+                </select>
                 <button>Tìm</button>
             </form>
             <div class="table-responsive">
@@ -20,7 +27,7 @@
                 <table class="table">
                     <thead class="text-primary">
                         <th>Tên nhân viên</th>
-                        <th>Trạng thái</th>
+                        {{-- <th>Trạng thái</th> --}}
                         <th>Chi tiết</th>
                         <th></th>
                     </thead>
@@ -28,7 +35,7 @@
                         <tr>
 
                             <td>{{ $emp->name_empployee }}</td>
-                            <td>{{ $emp->NameStatus }}</td>
+                            {{-- <td>{{ $emp->NameStatus }}</td> --}}
                             <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
                                         class="fa fa-edit"></i></a>
                             </td>

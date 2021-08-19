@@ -6,21 +6,17 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserAuthenticateController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TimekeeppingController;
 // use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
 ///login
-Route::get('/login', [AuthenticateController::class, 'login'])->middleware('isGuest')->name('login');
-Route::post('/login-process', [AuthenticateController::class, 'loginProcess'])
+Route::get('/login', [AuthenticateController::class, 'loginAdmin'])->name('login-admin');
+Route::post('/login-process', [AuthenticateController::class, 'loginProcessAdmin'])
     ->name('login-process');
 
-Route::post('/login-employee-process', [AuthenticateController::class, 'loginEmployeeProcess'])
-    ->name('login-employee-process');
-Route::get('/logout', [AuthenticateController::class, 'logout'])->name('logout');
+Route::get('/logout-admin', [AuthenticateController::class, 'logoutAdmin'])->name('logout-admin');
 
 Route::middleware(['isAuth'])->group(function () {
     Route::get('/', function () {
@@ -78,9 +74,15 @@ Route::resource('/employee', EmployeeController::class);
 
 //USER
 // Route::resource('/user', UserController::class);
-Route::get('/user', function () {
-    return view('user.index');
-})->name('userindex');
+// Route::get('/user', function () {
+//     return view('user.index');
+// })->name('userindex');
 
-Route::get('/user/login', [UserAuthenticateController::class, 'login'])->name('login');
-Route::post('/user/login-process', [UserAuthenticateController::class, 'loginProcess'])->name('login-process');
+Route::get('/user/login', [AuthenticateController::class, 'loginUser'])->name('login-user');
+Route::post('/user/login-process', [AuthenticateController::class, 'loginProcessUser'])->name('login-process-user');
+Route::get('/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-user');
+Route::middleware(['isGuest'])->group(function () {
+    Route::get('/user', function () {
+        return view('user.index ');
+    })->name('userIndex');
+});

@@ -66,11 +66,11 @@
                             <input type="text" class="form-control" name="note">
                         </div>
                         <div class="form-group label-floating">
-                            <label class="control-label">Nghỉ từ ngày</label>
+                            <label>Nghỉ từ ngày</label>
                             <input type="date" class="form-control timepicker" name="strat_time_off" />
                         </div>
                         <div class="form-group label-floating">
-                            <label class="control-label">Đến hết ngày ngày</label>
+                            <label>Đến hết ngày ngày</label>
                             <input type="date" class="form-control datepicker" name="end_time_off" />
                         </div>
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>

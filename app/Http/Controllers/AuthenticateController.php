@@ -12,18 +12,12 @@ use Illuminate\Support\Facades\Redirect;
 class AuthenticateController extends Controller
 {
 
-    public function __construct()
-    {
-        // cái này có nghĩa là nếu là khách mới được đăng nhập, cái middleware này chỉ không áp dụng cho trường hợp logout
-        $this->middleware('isGuest')->except('logout');
-    }
-
-    public function login()
+    public function loginAdmin()
     {
         return view('login');
     }
 
-    public function loginProcess(Request $request)
+    public function loginProcessAdmin(Request $request)
     {
         $email = $request->get('email');
         $password = $request->get('password');
@@ -34,27 +28,37 @@ class AuthenticateController extends Controller
 
             return Redirect::route('dashboard');
         } catch (Exception $e) {
-            return Redirect::route('login')->with('error', 'Tài khoản hoặc mật khẩu sai');
+            return Redirect::route('login-admin')->with('error', 'Tài khoản hoặc mật khẩu sai');
         }
     }
+    //admin
+    public function logoutAdmin(Request $request)
+    {
+        $request->session()->flush();
+        return Redirect::route('login-admin');
+    }
+    //user
+    public function loginUser()
+    {
+        return view('user.login');
+    }
 
-    public function loginEmployeeProcess(Request $request)
+    public function loginProcessUser(Request $request)
     {
         $email = $request->get('email');
         $password = $request->get('password');
-
         try {
-            $employee = Employee::where('email', $email)->where('password', $password)->firstOrFail();
-            $request->session()->put('user', $employee);
-            return Redirect::route('user');
+            $user = Employee::where('email', $email)->where('password', $password)->firstOrFail();
+            $request->session()->put('id_employee', $user->id_employee);
+            return Redirect::route('userIndex');
         } catch (Exception $e) {
-            return Redirect::route('login')->with('error', 'Sai gòiiiii');
+            return Redirect::route('login-user')->with('error', 'Sai tài khoản hoặc mật khẩu ');
         }
     }
 
-    public function logout(Request $request)
+    public function logoutUser(Request $request)
     {
         $request->session()->flush();
-        return Redirect::route('login');
+        return Redirect::route('login-user');
     }
 }

@@ -1,4 +1,5 @@
-<div class="sidebar" data-active-color="purple" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"  data-background-color="black"     >
+<div class="sidebar" data-active-color="purple" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"
+    data-background-color="black">
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
             FS
@@ -10,7 +11,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="{{ Request::is('/user') ? 'active' : '' }}">
-                <a href="{{ route('userindex') }}">
+                <a href="{{ route('userIndex') }}">
                     <i class="material-icons">dashboard</i>
                     <p> Trang chủ </p>
                 </a>
@@ -21,7 +22,7 @@
                     <p> Quản lý công việc </p>
                 </a>
             </li>
-                </a>
+            </a>
             </li>
         </ul>
     </div>

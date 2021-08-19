@@ -19,7 +19,7 @@
                 <table class="table">
                     <tr>
                         <th>Họ tên</th>
-                        <th>Số điện thoại</th>
+                        <th>Số điện thoại</th> 
                         <th>Email</th>
                         {{-- <th>Password</th> --}}
                         <th>role</th>
