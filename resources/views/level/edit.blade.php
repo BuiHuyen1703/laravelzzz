@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">Sửa thông tin level</h3>
-                    <form action="{{ route('level.update', $level->id_level) }}" method="post">
+                    <form action="{{ route('level.update', $level) }}" method="post">
                         @csrf
                         @method("PUT")
                         <div class="form-group label-floating">

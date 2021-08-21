@@ -63,12 +63,9 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Level $level)
     {
-        $level = Level::find($id);
-        return view('level.edit', [
-            "level" => $level
-        ]);
+        return view('level.edit', compact('level'));
     }
 
     /**
@@ -78,12 +75,9 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Level $level, Request $request)
     {
-        $bsSalary = $request->get('basic_salary');
-        $level = Level::find($id);
-        $level->basic_salary = $bsSalary;
-        $level->save();
+        $level->update($request->all());
         return redirect()->route('level.index');
     }
 
