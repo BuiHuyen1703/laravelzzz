@@ -31,7 +31,7 @@ class LevelController extends Controller
      */
     public function create()
     {
-        //
+        return view('level.create');
     }
 
     /**
@@ -42,7 +42,8 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Level::create($request->all());
+        return redirect(route('level.index'));
     }
 
     /**

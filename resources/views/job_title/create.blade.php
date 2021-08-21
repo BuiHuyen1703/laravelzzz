@@ -2,13 +2,7 @@
 @section('title','Thêm chức vụ')
 
 @section('huyen')
-    {{-- <h1>Thêm job title</h1>
-    <form action="{{ route('jobTitle.store') }}" method="post">
-        @csrf
-        tên : <input type="text" name="nameJob"><br>
-        <input value="1" readonly name="available"><br>
-        <button>Thêm</button>
-    </form> --}}
+
     <div class="col-md-4">
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="rose">
