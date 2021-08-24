@@ -49,8 +49,9 @@ class AuthenticateController extends Controller
         $password = $request->get('password');
         try {
             $user = Employee::where('email', $email)->where('password', $password)->firstOrFail();
-            $request->session()->put('id_employee', $user->id_employee);
+            $request->session()->put('user', $user);
             return Redirect::route('userIndex');
+            // đang dùng đăng nhập cả admin cả employee à
         } catch (Exception $e) {
             return Redirect::route('login-user')->with('error', 'Sai tài khoản hoặc mật khẩu ');
         }

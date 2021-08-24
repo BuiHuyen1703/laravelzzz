@@ -16,11 +16,11 @@
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        {{-- @if (session('id'))
+                        @if (session('user'))
                             <span class="text-center">
-                                {{ session('id')->name_empployee ?? session('id')->name_empployee }}
+                                {{ session('user')->name_admin ?? session('user')->name_empployee }}
                             </span>
-                        @endif --}}
+                        @endif
                     </span>
                 </a>
                 <div class="clearfix"></div>
