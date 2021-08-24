@@ -1,4 +1,3 @@
-{{-- @section('user') --}}
 <div class="sidebar" data-active-color="purple" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"
     data-background-color="black">
     <div class="logo">
@@ -45,4 +44,3 @@
         </ul>
     </div>
 </div>
-{{-- @endsection --}}
