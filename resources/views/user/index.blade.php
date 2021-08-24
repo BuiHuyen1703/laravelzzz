@@ -11,11 +11,15 @@
                 <div class="card-header card-header-icon" data-background-color="purple">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="action={{ route('timekeeping.store') }}" method="post">
+                {{-- @if
+                    (session('id')) {{ session('id')->id_admin ?? session('id')->id_employee }}
+                @endif --}}
+                <form action="{{ route('timekeeping.store') }}" method="post">
                     @csrf
                     <div class="card-content">
                         <h3 class="card-title">Check in</h3>
                         <div class="form-group">
+                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check in</label>
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkin" />
@@ -32,10 +36,13 @@
                 <div class="card-header card-header-icon" data-background-color="red">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="">
+                <form action="{{ route('timekeeping.update',session('user')) }}" method="POST">
+                    @method("PUT")
+                    @csrf
                     <div class="card-content">
                         <h3 class="card-title">Check out</h3>
                         <div class="form-group">
+                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check out</label>
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkout" />
@@ -60,10 +67,17 @@
                         @csrf
                         <div class="form-group label-floating">
                             <label class="control-label">Tên </label>
+<<<<<<< HEAD
                             <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
                             <input class=" form-control" name="" value="
                                                                                 @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
                         </div>
+=======
+                            <input type="hidden" name="name_emp" value="{{ session('user')->name_empployee }}">
+                                <input class=" form-control" name="" value="
+                                                                @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
+                                </div>
+>>>>>>> baf58e9e69ab6764e21f137721efb2d38e922b20
 
                         <div class=" form-group label-floating ">
                             <label class=" control-label">Lý do</label>
@@ -82,8 +96,13 @@
                             <input type="date" class="form-control datepicker" name="end_time_off" />
                         </div>
                         <div class="form-group label-floating">
+<<<<<<< HEAD
                             {{-- <label>available</label> --}}
                             <input type="hidden" class="form-control datepicker" name="available" value="1" />
+=======
+                            <label>available</label>
+                            <input type="hidden" class="form-control datepicker" name="available" />
+>>>>>>> baf58e9e69ab6764e21f137721efb2d38e922b20
                         </div>
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>

@@ -10,4 +10,11 @@ class Timekeeping extends Model
     protected $table = 'timekeeping';
     public $timestamps = false;
     protected $primaryKey = 'id_timekeeping';
+    protected $fillable = [
+        'id_timekeeping',
+        'id_employee',
+        'checkin',
+        'checkout',
+        'available',
+    ];
 }

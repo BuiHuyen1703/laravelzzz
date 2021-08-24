@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Admin;
 use App\Models\Employee;
-use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
-// use PhpParser\Node\Stmt\TryCatch;
 
 class AuthenticateController extends Controller
 {

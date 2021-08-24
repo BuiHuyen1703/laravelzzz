@@ -43,6 +43,7 @@ class TimekeeppingController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $checkin = $request->get('checkin');
         $checkout = $request->get('checkout');
         $date = $request->get('date');
@@ -52,6 +53,11 @@ class TimekeeppingController extends Controller
         $timekeeping->checkout = $checkout;
         $timekeeping->date = $date;
         $timekeeping->available = $available;
+=======
+        // $timeChecking = $request->get('checkin');
+        Timekeeping::create($request->all());
+        return redirect(route('userIndex'));
+>>>>>>> baf58e9e69ab6764e21f137721efb2d38e922b20
     }
 
     /**
@@ -83,9 +89,10 @@ class TimekeeppingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Timekeeping $timekeeping)
     {
-        //
+        $timekeeping->update($request->all());
+        return redirect()->route('userIndex');
     }
 
     /**
