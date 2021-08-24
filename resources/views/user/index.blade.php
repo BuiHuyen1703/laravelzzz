@@ -11,11 +11,15 @@
                 <div class="card-header card-header-icon" data-background-color="purple">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="action={{ route('timekeeping.store') }}" method="post">
+                {{-- @if
+                    (session('id')) {{ session('id')->id_admin ?? session('id')->id_employee }}
+                @endif --}}
+                <form action="{{ route('timekeeping.store') }}" method="post">
                     @csrf
                     <div class="card-content">
                         <h3 class="card-title">Check in</h3>
                         <div class="form-group">
+                            <input type="hidden" name="id_employee" value="{{session('id')}}">
                             <label class="label-control">Ngày/Giờ check in</label>
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkin" />
@@ -32,7 +36,8 @@
                 <div class="card-header card-header-icon" data-background-color="red">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="">
+                <form action="" method="POST">
+                    @csrf
                     <div class="card-content">
                         <h3 class="card-title">Check out</h3>
                         <div class="form-group">
