@@ -6,14 +6,14 @@
     Tip 2: you can also add an image using data-image tag
     Tip 3: you can change the color of the sidebar with data-background-color="white | black"
 -->
-        <div class="logo">
+        {{-- <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text logo-mini">
                 hi
             </a>
             <a href="http://www.creative-tim.com" class="simple-text logo-normal">
                 Admin
             </a>
-        </div>
+        </div> --}}
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">

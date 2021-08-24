@@ -10,15 +10,11 @@
             <h3 class="card-title">Thông tin chấm công</h3>
             <div class="table-responsive">
                 <table class="table">
-
-                        <tr></tr>
                         <th>Mã chấm công</th>
                         <th>Mã nhân viên</th>
                         <th>Tên nhân viên</th>
                         <th>Checkin</th>
                         <th>Checkout</th>
-                        <th></th>
-
                     <tbody>
                         @foreach ($listTime as $time)
                             <tr>
