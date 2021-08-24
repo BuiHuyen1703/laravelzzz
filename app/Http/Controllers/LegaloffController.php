@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\LegalOff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,24 +31,28 @@ class LegaloffController extends Controller
      */
     public function create()
     {
-        return view('user . index');
+
+        return view('user.index');
     }
 
     public function store(Request $request)
     {
+        $name = $request->get('name_emp');
         $reason = $request->get('reason');
         $note = $request->get('note');
         $start_time_off = $request->get('start_time_off');
         $end_time_off = $request->get('end_time_off');
         $available = $request->get('available');
         $legal = new LegalOff();
+        $legal->id_employee = $name;
         $legal->reason = $reason;
         $legal->note = $note;
-        $legal->start_time_off = $start_time_off;
+        $legal->strat_time_off = $start_time_off;
         $legal->end_time_off = $end_time_off;
         $legal->available = $available;
         $legal->save();
-        return redirect(route('lagal.index'));
+        // return redirect(route('legalOff.index'));
+        return view('user.index');
     }
 
     /**

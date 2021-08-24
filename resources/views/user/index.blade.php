@@ -61,9 +61,17 @@
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">Đơn xin nghỉ</h3>
-                    <form method="#" action="#">
+                    <form method="post" action="{{ route('legalOff.store') }}">
+                        @csrf
                         <div class="form-group label-floating">
-                            <label class="control-label">Lý do</label>
+                            <label class="control-label">Tên </label>
+                            <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
+                                <input class=" form-control" name="" value="
+                                                                @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
+                                </div>
+
+                                <div class=" form-group label-floating ">
+                                    <label class=" control-label">Lý do</label>
                             <input type="text" class="form-control" name="reason">
                         </div>
                         <div class="form-group label-floating">
@@ -72,11 +80,15 @@
                         </div>
                         <div class="form-group label-floating">
                             <label>Nghỉ từ ngày</label>
-                            <input type="date" class="form-control timepicker" name="strat_time_off" />
+                            <input type="date" class="form-control timepicker" name="start_time_off" />
                         </div>
                         <div class="form-group label-floating">
                             <label>Đến hết ngày ngày</label>
                             <input type="date" class="form-control datepicker" name="end_time_off" />
+                        </div>
+                        <div class="form-group label-floating">
+                            <label>available</label>
+                            <input type="text" class="form-control datepicker" name="available" />
                         </div>
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>
