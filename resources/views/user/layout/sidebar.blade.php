@@ -17,9 +17,9 @@
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        @if (session('user'))
+                        @if (session()->exists('user'))
                             <span class="text-center">
-                                {{ session('user')->name_admin ?? session('user')->name_empployee }}
+                                {{ session('user')->name_empployee }}
                             </span>
                         @endif
                     </span>

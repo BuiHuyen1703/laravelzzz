@@ -42,7 +42,15 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        Level::create($request->all());
+        // Level::create($request->all());
+        $nameLevel = $request->get('name_level');
+        $basicSalary = $request->get('basic_salary');
+        $available = $request->get('available');
+        $level = new Level();
+        $level->name_level = $nameLevel;
+        $level->basic_salary = $basicSalary;
+        $level->available = $available;
+        $level->save();
         return redirect(route('level.index'));
     }
 

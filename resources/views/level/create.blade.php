@@ -1,5 +1,5 @@
 @extends('dashboard')
-@section('title','Thêm level')
+@section('title', 'Thêm level')
 
 @section('huyen')
 
@@ -14,10 +14,10 @@
                     <h3 class="card-title">Thêm level</h3>
                     <div class="form-group">
                         <label class="label-control">Level</label>
-                        <input type="text" class="form-control datetimepicker" name="namelevel"/>
+                        <input type="text" class="form-control datetimepicker" name="name_level" />
                         <label class="label-control">Lương cơ bản</label>
-                        <input type="number" class="form-control datetimepicker" name="basic_salary"/>
-                        <input value="1" readonly name="available" hidden/>
+                        <input type="number" class="form-control datetimepicker" name="basic_salary" />
+                        <input value="1" readonly name="available" hidden />
                     </div>
                     <button class="btn btn-rose">Thêm</button>
                 </div>
@@ -25,5 +25,3 @@
         </div>
     </div>
 @endsection
-
-

@@ -23,9 +23,9 @@
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                         <span>
                             {{-- <td>Bùi Ngọc Huyền</td> --}}
-                            @if (session('user'))
+                            @if (session()->exists('admin'))
                                 <span class="text-center">
-                                    {{ session('user')->name_admin ?? session('user')->name_empployee }}
+                                    {{ session('admin')->name_admin }}
                                 </span>
                             @endif
                         </span>
