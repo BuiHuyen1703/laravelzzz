@@ -32,6 +32,7 @@ class TimekeeppingController extends Controller
      */
     public function create()
     {
+        return view('user.index');
     }
 
     /**
@@ -42,7 +43,15 @@ class TimekeeppingController extends Controller
      */
     public function store(Request $request)
     {
-        $timeChecking = $request->get('checkin');
+        $checkin = $request->get('checkin');
+        $checkout = $request->get('checkout');
+        $date = $request->get('date');
+        $available = $request->get('available');
+        $timekeeping = new Timekeeping();
+        $timekeeping->checkin = $checkin;
+        $timekeeping->checkout = $checkout;
+        $timekeeping->date = $date;
+        $timekeeping->available = $available;
     }
 
     /**

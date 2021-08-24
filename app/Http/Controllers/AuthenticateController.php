@@ -24,7 +24,7 @@ class AuthenticateController extends Controller
 
         try {
             $admin = Admin::where('email_admin', $email)->where('pass_admin', $password)->firstOrFail();
-            $request->session()->put('user', $admin);
+            $request->session()->put('admin', $admin);
 
             return Redirect::route('dashboard');
         } catch (Exception $e) {
@@ -34,9 +34,11 @@ class AuthenticateController extends Controller
     //admin
     public function logoutAdmin(Request $request)
     {
-        $request->session()->flush();
+        $request->session()->pull('admin');
+
         return Redirect::route('login-admin');
     }
+    ///sag file khác viết vì bị lẫn đx đấy
     //user
     public function loginUser()
     {
@@ -59,7 +61,7 @@ class AuthenticateController extends Controller
 
     public function logoutUser(Request $request)
     {
-        $request->session()->flush();
+        $request->session()->pull('user');
         return Redirect::route('login-user');
     }
 }

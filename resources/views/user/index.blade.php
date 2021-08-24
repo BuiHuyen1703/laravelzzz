@@ -61,12 +61,12 @@
                         <div class="form-group label-floating">
                             <label class="control-label">Tên </label>
                             <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
-                                <input class=" form-control" name="" value="
-                                                                @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
-                                </div>
+                            <input class=" form-control" name="" value="
+                                                                                @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
+                        </div>
 
-                                <div class=" form-group label-floating ">
-                                    <label class=" control-label">Lý do</label>
+                        <div class=" form-group label-floating ">
+                            <label class=" control-label">Lý do</label>
                             <input type="text" class="form-control" name="reason">
                         </div>
                         <div class="form-group label-floating">
@@ -82,8 +82,8 @@
                             <input type="date" class="form-control datepicker" name="end_time_off" />
                         </div>
                         <div class="form-group label-floating">
-                            <label>available</label>
-                            <input type="text" class="form-control datepicker" name="available" />
+                            {{-- <label>available</label> --}}
+                            <input type="hidden" class="form-control datepicker" name="available" value="1" />
                         </div>
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>
