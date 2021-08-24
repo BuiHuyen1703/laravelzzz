@@ -19,7 +19,7 @@
                     <div class="card-content">
                         <h3 class="card-title">Check in</h3>
                         <div class="form-group">
-                            <input type="hidden" name="id_employee" value="{{session('id')}}">
+                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check in</label>
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkin" />
@@ -36,11 +36,13 @@
                 <div class="card-header card-header-icon" data-background-color="red">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="" method="POST">
+                <form action="{{ route('timekeeping.update',session('user')) }}" method="POST">
+                    @method("PUT")
                     @csrf
                     <div class="card-content">
                         <h3 class="card-title">Check out</h3>
                         <div class="form-group">
+                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check out</label>
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkout" />
@@ -65,7 +67,7 @@
                         @csrf
                         <div class="form-group label-floating">
                             <label class="control-label">Tên </label>
-                            <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
+                            <input type="hidden" name="name_emp" value="{{ session('user')->name_empployee }}">
                                 <input class=" form-control" name="" value="
                                                                 @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
                                 </div>
@@ -88,7 +90,7 @@
                         </div>
                         <div class="form-group label-floating">
                             <label>available</label>
-                            <input type="text" class="form-control datepicker" name="available" />
+                            <input type="hidden" class="form-control datepicker" name="available" />
                         </div>
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>

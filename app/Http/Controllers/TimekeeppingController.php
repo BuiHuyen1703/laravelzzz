@@ -44,6 +44,7 @@ class TimekeeppingController extends Controller
     {
         // $timeChecking = $request->get('checkin');
         Timekeeping::create($request->all());
+        return redirect(route('userIndex'));
     }
 
     /**
@@ -75,9 +76,10 @@ class TimekeeppingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Timekeeping $timekeeping)
     {
-        //
+        $timekeeping->update($request->all());
+        return redirect()->route('userIndex');
     }
 
     /**

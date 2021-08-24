@@ -1,3 +1,4 @@
+{{-- @section('user') --}}
 <div class="sidebar" data-active-color="purple" data-image="{{ asset('assets') }}/img/sidebar-5.jpg"
     data-background-color="black">
     <div class="logo">
@@ -11,8 +12,8 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="../../assets/img/faces/avatar.jpg" />
-            </div>
+                <img src="{{ Avatar::create(session('user')->name_empployee )->toBase64() }}" />s
+           </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
@@ -44,3 +45,4 @@
         </ul>
     </div>
 </div>
+{{-- @endsection --}}
