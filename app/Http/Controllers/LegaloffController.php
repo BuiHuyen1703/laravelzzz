@@ -18,7 +18,8 @@ class LegaloffController extends Controller
     {
         $listLegal = LegalOff::join("employees", "employees.id_employee", "=", "legal_off.id_employee")
             ->where("legal_off.available", "=", 1)
-            ->paginate(5);
+            ->orderByRaw(' legal_off.id_legal DESC')
+            ->paginate(10);
         return view('legal_off.list', [
             'listLegal' => $listLegal
         ]);
@@ -35,8 +36,9 @@ class LegaloffController extends Controller
         return view('user.index');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, LegalOff $legalOff)
     {
+        $id = $request->get('id_employee');
         $name = $request->get('name_emp');
         $reason = $request->get('reason');
         $note = $request->get('note');
@@ -44,13 +46,15 @@ class LegaloffController extends Controller
         $end_time_off = $request->get('end_time_off');
         $available = $request->get('available');
         $legal = new LegalOff();
-        $legal->id_employee = $name;
+        $legal->id_employee = $id;
+        // $legal->name_employee = $name;
         $legal->reason = $reason;
         $legal->note = $note;
         $legal->strat_time_off = $start_time_off;
         $legal->end_time_off = $end_time_off;
         $legal->available = $available;
         $legal->save();
+        // LegalOff::create($request->all());
         // return redirect(route('legalOff.index'));
         return view('user.index');
     }
