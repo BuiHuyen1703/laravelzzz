@@ -17,7 +17,7 @@
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">
-                    <img src="{{ Avatar::create(session('user')->name_admin )->toBase64() }}" />s
+                    {{-- <img src="{{ Avatar::create(session('user')->name_admin)->toBase64() }}" />s --}}
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -80,6 +80,12 @@
                     <a href="{{ route('admin.index') }}">
                         <i class="material-icons">assignment_ind</i>
                         <p> Admin </p>
+                    </a>
+                </li>
+                <li class="{{ Request::is('salary') ? 'active' : '' }}">
+                    <a href="{{ route('salary.index') }}">
+                        <i class="material-icons">assignment_ind</i>
+                        <p> Salary </p>
                     </a>
                 </li>
             </ul>
