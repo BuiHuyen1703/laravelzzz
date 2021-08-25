@@ -105,7 +105,7 @@ class TimekeeppingController extends Controller
     {
 
         $Dep = DB::table("timekeeping")
-            ->where("id_timekeeping", "=", $id)
+            ->where("id_timekipping", "=", $id)
             ->update(["available" => 0]);
         return redirect("timekeeping");
     }

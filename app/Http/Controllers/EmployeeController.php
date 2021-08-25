@@ -31,8 +31,8 @@ class EmployeeController extends Controller
             ->where("employees.id_department", $idDep)
             ->where("employees.available", "=", 1)
             ->where('name_empployee', 'like', "%$search%")
-            ->paginate(5);
-        // 
+            ->paginate(10);
+        //
 
         return view('employee.list', [
             'listEmp' => $listEmp,
@@ -162,10 +162,5 @@ class EmployeeController extends Controller
     public function insertExcelProcess(Request $request)
     {
         Excel::import(new EmployeeImport, $request->file('excel'));
-    }
-
-    public function detail($id)
-    {
-        // return view('employee.detail');
     }
 }
