@@ -51,13 +51,9 @@ class TimekeeppingController extends Controller
         $timekeeping->checkin = $checkin;
         $timekeeping->checkout = $checkout;
         $timekeeping->date = $date;
-<<<<<<< HEAD
-        $timekeeping->available = $available;
-=======
         // $timeChecking = $request->get('checkin');
         Timekeeping::create($request->all());
         return redirect(route('userIndex'));
->>>>>>> 258ac9a773473400782f1bd38951935552f6e8ac
     }
 
     /**

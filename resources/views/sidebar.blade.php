@@ -17,11 +17,7 @@
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">
-<<<<<<< HEAD
-                    {{-- <img src="{{ Avatar::create(session('user')->name_admin)->toBase64() }}" />s --}}
-=======
                     {{-- <img src="{{ Avatar::create(session('user')->name_admin )->toBase64() }}" />s --}}
->>>>>>> 258ac9a773473400782f1bd38951935552f6e8ac
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
