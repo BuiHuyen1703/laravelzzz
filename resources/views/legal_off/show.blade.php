@@ -1,4 +1,6 @@
 @extends('dashboard')
+{{-- @section('title', 'Chi tiết') --}}
+
 @section('huyen')
     {{-- <h1>Thông tin các đơn nghỉ</h1> --}}
     <div class="card">
@@ -9,11 +11,8 @@
             <h3 class="card-title">Thông tin các đơn nghỉ</h3>
             <div class="table-responsive">
                 <table class="table">
-                    <thead class="text-primary">
                         <th>Mã đơn</th>
-                        <td>{{ $legal->id_legal }}</td>
-                    </thead>
-
+                        <th>{{ $legal->id_legal }}</th>
                     <tr>
                         <th>Tên nhân viên</th>
                         <td>{{ $legal->name_empployee }}</td>
@@ -62,7 +61,6 @@
                                     <a>
                             </td>
                         </tr>
-
                     @endif
                     {{-- <tr>
                         <td>

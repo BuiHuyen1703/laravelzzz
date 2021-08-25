@@ -13,10 +13,6 @@
                 <table class="table">
                     <th>Mã đơn</th>
                     <th>Tên nhân viên</th>
-                    {{-- <th>Lý do nghỉ</th>
-                        <th>Ngày bắt đầu</th>
-                        <th>Ngày kết thúc</th>
-                        <th>Ghi chú</th> --}}
                     <th>Tình trạng</th>
                     <th></th>
                     <th></th>
@@ -25,11 +21,11 @@
                             <tr>
                                 <td>{{ $legal->id_legal }}</td>
                                 <td>{{ $legal->name_empployee }}</td>
+                                <td>{{ $legal->NameApprove }}</td>
                                 {{-- <td>{{ $legal->reason }}</td> --}}
                                 {{-- <td>{{ $legal->strat_time_off }}</td> --}}
                                 {{-- <td>{{ $legal->end_time_off }}</td> --}}
                                 {{-- <td>{{ $legal->note }}</td> --}}
-                                <td>{{ $legal->NameApprove }}</td>
 
                                 {{-- <td>
                                     <a class="btn btn-xs btn-success"

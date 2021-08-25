@@ -10,6 +10,14 @@ class LegalOff extends Model
     protected $table = 'legal_off';
     public $timestamps = false;
     protected $primaryKey = 'id_legal';
+    protected $fillable = [
+        'id_legal',
+        'reason',
+        'id_employee',
+        'strat_time_off',
+        'end_time_off',
+        'note',
+    ];
     public function getNameApproveAttribute()
     {
         if ($this->approve === 0) {

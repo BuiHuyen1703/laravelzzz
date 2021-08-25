@@ -6,18 +6,22 @@
     Tip 2: you can also add an image using data-image tag
     Tip 3: you can change the color of the sidebar with data-background-color="white | black"
 -->
-        <div class="logo">
+        {{-- <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text logo-mini">
                 hi
             </a>
             <a href="http://www.creative-tim.com" class="simple-text logo-normal">
                 Admin
             </a>
-        </div>
+        </div> --}}
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">
+<<<<<<< HEAD
                     {{-- <img src="{{ Avatar::create(session('user')->name_admin)->toBase64() }}" />s --}}
+=======
+                    {{-- <img src="{{ Avatar::create(session('user')->name_admin )->toBase64() }}" />s --}}
+>>>>>>> 258ac9a773473400782f1bd38951935552f6e8ac
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
