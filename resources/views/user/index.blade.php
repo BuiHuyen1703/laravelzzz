@@ -11,9 +11,6 @@
                 <div class="card-header card-header-icon" data-background-color="purple">
                     <i class="material-icons">today</i>
                 </div>
-                {{-- @if
-                    (session('id')) {{ session('id')->id_admin ?? session('id')->id_employee }}
-                @endif --}}
                 <form action="{{ route('timekeeping.store') }}" method="post">
                     @csrf
                     <div class="card-content">

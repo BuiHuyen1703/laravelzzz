@@ -44,7 +44,6 @@ class LegaloffController extends Controller
         $note = $request->get('note');
         $start_time_off = $request->get('start_time_off');
         $end_time_off = $request->get('end_time_off');
-        $available = $request->get('available');
         $legal = new LegalOff();
         $legal->id_employee = $id;
         // $legal->name_employee = $name;
@@ -52,10 +51,9 @@ class LegaloffController extends Controller
         $legal->note = $note;
         $legal->strat_time_off = $start_time_off;
         $legal->end_time_off = $end_time_off;
-        $legal->available = $available;
+        // $legal->available = $available;
         $legal->save();
         // LegalOff::create($request->all());
-        // return redirect(route('legalOff.index'));
         return view('user.index');
     }
 

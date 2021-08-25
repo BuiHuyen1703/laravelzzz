@@ -15,17 +15,18 @@
                         <th>Tên nhân viên</th>
                         <th>Checkin</th>
                         <th>Checkout</th>
+                        <th></th>
                     <tbody>
                         @foreach ($listTime as $time)
                             <tr>
-                                <td>{{ $time->id_timekeeping }}</td>
+                                <td>{{ $time->id_timekipping }}</td>
                                 <td>{{ $time->id_employee }}</td>
                                 <td>{{ $time->name_empployee }}</td>
                                 <td>{{ $time->checkin }}</td>
                                 <td>{{ $time->checkout }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-danger"
-                                        href="{{ route('timekeeping.hide', $time->id_timekeeping) }}">
+                                        href="{{ route('timekeeping.hide', $time->id_timekipping ) }}">
                                         <i class="fa fa-times"></i>Ẩn
                                     </a>
                                 </td>

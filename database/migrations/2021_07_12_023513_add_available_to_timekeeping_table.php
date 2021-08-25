@@ -14,7 +14,7 @@ class AddAvailableToTimekeepingTable extends Migration
     public function up()
     {
         Schema::table('timekeeping', function (Blueprint $table) {
-            $table->boolean("available");
+            $table->boolean("available")->default(1);;
         });
     }
 

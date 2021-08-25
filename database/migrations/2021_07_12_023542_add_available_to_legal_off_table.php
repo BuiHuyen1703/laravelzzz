@@ -14,7 +14,7 @@ class AddAvailableToLegalOffTable extends Migration
     public function up()
     {
         Schema::table('legal_off', function (Blueprint $table) {
-            $table->boolean("available");
+            $table->boolean("available")->default(1);;
         });
     }
 
