@@ -77,7 +77,6 @@ class EmployeeController extends Controller
         return view('employee.show', [
             "employee" => $employee
         ]);
-        //join cho t cái phòng ban với chức vụ
     }
 
     /**
@@ -165,8 +164,8 @@ class EmployeeController extends Controller
         Excel::import(new EmployeeImport, $request->file('excel'));
     }
 
-    public function showDetail($id)
+    public function detail($id)
     {
-        return view('employee.detail');
+        // return view('employee.detail');
     }
 }

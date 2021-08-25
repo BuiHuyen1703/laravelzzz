@@ -11,8 +11,8 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="{{ Avatar::create(session('user')->name_empployee )->toBase64() }}" />s
-           </div>
+                {{-- <img src="{{ Avatar::create(session('user')->name_empployee )->toBase64() }}" />s --}}
+            </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>

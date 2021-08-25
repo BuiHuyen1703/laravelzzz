@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\SalaryDetailController;
 use App\Http\Controllers\TimekeeppingController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,6 +72,12 @@ Route::middleware(['isAuth'])->group(function () {
         Route::post('/insert/excel/process', [EmployeeController::class, 'insertExcelProcess'])->name('insert-excel-process');
     });
     Route::resource('/employee', EmployeeController::class);
+
+    //salary
+    Route::resource('/salary', SalaryDetailController::class);
+    Route::prefix("salary")->name("salary.")->group(function () {
+        Route::get('/detail', [SalaryDetailController::class, 'detail'])->name('detail');
+    });
 });
 //USER
 // Route::resource('/user', UserController::class);

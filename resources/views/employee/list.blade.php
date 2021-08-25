@@ -29,6 +29,8 @@
                     {{-- <th>Trạng thái</th> --}}
                     <th>Chi tiết</th>
                     <th></th>
+                    <th><a class="btn btn-sm btn-watch" href="{{ route('salary.detail') }}"><i
+                                class="fa fa-edit">lương</i></a></th>
                     @foreach ($listEmp as $emp)
                         <tr>
 
@@ -37,8 +39,12 @@
                             <td><a class="btn btn-sm btn-watch" href="{{ route('employee.show', $emp->id_employee) }}"><i
                                         class="fa fa-edit"></i></a>
                             </td>
+                            {{-- <td><a class="btn btn-sm btn-watch" href="{{ route('salary.detail', $emp->id_employee) }}"><i
+                                        class="fa fa-edit">lương</i></a>
+                            </td> --}}
                         </tr>
                     @endforeach
+
                     </tbody>
                 </table>
                 {{ $listEmp->appends(['search' => $search])->links('') }}

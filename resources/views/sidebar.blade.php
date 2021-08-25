@@ -82,6 +82,12 @@
                         <p> Admin </p>
                     </a>
                 </li>
+                <li class="{{ Request::is('salary') ? 'active' : '' }}">
+                    <a href="{{ route('salary.index') }}">
+                        <i class="material-icons">assignment_ind</i>
+                        <p> Salary </p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
