@@ -16,7 +16,9 @@
                     <th>Tên nhân viên</th>
                     <th>Level</th>
                     <th>Chức vụ</th>
-                    <th>Lương</th>
+                    <th><a class="btn btn-sm btn-watch" href="{{ route('salary.detail') }}"><i
+                                class="fa fa-edit">lương</i></a></th>
+                    <th></th>
                     {{-- <tbody>
                         @foreach ($listSalary as $salary)
                             <tr>

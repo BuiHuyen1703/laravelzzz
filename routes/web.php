@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\LevelController;
@@ -51,9 +52,9 @@ Route::middleware(['isAuth'])->group(function () {
     //timekeeping
     Route::resource('/timekeeping', TimekeeppingController::class);
 
-    Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
-        Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
-    });
+    // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
+    //     Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
+    // });
 
     //legal-off
     Route::resource('/legalOff', LegaloffController::class);
@@ -78,6 +79,13 @@ Route::middleware(['isAuth'])->group(function () {
     Route::prefix("salary")->name("salary.")->group(function () {
         Route::get('/detail', [SalaryDetailController::class, 'detail'])->name('detail');
     });
+    //calender
+    Route::get('/calender', function () {
+        return view('calender.list');
+    })->name('calender');
+
+    //holiday
+    Route::resource('/holiday', HolidayController::class);
 });
 //USER
 // Route::resource('/user', UserController::class);
@@ -92,4 +100,7 @@ Route::middleware(['isGuest'])->group(function () {
     Route::get('/user', function () {
         return view('user.index ');
     })->name('userIndex');
+});
+Route::get('/tt', function () {
+    return view('user.times.test');
 });

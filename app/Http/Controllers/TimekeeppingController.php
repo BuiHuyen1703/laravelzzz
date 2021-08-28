@@ -9,11 +9,7 @@ use Illuminate\Support\Carbon;
 
 class TimekeeppingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $listTime = Timekeeping::join("employees", "employees.id_employee", "=", "timekeeping.id_employee")
@@ -25,22 +21,13 @@ class TimekeeppingController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('user.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $checkin = $request->get('checkin');
@@ -51,40 +38,24 @@ class TimekeeppingController extends Controller
         $timekeeping->checkin = $checkin;
         $timekeeping->checkout = $checkout;
         $timekeeping->date = $date;
-        // $timeChecking = $request->get('checkin');
-        Timekeeping::create($request->all());
+        $timekeeping->available = $available;
+        // Timekeeping::create($request->all());
         return redirect(route('userIndex'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Timekeeping $timekeeping)
     {
         $timekeeping->update($request->all());

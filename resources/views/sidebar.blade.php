@@ -76,16 +76,33 @@
                         <p> Level</p>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin') ? 'active' : '' }}">
-                    <a href="{{ route('admin.index') }}">
-                        <i class="material-icons">assignment_ind</i>
-                        <p> Admin </p>
-                    </a>
-                </li>
+                @if (session('admin')->role == 0)
+                    <li class="{{ Request::is('admin') ? 'active' : '' }}">
+                        <a href="{{ route('admin.index') }}">
+                            <i class="material-icons">assignment_ind</i>
+                            <p> Kế toán </p>
+                        </a>
+                    </li>
+
+                @endif
+
                 <li class="{{ Request::is('salary') ? 'active' : '' }}">
                     <a href="{{ route('salary.index') }}">
-                        <i class="material-icons">assignment_ind</i>
-                        <p> Salary </p>
+                        <i class="material-icons">monetization_on</i>
+                        <p> Lương </p>
+                    </a>
+                </li>
+
+                <li class="{{ Request::is('holiday') ? 'active' : '' }}">
+                    <a href="{{ route('holiday.index') }}">
+                        <i class="material-icons">date_range</i>
+                        <p> Nghỉ lễ </p>
+                    </a>
+                </li>
+                <li class="{{ Request::is('calendal') ? 'active' : '' }}">
+                    <a href="{{ route('calender') }}">
+                        <i class="material-icons">date_range</i>
+                        <p> Calender </p>
                     </a>
                 </li>
             </ul>

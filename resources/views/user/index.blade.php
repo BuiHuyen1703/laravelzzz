@@ -19,9 +19,10 @@
                             <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check in</label>
                             <input type="text" class="form-control datetimepicker"
-                                value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkin" />
+                                value="{{ Carbon::now()->toDateString() }}" name="checkin" />
+                            <input type="hidden" name="available" value="1">
                         </div>
-                        <button class="btn btn-primary" type="date">Check in</button>
+                        <button class="btn btn-primary">Check in</button>
                     </div>
                 </form>
             </div>
@@ -43,6 +44,7 @@
                             <label class="label-control">Ngày/Giờ check out</label>
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkout" />
+                            //input mà đặt tên là date nó đâu check out á
                         </div>
                         <button class="btn btn-danger">Check out</button>
                     </div>
@@ -63,46 +65,42 @@
                     <form method="post" action="{{ route('legalOff.store') }}">
                         @csrf
                         <div class="form-group label-floating">
-                            <input type="hidden" name="id_employee" value="{{ session('user')->id_employee }}">
+                            {{-- <input type="hidden" name="id_employee" value="{{ session('user')->id_employee }}"> --}}
                             <label class="control-label">Tên </label>
                             <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
-                            <input class=" form-control" name=""
-                                value="
-                                                                                                                        @if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
+                            <input class=" form-control" name="" value="@if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
                         </div>
 
 
-                        <input class=" form-control" name="name_emp" value="{{ session('user')->name_empployee }}">
-                </div>
 
-                <div class=" form-group label-floating ">
-                    <label class=" control-label">Lý do</label>
-                    <input type="text" class="form-control" name="reason">
-                </div>
-                <div class="form-group label-floating">
-                    <label class="control-label">Ghi chú</label>
-                    <input type="text" class="form-control" name="note">
-                </div>
-                <div class="form-group label-floating">
-                    <label>Nghỉ từ ngày</label>
-                    <input type="date" class="form-control timepicker" name="start_time_off" />
-                </div>
-                <div class="form-group label-floating">
-                    <label>Đến hết ngày ngày</label>
-                    <input type="date" class="form-control datepicker" name="end_time_off" />
-                </div>
-                <div class="form-group label-floating">
-                    <<<<<<< HEAD {{-- <label>available</label> --}} <input type="hidden" class="form-control datepicker" name="available"
-                        value="1" />
+                        <div class=" form-group label-floating ">
+                            <label class=" control-label">Lý do</label>
+                            <input type="text" class="form-control" name="reason">
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="control-label">Ghi chú</label>
+                            <input type="text" class="form-control" name="note">
+                        </div>
+                        <div class="form-group label-floating">
+                            <label>Nghỉ từ ngày</label>
+                            <input type="date" class="form-control timepicker" name="start_time_off" />
+                        </div>
+                        <div class="form-group label-floating">
+                            <label>Đến hết ngày ngày</label>
+                            <input type="date" class="form-control datepicker" name="end_time_off" />
+                        </div>
+                        <div class="form-group label-floating">
+                            <<<<<<< HEAD {{-- <label>available</label> --}} <input type="hidden" class="form-control datepicker"
+                                name="available" value="1" />
 
-                    <input type="hidden" class="form-control datepicker" name="available" value="1" />
-                    <input type="hidden" class="form-control datepicker" name="available" />
+                            <input type="hidden" class="form-control datepicker" name="available" value="1" />
+                            <input type="hidden" class="form-control datepicker" name="available" />
+                        </div>
+                        <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
-                </form>
             </div>
         </div>
-    </div>
     </div>
     </div>
 @endsection
