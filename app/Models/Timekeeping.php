@@ -15,6 +15,5 @@ class Timekeeping extends Model
         'id_employee',
         'checkin',
         'checkout',
-        'available',
     ];
 }

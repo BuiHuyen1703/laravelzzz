@@ -20,9 +20,9 @@ class LegalOff extends Model
     ];
     public function getNameApproveAttribute()
     {
-        if ($this->approve === 0) {
+        if ($this->approve == 0) {
             return 'Duyệt';
-        } else if ($this->approve === 1) {
+        } else if ($this->approve == 1) {
             return 'Từ chối';
         } else if ($this->approve == null) {
             return 'Chờ';

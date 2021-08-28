@@ -34,7 +34,7 @@
                 <div class="card-header card-header-icon" data-background-color="red">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="{{ route('timekeeping.update', session('user')) }}" method="POST">
+                <form action="" method="POST">
                     @method("PUT")
                     @csrf
                     <div class="card-content">
@@ -68,6 +68,7 @@
                             {{-- <input type="hidden" name="id_employee" value="{{ session('user')->id_employee }}"> --}}
                             <label class="control-label">Tên </label>
                             <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
+<<<<<<< HEAD
                             <input class=" form-control" name="" value="@if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
                         </div>
 
@@ -99,8 +100,36 @@
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>
                 </div>
+=======
+                        <input class=" form-control" name="name_emp" value="{{ session('user')->name_empployee }}">
+                </div>
+
+                <div class=" form-group label-floating ">
+                    <label class=" control-label">Lý do</label>
+                    <input type="text" class="form-control" name="reason">
+                </div>
+                <div class="form-group label-floating">
+                    <label class="control-label">Ghi chú</label>
+                    <input type="text" class="form-control" name="note">
+                </div>
+                <div class="form-group label-floating">
+                    <label>Nghỉ từ ngày</label>
+                    <input type="date" class="form-control timepicker" name="start_time_off" />
+                </div>
+                <div class="form-group label-floating">
+                    <label>Đến hết ngày ngày</label>
+                    <input type="date" class="form-control datepicker" name="end_time_off" />
+                </div>
+                <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
+                </form>
+>>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
             </div>
         </div>
     </div>
     </div>
+<<<<<<< HEAD
+=======
+    </div>
+    </div>
+>>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
 @endsection
