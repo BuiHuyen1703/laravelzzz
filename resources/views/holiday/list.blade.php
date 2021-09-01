@@ -12,11 +12,16 @@
                     <tr>
                         <th>Tên</th>
                         <th>Ngày</th>
+                        <th></th>
                     </tr>
                     @foreach ($listHoliday as $holi)
                         <tr>
                             <td>{{ $holi->name_holiday }}</td>
                             <td>{{ $holi->date_holiday }}</td>
+                            <td><a class="btn btn-sm btn-warning" href="{{ route('holiday.edit', $holi->id_holiday) }}">
+                                    <i class="fa fa-edit"></i>
+                                    Sửa
+                                </a></td>
                         </tr>
                     @endforeach
 

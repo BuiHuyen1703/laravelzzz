@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,11 +40,11 @@
             </div>
         </nav>
         <div class="content">
-            <div class="container-fluid">
+            <div class="container-fluid" id="pjax">
                 @yield('huyen')
             </div>
         </div>
-        @include('footer')
+        {{-- @include('footer') --}}
     </div>
     </div>
 </body>
@@ -52,6 +53,12 @@
 <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/assets/js/material.min.js" type="text/javascript"></script>
 <script src="/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+{{-- <script type="text/javascript" src="{{ asset('assets') }} /js/jquery.pjax.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js.map"></script>
+
+
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 <!-- Library for adding dinamically elements -->
@@ -91,12 +98,16 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="/assets/js/demo.js"></script>
 <script type="text/javascript">
+    // $(document).ready(function() {
+
+    //     // Javascript method's body can be found in assets/js/demos.js
+    //     demo.initDashboardPageCharts();
+
+    //     demo.initVectorMap();
+    // });
     $(document).ready(function() {
-
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-        demo.initVectorMap();
+        $(document).pjax('a', 'pjax')
+        // does current browser support PJAX
     });
 </script>
 

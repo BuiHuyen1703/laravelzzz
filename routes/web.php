@@ -10,6 +10,7 @@ use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\SalaryDetailController;
 use App\Http\Controllers\TimekeeppingController;
+use App\Models\Timekeeping;
 use Illuminate\Support\Facades\Route;
 
 ///login
@@ -51,9 +52,10 @@ Route::middleware(['isAuth'])->group(function () {
 
     //timekeeping
     Route::resource('/timekeeping', TimekeeppingController::class);
-
+    Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
+    Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
     // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
-    //     Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
+    //     // Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
     // });
 
     //legal-off
@@ -75,9 +77,11 @@ Route::middleware(['isAuth'])->group(function () {
     Route::resource('/employee', EmployeeController::class);
 
     //salary
-    Route::resource('/salary', SalaryDetailController::class);
+    // Route::resource('/salary', SalaryDetailController::class);
+    Route::get('/salary', [SalaryDetailController::class, 'index'])->name('salary.index');
     Route::prefix("salary")->name("salary.")->group(function () {
         Route::get('/detail', [SalaryDetailController::class, 'detail'])->name('detail');
+        Route::get('/luong', [SalaryDetailController::class, 'holiday'])->name('luong');
     });
     //calender
     Route::get('/calender', function () {
@@ -87,20 +91,21 @@ Route::middleware(['isAuth'])->group(function () {
     //holiday
     Route::resource('/holiday', HolidayController::class);
 });
-//USER
-// Route::resource('/user', UserController::class);
-// Route::get('/user', function () {
-//     return view('user.index');
-// })->name('userindex');
+
 
 Route::get('/user/login', [AuthenticateController::class, 'loginUser'])->name('login-user');
 Route::post('/user/login-process', [AuthenticateController::class, 'loginProcessUser'])->name('login-process-user');
 Route::get('/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-user');
 Route::middleware(['isGuest'])->group(function () {
-    Route::get('/user', function () {
-        return view('user.index ');
-    })->name('userIndex');
+    Route::get('/user', [TimekeeppingController::class, 'create'])->name('userIndex');
+    //timekeeping
+    Route::resource('/timekeeping', TimekeeppingController::class);
+    Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
+    Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
+    // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
+    //     // Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
+    // });
 });
-Route::get('/tt', function () {
-    return view('user.times.test');
-});
+// Route::get('/tt', function () {
+//     return view('user.times.test');
+// });

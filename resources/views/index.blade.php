@@ -1,7 +1,6 @@
 @extends('dashboard')
-@section('title','Trang chủ')
+@section('title', 'Trang chủ')
 @section('huyen')
-
 
     <div class="row">
         <div class="col-md-12">

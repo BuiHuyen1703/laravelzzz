@@ -36,7 +36,7 @@ class LegaloffController extends Controller
         return view('user.index');
     }
 
-    public function store(Request $request, LegalOff $legalOff)
+    public function store(Request $request)
     {
         $id = $request->get('id_employee');
         $name = $request->get('name_emp');
@@ -46,7 +46,6 @@ class LegaloffController extends Controller
         $end_time_off = $request->get('end_time_off');
         $legal = new LegalOff();
         $legal->id_employee = $id;
-        // $legal->name_employee = $name;
         $legal->reason = $reason;
         $legal->note = $note;
         $legal->strat_time_off = $start_time_off;

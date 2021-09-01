@@ -1,5 +1,6 @@
 @extends('dashboard')
 @section('huyen')
+    <?php use Carbon\Carbon; ?>
     <form action="{{ route('holiday.store') }}" method="post">
         @csrf
 

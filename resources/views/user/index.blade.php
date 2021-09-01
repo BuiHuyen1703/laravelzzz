@@ -5,6 +5,8 @@
 @section('user')
     <?php use Carbon\Carbon; ?>
     <div class="row">
+        {{-- @foreach ($checks as $check) --}}
+        {{-- @if ($check->checkin == null) --}}
         {{-- checkin --}}
         <div class="col-md-4">
             <div class="card">
@@ -16,18 +18,20 @@
                     <div class="card-content">
                         <h3 class="card-title">Check in</h3>
                         <div class="form-group">
-                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
+                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check in</label>
+                            <input type="text" name="date" value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}">
                             <input type="text" class="form-control datetimepicker"
-                                value="{{ Carbon::now()->toDateString() }}" name="checkin" />
+                                value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toTimeString() }}" name="checkin" />
                             <input type="hidden" name="available" value="1">
                         </div>
-                        <button class="btn btn-primary">Check in</button>
+                        <button class="btn btn-primary" onclick="return confirm('checkin thành công  ') ">Check in</button>
                     </div>
                 </form>
             </div>
         </div>
-
+        {{-- @endif --}}
+        {{-- @if ($check->checkin == null) --}}
         {{-- checkout --}}
         <div class="col-md-4">
             <div class="card">
@@ -35,22 +39,25 @@
                     <i class="material-icons">today</i>
                 </div>
                 <form action="" method="POST">
-                    @method("PUT")
-                    @csrf
+                    {{-- @method("PUT")
+                        @csrf --}}
                     <div class="card-content">
                         <h3 class="card-title">Check out</h3>
                         <div class="form-group">
-                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
+                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check out</label>
+                            <input type="text" name="date" value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}">
                             <input type="text" class="form-control datetimepicker"
-                                value="{{ Carbon::now('Asia/Ho_Chi_Minh') }}" name="checkout" />
-                            //input mà đặt tên là date nó đâu check out á
+                                value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toTimeString() }}" name="checkout" />
                         </div>
                         <button class="btn btn-danger">Check out</button>
                     </div>
                 </form>
             </div>
         </div>
+        {{-- @endif --}}
+        {{-- @endforeach --}}
+
 
     </div>
 
@@ -68,7 +75,6 @@
                             {{-- <input type="hidden" name="id_employee" value="{{ session('user')->id_employee }}"> --}}
                             <label class="control-label">Tên </label>
                             <input type="hidden" name="name_emp" value="@if (session('user')) {{ session('user')->id_admin ?? session('user')->id_employee }} @endif ">
-<<<<<<< HEAD
                             <input class=" form-control" name="" value="@if (session('user')) {{ session('user')->name_admin ?? session('user')->name_empployee }} @endif ">
                         </div>
 
@@ -100,36 +106,11 @@
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>
                 </div>
-=======
-                        <input class=" form-control" name="name_emp" value="{{ session('user')->name_empployee }}">
-                </div>
-
-                <div class=" form-group label-floating ">
-                    <label class=" control-label">Lý do</label>
-                    <input type="text" class="form-control" name="reason">
-                </div>
-                <div class="form-group label-floating">
-                    <label class="control-label">Ghi chú</label>
-                    <input type="text" class="form-control" name="note">
-                </div>
-                <div class="form-group label-floating">
-                    <label>Nghỉ từ ngày</label>
-                    <input type="date" class="form-control timepicker" name="start_time_off" />
-                </div>
-                <div class="form-group label-floating">
-                    <label>Đến hết ngày ngày</label>
-                    <input type="date" class="form-control datepicker" name="end_time_off" />
-                </div>
-                <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
-                </form>
->>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
             </div>
         </div>
     </div>
     </div>
-<<<<<<< HEAD
-=======
-    </div>
-    </div>
->>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
-@endsection
+    <<<<<<< HEAD=======</div>
+        </div>
+        >>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
+    @endsection

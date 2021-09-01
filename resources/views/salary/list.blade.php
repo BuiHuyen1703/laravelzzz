@@ -8,26 +8,31 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">Thông tin bảng lương</h3>
-            {{-- <h4>
-                <a href="{{ route('salary.create') }}">Thêm level</a>
-            </h4> --}}
+            <form action="{{ route('salary.luong') }}" method="get">
+                <div>
+                    <input type="date" name="date">
+
+                    <button><i class="fa fa-edit">lương</i></button>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table">
                     <th>Tên nhân viên</th>
                     <th>Level</th>
                     <th>Chức vụ</th>
-                    <th><a class="btn btn-sm btn-watch" href="{{ route('salary.detail') }}"><i
-                                class="fa fa-edit">lương</i></a></th>
+                    <th>Lương</th>
+
                     <th></th>
-                    {{-- <tbody>
+                    <tbody>
                         @foreach ($listSalary as $salary)
                             <tr>
-                                <td>{{ $salary->name_level }}</td>
-                                <td>{{ $salary->basic_salary }}</td>
-                                
+                                <td>{{ $salary->id_employee }}</td>
+                                <td>{{ $salary->fromdate }}</td>
+                                <td>{{ $salary->todate }}</td>
+                                <td>{{ $salary->salary }}</td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
                 </table>
             </div>
         </div>

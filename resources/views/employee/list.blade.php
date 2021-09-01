@@ -27,19 +27,14 @@
                     <th>Tên nhân viên</th>
                     {{-- <th>Trạng thái</th> --}}
                     <th>Chi tiết</th>
-<<<<<<< HEAD
                     <th></th>
 
-=======
-                    <th><a class="btn btn-sm btn-watch" href="{{ route('salary.detail') }}"><i
-                                class="fa fa-edit">lương</i></a></th>
->>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
                     @foreach ($listEmp as $emp)
                         <tr>
                             <td>{{ $emp->name_empployee }}</td>
                             {{-- <td>{{ $emp->NameStatus }}</td> --}}
-                            <td><a class="btn btn-sm btn-warning" href="{{ route('employee.show', $emp->id_employee) }}"><i
-                                        class="fa fa-edit"></i></a>
+                            <td><a class="btn btn-sm btn-warning"
+                                    href="{{ route('employee.show', $emp->id_employee) }}"><i class="fa fa-edit"></i></a>
                             </td>
                             {{-- <td><a class="btn btn-sm btn-watch" href="{{ route('salary.detail', $emp->id_employee) }}"><i
                                         class="fa fa-edit">lương</i></a>
@@ -48,6 +43,7 @@
                         </tr>
                     @endforeach
                     </tbody>
+
                 </table>
                 {{ $listEmp->appends(['search' => $search])->links('') }}
             </div>

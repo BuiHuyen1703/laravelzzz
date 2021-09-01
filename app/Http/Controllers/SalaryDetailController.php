@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Holiday;
 use App\Models\Employee;
-use App\Models\LegalOff;
 use App\Models\SalaryDetail as ModelsSalaryDetail;
-use App\Models\Timekeeping as ModelsTimekeeping;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use App\Models\Timekeeping;
+use App\Models\SalaryDetail;
 
 class SalaryDetailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $listSalary = ModelsSalaryDetail::get();
@@ -25,52 +20,67 @@ class SalaryDetailController extends Controller
         ]);
     }
 
-
-    public function detail($id)
+    public function holiday(Request $request)
     {
-        $month = Carbon::now()->month; //tháng hiện tại
-        $year = Carbon::now()->year; //năm hiện tại
-        $id_emp = $id;
-        $emp = Employee::join("level", "employees.level", "=", "level.id_level")
-            ->where("employees.id_level", $id)
-            ->select("level.basic_salary")->get();
+        $timeString = $request->get('date');
+        $start =  $timeString ? Carbon::parse($timeString)->startOfMonth()
+            : Carbon::today()->startOfMonth();
 
-        foreach ($emp as $empl) {
-            $basic_salary = $empl->basic_salary;
-            // dd($basic_salary);
-            // lấy check in check out từng nhân viên 
-            $timeKeeping = ModelsTimekeeping::where("id_employee", '=', '$id_emp')
-                //  ->where(MONTH('checkin'), '=', $month)
-                //  ->where(YEAR('checkin'), '=', $year)
-                ->get();
-            foreach ($timeKeeping as $date) {
-                if ($date) {
-                }
-            }
-            // lấy ngày nghỉ từng nhân viên 
-            $legal_off = LegalOff::where('id_employee', '=', $id_emp)
-                // ->where(MONTH('start_time'), '=', $month)
-                // ->where(YEAR('start_time'), '=', $year)
-                ->count();
-
-            // tìm số ngày của tháng đó
-            //$date = số ngày công chuẩn = số ngày tháng đó - (t7+cn tháng đó)
-            //kiểm tra từng ngày 1 của tháng đó
-            // nghỉ có lương: nghỉ có phép + nghỉ lễ, nếu nghỉ lễ trùng t7,cn->nghỉ bù trong tháng đấy 
-            // nghỉ trừ lương: k checkin out, k đc duyệt nghỉ
-            // nghỉ k lương:thứ 7 cn 
-
-
-            /* 
-                check h :đếm check in >8h||check out >5h30 -20k
-                 check in >8h -20k, check in <8hh ->check đúng
-                 check out >5h30 -20k, check out >5h30->check đúng
-            */
-            //$date1 = đếm số ngày nv đi lm trong tháng đó
-
-            // lương = $basic_salary / $date * $date1
-
-            // Hiển thị ra 'view/salary/list'
+        $end = $start->copy()->endOfMonth();
+        // echo $end;
+        $month = $start->month;
+        //ngày di lm
+        $workingDays = [1, 2, 3, 4, 5, 6];
+        // $holidayDays = ['*-09-025', '*-01-01', '*-09-02', '*-09-12'];
+        $array = [];
+        $query = Holiday::all();
+        foreach ($query as $row) {
+            $day = '*-' . $row->date_holiday;
+            $array[] = $day;
         }
+        //ngày lễ
+        $holidayDays = $array;
+        //tính ra chủ nhật 1thangs
+        $dayoff = $start->diffInDaysFiltered(function (Carbon $date) use ($workingDays) {
+            return !in_array($date->format('N'), $workingDays);
+        }, $end);
+        // echo $dayoff;
+        //tính ra số ngày nghỉ lễ 1 tháng
+        $dayoff2 = $start->diffInDaysFiltered(function (Carbon $date) use ($holidayDays) {
+            return in_array($date->format('*-m-d'), $holidayDays);
+        }, $end);
+        //số ngày của 1 tháng
+        $days = $start->diffInDaysFiltered(function (Carbon $date) use ($workingDays) {
+            return  $date;
+        }, $end);
+        // echo $days;
+        $daystream = $days - $dayoff;
+
+        $id_emp = Employee::join("level", "employees.level", "=", "level.id_level")->get();
+        foreach ($id_emp as $id) {
+            //SELECT COUNT(*) FROM `timekeeping` WHERE month(date) = '08' AND id_employee=2 AND checkin is null AND checkout is null
+            $dem = Timekeeping::where('id_employee', '=', $id->id_employee)->whereMonth('date', $month)->whereNull('checkin')->whereNull('checkout')->count();
+            $phat = 0;
+            // echo $dem;
+            $demphat = Timekeeping::where('id_employee', '=', $id->id_employee)->whereMonth('date', $month)->get();
+            foreach ($demphat as $row) {
+                $phat = $phat + $row->phat;
+            }
+            $stream = $daystream - ($dem + $dayoff2);
+
+            $luong = ($id->basic_salary / $daystream) * $stream - $phat;
+            // echo $luong;
+            // dd($id_emp);
+            $a = SalaryDetail::create([
+                'id_employee' => $id->id_employee,
+                'fromdate' => $start,
+                'todate' => $end,
+                'salary' => $luong,
+                'id_level' => $id->basic_salary,
+            ]);
+        }
+
+        // return  view('salary.list');
+        return redirect()->route('salary.index');
     }
 }

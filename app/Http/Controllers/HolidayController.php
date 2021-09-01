@@ -20,68 +20,52 @@ class HolidayController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('holiday.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        Holiday::create($request->all());
+        $name = $request->get('name_holiday');
+        $day = date_create($request->get('date_holiday'));
+        $date = date_format($day, "m-d");
+        $holi = new Holiday();
+        $holi->name_holiday = $name;
+        $holi->date_holiday = $date;
+        $holi->save();
         return redirect(route('holiday.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $holi = Holiday::find($id);
+        return view('holiday.edit', [
+            "holi" => $holi
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->get('name_holiday');
+        $date = $request->get('date_holiday');
+        // $day = date_create($request->get('date_holiday'));
+        // $date = date_format($day, "m-d");
+        $holi = Holiday::find();
+        $holi->name_holiday = $name;
+        $holi->date_holiday = $date;
+        $holi->save();
+        return redirect()->route('holiday.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

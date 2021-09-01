@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Null_;
 
 class Timekeeping extends Model
 {
@@ -15,5 +16,14 @@ class Timekeeping extends Model
         'id_employee',
         'checkin',
         'checkout',
+        'date',
+        'phat',
     ];
+
+    public function getCheckAttribute()
+    {
+        if ($this->checkout == '') {
+            return 'Null';
+        }
+    }
 }
