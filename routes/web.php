@@ -98,14 +98,17 @@ Route::post('/user/login-process', [AuthenticateController::class, 'loginProcess
 Route::get('/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-user');
 Route::middleware(['isGuest'])->group(function () {
     Route::get('/user', [TimekeeppingController::class, 'create'])->name('userIndex');
+
     //timekeeping
     Route::resource('/timekeeping', TimekeeppingController::class);
     Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
-    Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
+    // Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
     // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
     //     // Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
     // });
 });
+
+
 // Route::get('/tt', function () {
 //     return view('user.times.test');
 // });

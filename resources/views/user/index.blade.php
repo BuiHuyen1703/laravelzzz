@@ -38,15 +38,19 @@
                 <div class="card-header card-header-icon" data-background-color="red">
                     <i class="material-icons">today</i>
                 </div>
-                <form action="" method="POST">
-                    {{-- @method("PUT")
-                        @csrf --}}
+                <form action="{{ route('timekeeping.store') }}" method="post">
+                    @csrf
                     <div class="card-content">
                         <h3 class="card-title">Check out</h3>
                         <div class="form-group">
+                            {{-- @foreach ($timekeeping as $item)
+                                <input type="text" name="id_timekeeping" value="{{ $item->id_timekeeping }}">
+                            @endforeach --}}
+
                             <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_employee }} @endif ">
                             <label class="label-control">Ngày/Giờ check out</label>
                             <input type="text" name="date" value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}">
+                            <input type="hidden" name="available" value="1">
                             <input type="text" class="form-control datetimepicker"
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toTimeString() }}" name="checkout" />
                         </div>

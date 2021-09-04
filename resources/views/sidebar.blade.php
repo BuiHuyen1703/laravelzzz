@@ -36,7 +36,7 @@
                 <li class="{{ Request::is('/') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}">
                         <i class="material-icons">device_hub</i>
-                        <p> Dashboard </p>
+                        <p> Thống kê </p>
                     </a>
                 </li>
                 <li class="{{ Request::is('jobTitle') ? 'active' : '' }}">

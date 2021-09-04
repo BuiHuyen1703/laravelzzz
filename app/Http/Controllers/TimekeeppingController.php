@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Datetime;
+use Exception;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class TimekeeppingController extends Controller
 {
@@ -82,19 +85,27 @@ class TimekeeppingController extends Controller
         $mydate = new DateTime();
         $mydate->modify('+7 hours');
         $curendtDate = $mydate->format('Y-m-d');
-
+        $Emp =  Session::get('user');
+        $idEmp = $Emp->id_employee;
         $check = DB::table("timekeeping")
             ->where("date", "=", $curendtDate)
+            ->where("id_employee", "=", $idEmp)
             ->get();
-        return view('user.index', ["checks" => $check]);
+        // dd($check);
+        return view(
+            'user.index',
+            [
+                "checks" => $check,
+                "idEmp" => $idEmp
+            ],
+        );
     }
 
 
     public function store(Request $request)
     {
-        $checkout = null;
+        $checkout = $request->get('checkout');
         $idEmp = $request->get('id_employee');
-
         $checkin = $request->get('checkin');
         $date = $request->get('date');
         $available = $request->get('available');
@@ -104,47 +115,105 @@ class TimekeeppingController extends Controller
         $curendtDate = $mydate->format('Y-m-d');
         $phat = 0;
 
-        if ((float)$checkin > 8) {
-            $phat = 20;
+        $check = DB::table('timekeeping')
+            ->where('date', '=', $curendtDate)
+            ->where('id_employee', '=', $idEmp)
+            ->count();
+        if ($check == 0) {
+            if ($checkin != null) {
+                if ((float)$checkin > 8) {
+                    $phat = 20;
+                }
+
+                $timekeeping = new Timekeeping();
+                $timekeeping->id_employee = $idEmp;
+                $timekeeping->checkin = $checkin;
+                $timekeeping->checkout = $checkout;
+                $timekeeping->date = $date;
+                $timekeeping->available = $available;
+                $timekeeping->phat = $phat;
+                $timekeeping->save();
+
+                return redirect(route('userIndex'));
+            }
         }
-        $timekeeping = new Timekeeping();
-        $timekeeping->id_employee = $idEmp;
-        $timekeeping->checkin = $checkin;
-        $timekeeping->checkout = $checkout;
-        $timekeeping->date = $date;
-        $timekeeping->available = $available;
-        $timekeeping->phat = $phat;
-        $timekeeping->save();
 
-        return redirect(route('userIndex'));
+        $check1 = DB::table('timekeeping')
+            ->where('date', '=', $curendtDate)
+            ->where('id_employee', '=', $idEmp)
+            ->get();
+        $count = null;
+        foreach ($check1 as $check1) {
+            $count = $check1->checkout;
+        }
+        if ($count == null) {
+            if ($checkout != null) {
+
+                $mydate = new DateTime();
+                $mydate->modify('+7 hours');
+                $curendtDate = $mydate->format('Y-m-d');
+                $timekeeping = DB::table("timekeeping")
+                    ->where("date", "=", $curendtDate)
+                    ->where("id_employee", "=", $idEmp)
+                    ->get();
+                // dd($timekeeping);
+
+
+
+                foreach ($timekeeping as $id) {
+                    $hour = (float)$checkout;
+                    $phat = $id->phat;
+                    if ($hour < 17) {
+                        if ($id->phat != 0) {
+                            $phat = $id->phat + 20;;
+                        } else {
+                            $phat = 0;
+                        }
+                    }
+                    // dd($phat);
+                    $id = $id->id_timekeeping;
+
+                    $timekeeping = Timekeeping::find($id);
+                    $timekeeping->id_employee;
+                    $timekeeping->checkout = $checkout;
+                    $timekeeping->date = $date;
+                    $timekeeping->phat = $phat;
+
+                    $timekeeping->save();
+
+                    return redirect()->route('userIndex');
+                }
+            }
+        }
+        return redirect()->route('userIndex');
     }
 
-    public function checkin(Request $request)
-    {
-        // $idEmp = $request->get('id_employee');
-        // return $idEmp;
-        // $checkin = $request->get('checkin');
-        // $date = $request->get('date');
-        // $available = $request->get('available');
-        // //insert
-        // $che = DB::table("timekeeping")
-        //     ->insert([
-        //         "checkin" => $checkin,
-        //         "avalable" => $available,
-        //         "date" => $date
-        //     ]);
+    // public function checkin(Request $request)
+    // {
+    //     // $idEmp = $request->get('id_employee');
+    //     // return $idEmp;
+    //     // $checkin = $request->get('checkin');
+    //     // $date = $request->get('date');
+    //     // $available = $request->get('available');
+    //     // //insert
+    //     // $che = DB::table("timekeeping")
+    //     //     ->insert([
+    //     //         "checkin" => $checkin,
+    //     //         "avalable" => $available,
+    //     //         "date" => $date
+    //     //     ]);
 
 
-        // return $che;
-        // if ($che === null) {
-        //     $sql3 = Timekeeping::create([
-        //         'id_employee' => $idEmp,
-        //         'date' => $date,
-        //         'phat' => 20,
-        //     ]);
-        // }
-        // return redirect(route('userIndex'));
-    }
+    //     // return $che;
+    //     // if ($che === null) {
+    //     //     $sql3 = Timekeeping::create([
+    //     //         'id_employee' => $idEmp,
+    //     //         'date' => $date,
+    //     //         'phat' => 20,
+    //     //     ]);
+    //     // }
+    //     // return redirect(route('userIndex'));
+    // }
 
     // public function checkout()
     // {
@@ -154,29 +223,46 @@ class TimekeeppingController extends Controller
 
     public function edit($id)
     {
-        $timekeeping = Timekeeping::find($id);
+        $timekeeping = Timekeeping::where("id_timekeeping", $id);
         return view('user.index', [
             "timekeeping" => $timekeeping
         ]);
     }
 
 
-    // public function update(Request $request, $id)
-    // {
-    //     $id_emp = $request->get('id_emp');
-    //     $checkin = $request->get('checkin');
-    //     $checkout = $request->get('checkout');
-    //     $date = $request->get('date');
-    //     $available = $request->get('available');
-    //     $timekeeping = Timekeeping::find($id);
-    //     $timekeeping->id_employee = $id_emp;
-    //     $timekeeping->checkin = $checkin;
-    //     $timekeeping->checkout = $checkout;
-    //     $timekeeping->date = $date;
-    //     $timekeeping->available = $available;
-    //     $timekeeping->save();
-    //     return redirect()->route('userIndex');
-    // }
+    public function update(Request $request, $id)
+    {
+        $id_emp = $request->get('id_emp');
+        $checkin = $request->get('checkin');
+        $checkout = $request->get('checkout');
+        $date = $request->get('date');
+        $available = $request->get('available');
+        $phat = $request->get('phat');
+
+        $mydate = new DateTime();
+        $mydate->modify('+7 hours');
+        $curendtDate = $mydate->format('Y-m-d');
+
+        if ((float)$checkout > 17) {
+            if ($phat != 0) {
+                $phat += 20;
+            } else {
+                $phat = 20;
+            }
+        }
+
+
+        $timekeeping = Timekeeping::find($id);
+        $timekeeping->id_employee = $id_emp;
+        $timekeeping->checkin = $checkin;
+        $timekeeping->checkout = $checkout;
+        $timekeeping->date = $date;
+        $timekeeping->available = $available;
+        $timekeeping->phat = $phat;
+
+        $timekeeping->save();
+        return redirect()->route('userIndex');
+    }
 
     public function hide($id)
     {
