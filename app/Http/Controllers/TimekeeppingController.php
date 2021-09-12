@@ -7,11 +7,14 @@ use App\Models\LegalOff;
 use App\Models\Timekeeping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\TimeExport;
+use App\Exports\TimeExportMultiple;
 use Carbon\Carbon;
 use Datetime;
 use Exception;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TimekeeppingController extends Controller
 {
@@ -22,10 +25,14 @@ class TimekeeppingController extends Controller
             ->where("timekeeping.available", "=", 1)
             ->orderBy('employees.id_employee', 'asc')
             ->paginate(5);
+
+        $years = DB::table('timekeeping')->selectRaw('YEAR(date) as value')->distinct()->orderBy('date')->get();
         return view('timekeeping.list', [
-            "listTime" => $listTime
+            "listTime" => $listTime,
+            "years" => $years
         ]);
     }
+
     // k check -> admin check rồi insert vào cột phạt 100k-> nghỉ k phép
     public function check()
     {
@@ -61,23 +68,38 @@ class TimekeeppingController extends Controller
             } else {
                 //$check = "SELECT `timekeeping`.`id_employee`  FROM `timekeeping` WHERE Date ='$date' and id_employee = $id_employee 
                 // and checkout IS NULL" ;(fisrt )
-                $check = Timekeeping::where([
-                    'id_employee' => $idEmp,
-                    'date' => $daynow,
-                    'checkout' => null,
-                ])->first();
-                if ($check === null) {
-                    $sql2 = Timekeeping::create([
-                        'id_employee' => $idEmp,
-                        'date' => $daynow,
-                        'phat' => 20,
-                    ]);
-                }
+                // $check = Timekeeping::where([
+                //     'id_employee' => $idEmp,
+                //     'date' => $daynow,
+                //     'checkout' => null,
+                // ])->first();
+                $check = Timekeeping::where('id_employee', '=', $idEmp)
+                    ->where('date', '=', $daynow)
+                    ->where('checkout', '=', null)
+                    ->first();
+                // dd($check);
+                $phat = $check->phat;
+
+                $phat1 = $phat + $check->phat;
+                // dd($phat1);
+                // if ($check === null) {
+
+                // $sql2 = Timekeeping::create([
+                //     'id_employee' => $idEmp,
+                //     'date' => $daynow,
+                //     'phat' => $phat1,
+                // ]);
+                $sql2 = DB::table('timekeeping')
+                    ->where("id_employee", "=", $idEmp)
+                    ->where("date", "=", $daynow)
+                    ->update(["phat" => $phat1]);
+                // }
             }
         }
-        return view('timekeeping.list', [
-            'listTime' => $listTime,
-        ]);
+        // return view('timekeeping.list', [
+        //     'listTime' => $listTime,
+        // ]);
+        return Redirect()->route('timekeeping.index');
     }
 
     public function create()
@@ -187,82 +209,10 @@ class TimekeeppingController extends Controller
         }
         return redirect()->route('userIndex');
     }
-
-    // public function checkin(Request $request)
-    // {
-    //     // $idEmp = $request->get('id_employee');
-    //     // return $idEmp;
-    //     // $checkin = $request->get('checkin');
-    //     // $date = $request->get('date');
-    //     // $available = $request->get('available');
-    //     // //insert
-    //     // $che = DB::table("timekeeping")
-    //     //     ->insert([
-    //     //         "checkin" => $checkin,
-    //     //         "avalable" => $available,
-    //     //         "date" => $date
-    //     //     ]);
-
-
-    //     // return $che;
-    //     // if ($che === null) {
-    //     //     $sql3 = Timekeeping::create([
-    //     //         'id_employee' => $idEmp,
-    //     //         'date' => $date,
-    //     //         'phat' => 20,
-    //     //     ]);
-    //     // }
-    //     // return redirect(route('userIndex'));
-    // }
-
-    // public function checkout()
-    // {
-    //     //update
-    // }
-
-
-    public function edit($id)
+    public function show($id)
     {
-        $timekeeping = Timekeeping::where("id_timekeeping", $id);
-        return view('user.index', [
-            "timekeeping" => $timekeeping
-        ]);
     }
 
-
-    public function update(Request $request, $id)
-    {
-        $id_emp = $request->get('id_emp');
-        $checkin = $request->get('checkin');
-        $checkout = $request->get('checkout');
-        $date = $request->get('date');
-        $available = $request->get('available');
-        $phat = $request->get('phat');
-
-        $mydate = new DateTime();
-        $mydate->modify('+7 hours');
-        $curendtDate = $mydate->format('Y-m-d');
-
-        if ((float)$checkout > 17) {
-            if ($phat != 0) {
-                $phat += 20;
-            } else {
-                $phat = 20;
-            }
-        }
-
-
-        $timekeeping = Timekeeping::find($id);
-        $timekeeping->id_employee = $id_emp;
-        $timekeeping->checkin = $checkin;
-        $timekeeping->checkout = $checkout;
-        $timekeeping->date = $date;
-        $timekeeping->available = $available;
-        $timekeeping->phat = $phat;
-
-        $timekeeping->save();
-        return redirect()->route('userIndex');
-    }
 
     public function hide($id)
     {
@@ -271,5 +221,15 @@ class TimekeeppingController extends Controller
             ->where("id_timekipping", "=", $id)
             ->update(["available" => 0]);
         return redirect("timekeeping");
+    }
+
+    public function export(Request $request)
+    {
+        $request->validate([
+            'year' => "required",
+            'month' => "required"
+        ]);
+
+        return (new TimeExportMultiple($request->year, $request->month))->download('time_' . time() . '.xlsx');
     }
 }

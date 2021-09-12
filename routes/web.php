@@ -9,7 +9,9 @@ use App\Http\Controllers\JobtitleController;
 use App\Http\Controllers\LegaloffController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\SalaryDetailController;
+use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\TimekeeppingController;
+use App\Models\Employee;
 use App\Models\Timekeeping;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +23,14 @@ Route::post('/login-process', [AuthenticateController::class, 'loginProcessAdmin
 Route::get('/logout-admin', [AuthenticateController::class, 'logoutAdmin'])->name('logout-admin');
 
 Route::middleware(['isAuth'])->group(function () {
-    Route::get('/', function () {
-        return view('index ');
-    })->name('dashboard');
+
+    // Route::get('/', function () {
+    //     return view('index ');
+    // })->name('dashboard');
+
+    //thống kê
+    Route::resource('/statistics', StatisticsController::class);
+    Route::get('/statistics/sal', [StatisticsController::class, 'statis'])->name('thong-ke');
 
 
     //admin
@@ -53,10 +60,12 @@ Route::middleware(['isAuth'])->group(function () {
     //timekeeping
     Route::resource('/timekeeping', TimekeeppingController::class);
     Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
-    Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
+    // Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
+
     // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
     //     // Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
     // });
+    Route::post("/timekeeping/export", [TimekeeppingController::class, 'export'])->name('export');
 
     //legal-off
     Route::resource('/legalOff', LegaloffController::class);
@@ -67,8 +76,8 @@ Route::middleware(['isAuth'])->group(function () {
         Route::get('/hihi/{id}', [LegaloffController::class, 'approve1'])->name('hihi');
     });
 
-    //employee
 
+    //employee
     Route::prefix('employee')->name("employee.")->group(function () {
         Route::get('/hide/{id}', [EmployeeController::class, 'hide'])->name('hide');
         Route::get('/insert/excel', [EmployeeController::class, 'insertExcel'])->name('insert-excel');
@@ -98,10 +107,10 @@ Route::post('/user/login-process', [AuthenticateController::class, 'loginProcess
 Route::get('/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-user');
 Route::middleware(['isGuest'])->group(function () {
     Route::get('/user', [TimekeeppingController::class, 'create'])->name('userIndex');
-
+    // Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
     //timekeeping
-    Route::resource('/timekeeping', TimekeeppingController::class);
-    Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
+    // Route::resource('/timekeeping', TimekeeppingController::class);
+
     // Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
     // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
     //     // Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
@@ -109,6 +118,9 @@ Route::middleware(['isGuest'])->group(function () {
 });
 
 
-// Route::get('/tt', function () {
-//     return view('user.times.test');
+// Route::get('/test', function () {
+//     $emp = Employee::find(1);
+//     dd($emp->timeKeepings->filter(function($tk) {
+//         return
+//     }));
 // });

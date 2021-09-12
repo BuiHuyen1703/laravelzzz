@@ -26,7 +26,7 @@ class AuthenticateController extends Controller
             $admin = Admin::where('email_admin', $email)->where('pass_admin', $password)->firstOrFail();
             $request->session()->put('admin', $admin);
 
-            return Redirect::route('dashboard');
+            return Redirect::route('statistics.index');
         } catch (Exception $e) {
             return Redirect::route('login-admin')->with('error', 'Tài khoản hoặc mật khẩu sai');
         }

@@ -155,6 +155,9 @@ class EmployeeController extends Controller
             ->update(["available" => 0]);
         return redirect("employee");
     }
+
+
+
     public function insertExcel()
     {
         return view('employee.insert-excel');

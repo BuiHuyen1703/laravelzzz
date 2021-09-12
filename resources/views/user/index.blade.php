@@ -101,8 +101,8 @@
                             <input type="date" class="form-control datepicker" name="end_time_off" />
                         </div>
                         <div class="form-group label-floating">
-                            <<<<<<< HEAD {{-- <label>available</label> --}} <input type="hidden" class="form-control datepicker"
-                                name="available" value="1" />
+                            {{-- <label>available</label> --}} <input type="hidden" class="form-control datepicker" name="available"
+                                value="1" />
 
                             <input type="hidden" class="form-control datepicker" name="available" value="1" />
                             <input type="hidden" class="form-control datepicker" name="available" />
@@ -114,7 +114,5 @@
         </div>
     </div>
     </div>
-    <<<<<<< HEAD=======</div>
-        </div>
-        >>>>>>> 3c67e09da5c14ee99a9cea2acdb921bc11aa95e6
-    @endsection
+
+@endsection

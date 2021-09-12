@@ -11,5 +11,5 @@ class SalaryDetail extends Model
     protected $table = 'salary_detail';
     public $timestamps = false;
     protected $primaryKey = 'id_detail';
-    protected $fillable = ['id_employee', 'fromdate', 'todate', 'salary', 'id_level'];
+    protected $fillable = ['id_employee', 'fromdate', 'todate', 'salary', 'id_jobTitle', 'id_level'];
 }

@@ -33,10 +33,12 @@
                     <p> Trang chủ </p>
                 </a>
             </li>
+
+
             <li class="{{ Request::is('/quanly') ? 'active' : '' }}">
-                <a href=" ">
+                <a href="">
                     <i class="material-icons">widgets</i>
-                    <p> Quản lý công việc </p>
+                    <p> Chấm công </p>
                 </a>
             </li>
             </a>

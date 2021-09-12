@@ -18,6 +18,8 @@
             <div class="table-responsive">
                 <table class="table">
                     <th>Tên nhân viên</th>
+                    <th>Từ ngày</th>
+                    <th>Đến ngày</th>
                     <th>Level</th>
                     <th>Chức vụ</th>
                     <th>Lương</th>
@@ -26,9 +28,11 @@
                     <tbody>
                         @foreach ($listSalary as $salary)
                             <tr>
-                                <td>{{ $salary->id_employee }}</td>
+                                <td>{{ $salary->name_empployee }}</td>
                                 <td>{{ $salary->fromdate }}</td>
                                 <td>{{ $salary->todate }}</td>
+                                <td>{{ $salary->id_level }}</td>
+                                <td>{{ $salary->name_jobTitle }}</td>
                                 <td>{{ $salary->salary }}</td>
                             </tr>
                         @endforeach

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Timekeeping;
 
 class Employee extends Model
 {
@@ -28,5 +29,10 @@ class Employee extends Model
         } else {
             return 'Nghỉ';
         }
+    }
+
+    public function timeKeepings()
+    {
+        return $this->hasMany(Timekeeping::class, 'id_employee');
     }
 }
