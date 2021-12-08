@@ -16,6 +16,7 @@ class StatisticsController extends Controller
     public function index(Request $request)
     {
         $date0 = date_create($request->get('date'));  // $date1 = getdate($date);
+
         $datedaye = date_format($date0, "m-Y");
         // echo $datedaye;
         // echo $date;
@@ -25,40 +26,65 @@ class StatisticsController extends Controller
 
         $listDep = Department::all();
         $idDep = $request->get('id-dep');
+
+
+
         if ($idDep == 0) {
             $idEmp = Employee::join("level", "employees.level", "=", "level.id_level")
                 ->join("jobtitle", "employees.id_jobTitle", "=", "jobtitle.id_jobTitle")
                 ->join("salary_detail", "employees.id_employee", "=", "salary_detail.id_employee")
+                // ->join("timekeeping", "employees.id_employee", "=", "timekeeping.id_employee")
                 ->whereMonth("fromdate", "=", $month2)
                 ->whereYear("fromdate", "=", $year2)
+                ->where("employees.available", "!=", 0)
+                ->distinct("id_employee")
                 ->get();
         } else {
             $idEmp = Employee::join("level", "employees.level", "=", "level.id_level")
                 ->join("jobtitle", "employees.id_jobTitle", "=", "jobtitle.id_jobTitle")
-                ->join("salary_detail", "employees.id_employee", "=", "salary_detail.id_employee")
+                ->leftjoin("salary_detail", "employees.id_employee", "=", "salary_detail.id_employee")
+                // ->leftjoin("timekeeping", "employees.id_employee", "=", "timekeeping.id_employee")
                 ->whereMonth("fromdate", "=", $month2)
                 ->whereYear("fromdate", "=", $year2)
                 ->where("employees.id_department", "=", $idDep)
+                ->where("employees.available", "!=", 0)
+                ->distinct("id_employee")
                 ->get();
+            // dd($idEmp);
         }
-
+        // rùi đó
         $count = 0;
         $j = 0;
         $array[] = null;
+        $array[0] = [
+            'id_employee' => null,
+            'ten_nv' => null,
+            'salary_basic' => null,
+            'job_title' => null,
+            'salary' => null,
+            'phat' => null,
+        ];
+
 
 
         //SELECT COUNT(phat) FROM timekeeping WHERE id_employee = 1 and month(date) ='08' AND phat != 0
         foreach ($idEmp as $id) {
-            $idEmp = $id->id_employee;
+
+            $idEmp1 = $id->id_employee;
+            // dd($idEmp);
             $month = date_create($id->date);
+            // dd($month);
             $month1 = date_format($month, "m");
             // dd($month1);
             $year1 = date_format($month, "Y");
-            $count = Timekeeping::where('id_employee', '=', $idEmp)
+            $count = Timekeeping::where('id_employee', '=', $idEmp1)
                 ->whereMonth('date', "=", $month1)
                 ->whereYear('date', "=", $year1)
                 ->where('phat', "!=", 0)
                 ->count();
+
+            // dd($count);
+
 
             $list = [
                 'id_employee' => $id->id_employee,
@@ -68,6 +94,8 @@ class StatisticsController extends Controller
                 'salary' => $id->salary,
                 'phat' => $count,
             ];
+
+            // dd($list);
             $array[$j++] = $list;
         }
 
@@ -110,6 +138,7 @@ class StatisticsController extends Controller
 
         $phat = $salary - $idEmp;
         // dd($idEmp);
+        // cái này sang expert í
         return view('thongke', [
             'idEmp' => $idEmp,
             'salary' => $salary,
@@ -126,5 +155,9 @@ class StatisticsController extends Controller
         ]);
 
         return (new TimeExportMultiple($request->year, $request->month))->download('time_' . time() . '.xlsx');
+    }
+
+    public function exportNumber()
+    {
     }
 }

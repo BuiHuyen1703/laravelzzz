@@ -8,9 +8,9 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">Thông tin level</h3>
-            <h4>
+            <button>
                 <a href="{{ route('level.create') }}">Thêm level</a>
-            </h4>
+            </button>
             <div class="table-responsive">
                 <table class="table">
                     <th>Level</th>
@@ -23,8 +23,8 @@
                                 <td>{{ $level->name_level }}</td>
                                 <td>{{ $level->basic_salary }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-warning"
-                                        href="{{ route('level.edit', $level->id_level) }}"><i class="fa fa-edit"></i> Sửa
+                                    <a class="btn btn-sm btn-warning" href="{{ route('level.edit', $level->id_level) }}"><i
+                                            class="fa fa-edit"></i> Sửa
                                     </a>
                                 </td>
                                 <td>

@@ -42,7 +42,7 @@
         <th>Lương cơ bản</th>
         <th>Chức vụ</th>
         <th>Lương thực nhận</th>
-        <th>Phạt</th>
+        {{-- <th>Phạt</th> --}}
     </tr>
 
     <tbody>
@@ -62,10 +62,30 @@
                 <td>{{ $salary['salary_basic'] }}</td>
                 <td>{{ $salary['job_title'] }}</td>
                 <td>{{ $salary['salary'] }}</td>
-                <td>{{ $salary['phat'] }}</td>
+                {{-- <td>{{ $salary['phat'] }}</td> --}}
             </tr>
         @endforeach
         {{-- @endif --}}
+
+
+        <form action="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tổng lương cơ bản </th>
+                        <th>{{ $salary }}</th>
+                    </tr>
+                    <tr>
+                        <th>Tổng lương thực nhận</th>
+                        <th>{{ $idEmp }}</th>
+                    </tr>
+                    <tr>
+                        <th>Tổng tiền phạt </th>
+                        <th>{{ $phat }}</th>
+                    </tr>
+                </thead>
+            </table>
+        </form>
     </tbody>
 
 

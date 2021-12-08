@@ -44,10 +44,10 @@
              <th>Password</th>
              <td>{{ $employee->password }}</td>
          </tr> --}}
-         <tr>
+         {{-- <tr>
              <th>Lương 1h</th>
              <td>{{ $employee->salaryPerHour }}</td>
-         </tr>
+         </tr> --}}
          <tr>
              <th>Level</th>
              <td>{{ $employee->level }}</td>

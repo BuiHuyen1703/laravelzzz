@@ -36,9 +36,16 @@
 
 
             <li class="{{ Request::is('/quanly') ? 'active' : '' }}">
-                <a href="">
+                <a href="{{ route('changePa', session('user')->id_employee) }}">
                     <i class="material-icons">widgets</i>
-                    <p> Chấm công </p>
+                    <p> Đổi mật khẩu </p>
+                </a>
+            </li>
+
+            <li class="{{ Request::is('/quanly') ? 'active' : '' }}">
+                <a href="{{ route('profile', session('user')->id_employee) }}">
+                    <i class="material-icons">widgets</i>
+                    <p> Thông tin cá nhân </p>
                 </a>
             </li>
             </a>

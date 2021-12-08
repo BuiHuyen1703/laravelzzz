@@ -11,8 +11,8 @@
             <h3 class="card-title">Thông tin các đơn nghỉ</h3>
             <div class="table-responsive">
                 <table class="table">
-                        <th>Mã đơn</th>
-                        <th>{{ $legal->id_legal }}</th>
+                    <th>Mã đơn</th>
+                    <th>{{ $legal->id_legal }}</th>
                     <tr>
                         <th>Tên nhân viên</th>
                         <td>{{ $legal->name_empployee }}</td>
@@ -48,20 +48,20 @@
                                     <a>
                             </td>
                     @endif --}}
-                    @if ($legal->NameApprove == 'Duyệt' || $legal->NameApprove == 'Từ chối')
+                    {{-- @if ($legal->NameApprove == 'Duyệt' || $legal->NameApprove == 'Từ chối')
                         <tr></tr>
-                    @else
-                        <tr>
-                            <td>
-                                <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">
-                                    <i class="material-icons">check</i> duyệt
-                                </a>
-                                <a class="btn btn-xs btn-danger" href="{{ route('legalOff.hihi', $legal->id_legal) }}">
-                                    <i class="material-icons">close</i> từ chối
-                                    <a>
-                            </td>
-                        </tr>
-                    @endif
+                    @else --}}
+                    <tr>
+                        <td>
+                            <a class="btn btn-xs btn-success" href="{{ route('legalOff.haha', $legal->id_legal) }}">
+                                <i class="material-icons">check</i> duyệt
+                            </a>
+                            <a class="btn btn-xs btn-danger" href="{{ route('legalOff.hihi', $legal->id_legal) }}">
+                                <i class="material-icons">close</i> từ chối
+                                <a>
+                        </td>
+                    </tr>
+                    {{-- @endif --}}
                     {{-- <tr>
                         <td>
                             <a class="btn btn-sm btn-danger" href="{{ route('legalOff.hide', $legal->id_legal) }}">

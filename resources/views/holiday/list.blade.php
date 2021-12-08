@@ -7,7 +7,7 @@
         <div class="card-content">
             <h3 class="card-title">Thông tin ngày nghỉ lễ</h3>
             <div class="table-responsive">
-                <a href="{{ route('holiday.create') }}">Thêm ngay nghỉ</a>
+                <button><a href="{{ route('holiday.create') }}">Thêm ngay nghỉ</a></button>
                 <table class="table">
                     <tr>
                         <th>Tên</th>
@@ -18,10 +18,17 @@
                         <tr>
                             <td>{{ $holi->name_holiday }}</td>
                             <td>{{ $holi->date_holiday }}</td>
-                            <td><a class="btn btn-sm btn-warning" href="{{ route('holiday.edit', $holi->id_holiday) }}">
+                            {{-- <td><a class="btn btn-sm btn-warning" href="{{ route('holiday.edit', $holi->id_holiday) }}">
                                     <i class="fa fa-edit"></i>
-                                    Sửa
-                                </a></td>
+                                    Xoá
+                                </a></td> --}}
+                            <td>
+                                <form action="{{ route('holiday.destroy', $holi->id_holiday) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger" onclick="myFunction()">Xóa</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
 
@@ -30,3 +37,8 @@
         </div>
     </div>
 @endsection
+<script>
+    function myFunction() {
+        alert("Xoá thành công!!!");
+    }
+</script>

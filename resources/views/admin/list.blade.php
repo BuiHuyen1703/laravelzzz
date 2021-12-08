@@ -8,9 +8,9 @@
         </div>
         <div class="card-content">
             <h3 class="card-title">Thông tin Admin </h3>
-            <h3>
+            <button>
                 <a href="{{ route('admin.create') }}">Thêm Admin</a>
-            </h3>
+            </button>
             <form action="">
                 <input type="search" value="{{ $search }}" name="search">
                 <button>Tìm</button>
@@ -41,10 +41,15 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-danger" href="">
+                                {{-- <a class="btn btn-sm btn-danger" href="{{ route('admin.destroy', $admin->id_admin) }}">
                                     <i class="fa fa-times"></i>
-                                    Ẩn
-                                </a>
+                                    Xoá
+                                </a> --}}
+                                <form action="{{ route('admin.destroy', $admin->id_admin) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger">Xóa</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

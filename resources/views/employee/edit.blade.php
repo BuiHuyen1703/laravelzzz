@@ -6,7 +6,7 @@
         @csrf
         @method("PUT")
         Tên <input type="text" value="{{ $employee->name_empployee }}" name="name_emp"> <br>
-        Lương 1 giờ <input type="text" value="{{ $employee->salaryPerHour }}" name="salaryperhouse"><br>
+        {{-- Lương 1 giờ <input type="text" value="{{ $employee->salaryPerHour }}" name="salaryperhouse"><br> --}}
         Giới tính :
         <input type="radio" name="gender" value="1" @if ($employee->gender == 1) checked @endif>Nữ
         <input type="radio" name="gender" value="0" @if ($employee->gender == 0) checked @endif>Nam<br>

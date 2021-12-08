@@ -51,7 +51,7 @@
                     <th>Mã nhân viên</th>
                     <th>Tên nhân viên</th>
                     <th>Checkin</th>
-                    <th>Checkout</th>
+                    {{-- <th>Checkout</th> --}}
                     <th>date</th>
                     <th>Phat</th>
                     <tbody>
@@ -61,7 +61,7 @@
                                 <td>{{ $time->id_employee }}</td>
                                 <td>{{ $time->name_empployee }}</td>
                                 <td>{{ $time->checkin }}</td>
-                                <td>{{ $time->checkout }}</td>
+                                {{-- <td>{{ $time->checkout }}</td> --}}
                                 <td>{{ $time->date }}</td>
                                 <td>{{ $time->phat }}</td>
 

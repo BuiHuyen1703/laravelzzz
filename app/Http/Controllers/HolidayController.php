@@ -68,6 +68,7 @@ class HolidayController extends Controller
 
     public function destroy($id)
     {
-        //
+        Holiday::where('id_holiday', $id)->delete();
+        return redirect(route('holiday.index'));
     }
 }

@@ -8,11 +8,15 @@
         {{-- @foreach ($checks as $check) --}}
         {{-- @if ($check->checkin == null) --}}
         {{-- checkin --}}
+
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header card-header-icon" data-background-color="purple">
                     <i class="material-icons">today</i>
                 </div>
+                @if (Session::exists('error'))
+                    <div class="text-center">{{ Session::get('error') }}</div>
+                @endif
                 <form action="{{ route('timekeeping.store') }}" method="post">
                     @csrf
                     <div class="card-content">
@@ -25,7 +29,7 @@
                                 value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toTimeString() }}" name="checkin" />
                             <input type="hidden" name="available" value="1">
                         </div>
-                        <button class="btn btn-primary" onclick="return confirm('checkin thành công  ') ">Check in</button>
+                        <button class="btn btn-primary">Check in</button>
                     </div>
                 </form>
             </div>
@@ -33,7 +37,7 @@
         {{-- @endif --}}
         {{-- @if ($check->checkin == null) --}}
         {{-- checkout --}}
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <div class="card">
                 <div class="card-header card-header-icon" data-background-color="red">
                     <i class="material-icons">today</i>
@@ -47,18 +51,18 @@
                                 <input type="text" name="id_timekeeping" value="{{ $item->id_timekeeping }}">
                             @endforeach --}}
 
-                            <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_employee }} @endif ">
-                            <label class="label-control">Ngày/Giờ check out</label>
-                            <input type="text" name="date" value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}">
-                            <input type="hidden" name="available" value="1">
-                            <input type="text" class="form-control datetimepicker"
-                                value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toTimeString() }}" name="checkout" />
-                        </div>
-                        <button class="btn btn-danger">Check out</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        {{-- <input type="hidden" name="id_employee" value="@if (session('user')) {{ session('user')->id_employee }} @endif ">
+        <label class="label-control">Ngày/Giờ check out</label>
+        <input type="text" name="date" value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}">
+        <input type="hidden" name="available" value="1">
+        <input type="text" class="form-control datetimepicker"
+            value="{{ Carbon::now('Asia/Ho_Chi_Minh')->toTimeString() }}" name="checkout" />
+    </div>
+    <button class="btn btn-danger">Check out</button>
+    </div>
+    </form>
+    </div>
+    </div> --}}
         {{-- @endif --}}
         {{-- @endforeach --}}
 
@@ -100,13 +104,13 @@
                             <label>Đến hết ngày ngày</label>
                             <input type="date" class="form-control datepicker" name="end_time_off" />
                         </div>
-                        <div class="form-group label-floating">
-                            {{-- <label>available</label> --}} <input type="hidden" class="form-control datepicker" name="available"
-                                value="1" />
+                        {{-- <div class="form-group label-floating">
+                            <label>available</label>
+                            <input type="hidden" class="form-control datepicker" name="available" value="1" />
 
                             <input type="hidden" class="form-control datepicker" name="available" value="1" />
                             <input type="hidden" class="form-control datepicker" name="available" />
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-fill btn-primary">Gửi</button>
                     </form>
                 </div>

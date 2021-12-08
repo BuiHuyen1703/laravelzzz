@@ -24,6 +24,7 @@
 
                 <button>Tìm</button>
                 <input type="submit" value="Xuất chấm công">
+
             </form>
             {{-- /xuất excel --}}
 
@@ -43,25 +44,25 @@
                         </tr>
 
                         <tbody>
-                            @if (count($idEmp) < 0)
+                            {{-- @if (count($idEmp) < 0)
                                 "k có data"
-                            @endif
-                            @if (count($idEmp) > 0)
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($idEmp as $salary)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $salary['id_employee'] }}</td>
-                                        <td>{{ $salary['ten_nv'] }}</td>
-                                        <td>{{ $salary['salary_basic'] }}</td>
-                                        <td>{{ $salary['job_title'] }}</td>
-                                        <td>{{ $salary['salary'] }}</td>
-                                        <td>{{ $salary['phat'] }}</td>
-                                    </tr>
-                                @endforeach
-                            @endif
+                            @endif --}}
+                            {{-- @if (count($idEmp) > 0) --}}
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($idEmp as $salary)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $salary['id_employee'] }}</td>
+                                    <td>{{ $salary['ten_nv'] }}</td>
+                                    <td>{{ $salary['salary_basic'] }}</td>
+                                    <td>{{ $salary['job_title'] }}</td>
+                                    <td>{{ $salary['salary'] }}</td>
+                                    <td>{{ $salary['phat'] }}</td>
+                                </tr>
+                            @endforeach
+                            {{-- @endif --}}
                         </tbody>
 
 

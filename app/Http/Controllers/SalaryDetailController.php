@@ -16,6 +16,7 @@ class SalaryDetailController extends Controller
     {
         $listSalary = SalaryDetail::join("employees", "salary_detail.id_employee", "=", "employees.id_employee")
             ->join("jobtitle", "salary_detail.id_jobtitle", "=", "jobtitle.id_jobTitle")
+            // ->orderBy('employees.id_employee', 'desc')
             ->get();
         // $listSalary = SalaryDetail::join("level", "salary_detail.id_level", "=", "level.id_level")
         //     ->get();
@@ -80,7 +81,7 @@ class SalaryDetailController extends Controller
                 $phat = $phat + $row->phat;
             }
 
-            //số ngày làm hưởng lươn
+            //số ngày làm hưởng lương
             $stream = $daystream - ($dem + $dayoff2);
 
             $luong = ($id->basic_salary / $daystream) * $stream - $phat;

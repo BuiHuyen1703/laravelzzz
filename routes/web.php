@@ -12,7 +12,6 @@ use App\Http\Controllers\SalaryDetailController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\TimekeeppingController;
 use App\Models\Employee;
-use App\Models\Timekeeping;
 use Illuminate\Support\Facades\Route;
 
 ///login
@@ -25,8 +24,8 @@ Route::get('/logout-admin', [AuthenticateController::class, 'logoutAdmin'])->nam
 Route::middleware(['isAuth'])->group(function () {
 
     // Route::get('/', function () {
-    //     return view('index ');
-    // })->name('dashboard');
+    //     return view('index');
+    // })->name('statistics.index');
 
     //thống kê
     Route::resource('/statistics', StatisticsController::class);
@@ -106,21 +105,10 @@ Route::get('/user/login', [AuthenticateController::class, 'loginUser'])->name('l
 Route::post('/user/login-process', [AuthenticateController::class, 'loginProcessUser'])->name('login-process-user');
 Route::get('/logout', [AuthenticateController::class, 'logoutUser'])->name('logout-user');
 Route::middleware(['isGuest'])->group(function () {
-    Route::get('/user', [TimekeeppingController::class, 'create'])->name('userIndex');
-    // Route::get("/ch", [TimekeeppingController::class, 'check'])->name('check-all');
-    //timekeeping
     // Route::resource('/timekeeping', TimekeeppingController::class);
-
-    // Route::post("/checkin", [TimekeeppingController::class, 'checkin'])->name('checkin');
-    // Route::prefix('timekeeping')->name("timekeeping.")->group(function () {
-    //     // Route::get('/hide/{id}', [TimekeeppingController::class, 'hide'])->name('hide');
-    // });
+    Route::get('/user', [TimekeeppingController::class, 'create'])->name('userIndex');
+    Route::get('/change/{id}', [EmployeeController::class, 'changePassword'])->name('changePa');
+    Route::post('/change-process/{id}', [EmployeeController::class, 'changePasswordProcess'])->name('changePaPro');
+    Route::get('/profile/{id}', [EmployeeController::class, 'profile'])->name('profile');
+    Route::put('/profile/edit/{id}', [EmployeeController::class, 'editProfileProcess'])->name('editPro');
 });
-
-
-// Route::get('/test', function () {
-//     $emp = Employee::find(1);
-//     dd($emp->timeKeepings->filter(function($tk) {
-//         return
-//     }));
-// });

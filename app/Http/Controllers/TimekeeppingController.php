@@ -18,12 +18,16 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class TimekeeppingController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('checkin')->only('store');
+    // }
 
     public function index()
     {
         $listTime = Timekeeping::join("employees", "employees.id_employee", "=", "timekeeping.id_employee")
             ->where("timekeeping.available", "=", 1)
-            ->orderBy('employees.id_employee', 'asc')
+            ->orderBy('employees.id_employee', 'desc')
             ->paginate(5);
 
         $years = DB::table('timekeeping')->selectRaw('YEAR(date) as value')->distinct()->orderBy('date')->get();
@@ -180,8 +184,6 @@ class TimekeeppingController extends Controller
                     ->get();
                 // dd($timekeeping);
 
-
-
                 foreach ($timekeeping as $id) {
                     $hour = (float)$checkout;
                     $phat = $id->phat;
@@ -211,6 +213,13 @@ class TimekeeppingController extends Controller
     }
     public function show($id)
     {
+    }
+
+    public function checkinout(Request $request)
+    {
+        $checkout = $request->get('checkin');
+        $date = $request->get("date");
+        $idEmp = $request->get('id_employee');
     }
 
 

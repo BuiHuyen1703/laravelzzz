@@ -33,16 +33,16 @@
                 </div>
             </div>
             <ul class="nav">
-                <li class="{{ Request::is('/') ? 'active' : '' }}">
+                {{-- <li class="{{ Request::is('/') ? 'active' : '' }}">
                     <a href="{{ route('statistics.index') }}">
                         <i class="material-icons">device_hub</i>
                         <p> Thống kê </p>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('statistics.create') }}">
                         <i class="material-icons">device_hub</i>
-                        <p> Thống kê 2</p>
+                        <p> Thống kê </p>
                     </a>
                 </li>
                 <li class="{{ Request::is('jobTitle') ? 'active' : '' }}">

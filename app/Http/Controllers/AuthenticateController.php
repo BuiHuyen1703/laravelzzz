@@ -50,7 +50,7 @@ class AuthenticateController extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
         try {
-            $user = Employee::where('email', $email)->where('password', $password)->firstOrFail();
+            $user = Employee::where('email', $email)->where('password', $password)->where('available', 1)->firstOrFail();
             $request->session()->put('user', $user);
             return Redirect::route('userIndex');
             // đang dùng đăng nhập cả admin cả employee à

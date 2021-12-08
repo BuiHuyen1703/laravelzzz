@@ -95,18 +95,18 @@ class AdminController extends Controller
 
     public function destroy($id)
     {
-        // Admin::where('id_admin', $id)->delete();
-        // return redirect(route('admin.index'));
+        Admin::where('id_admin', $id)->where('role', "=", 1)->delete();
+        return redirect(route('admin.index'));
     }
 
-    public function hide($id)
-    {
-        // $assign = DB::table("asign")
-        //         ->where("id_admin","=",$id)
-        //         ->update([availaber]=>0);
-        $data = Admin::find($id);
-        $data->available = 0;
-        $data->save();
-        return redirect('admin');
-    }
+    // public function hide($id)
+    // {
+    //     // $assign = DB::table("asign")
+    //     //         ->where("id_admin","=",$id)
+    //     //         ->update([availaber]=>0);
+    //     $data = Admin::find($id);
+    //     $data->available = 0;
+    //     $data->save();
+    //     return redirect('admin');
+    // }
 }

@@ -9,7 +9,10 @@ use App\Models\Timekeeping;
 class Employee extends Model
 {
     protected $table = 'employees';
-    protected $fillable = ['name_employee', 'dateOfBirth', 'gender', 'phoneNumber', 'address', 'email', 'password', 'salaryPerHour', 'level', 'id_department', 'id_jobTitle'];
+    protected $fillable = [
+        'name_empployee', 'dateOfBirth', 'gender', 'phoneNumber', 'address',
+        'email', 'password', 'level', 'id_department', 'id_jobTitle', 'available'
+    ];
     public $timestamps = false;
     public $primaryKey = 'id_employee';
 
